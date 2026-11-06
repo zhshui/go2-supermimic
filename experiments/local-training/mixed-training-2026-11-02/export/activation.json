@@ -1,0 +1,33 @@
+{
+  "status": "running_verified",
+  "task": "Go2-Mixed",
+  "iteration": 33150,
+  "num_envs": 4096,
+  "runtime_features": {
+    "context_dim": 41,
+    "actor_obs_dim": 735,
+    "mass_ratio_min": 0.8000051975250244,
+    "mass_ratio_max": 1.1999986171722412,
+    "com_std": [
+      0.014365416951477528,
+      0.014382881112396717,
+      0.01740485616028309
+    ],
+    "yaw_command_min": -0.5998562574386597,
+    "yaw_command_max": 0.5998097062110901,
+    "delay_steps": [
+      0.0,
+      1.0,
+      2.0
+    ]
+  },
+  "nonfinite_steps": 0,
+  "maximum_mean_push_events_per_step": 27.459999084472656,
+  "verified_checkpoint": "/root/go2-supermimic/logs/supermimic/2026-11-02_21-51-00_mixed_commands_dr_lr/model_32500.pt",
+  "world_model_lr": 0.00016204985861384592,
+  "actor_lr": 3.5440304078848106e-05,
+  "world_model_loss": 0.39909713715314865,
+  "phase_lr_start": 29000,
+  "tests": "32 passed",
+  "preflight": "mass/PD variation, signed yaw commands, 0/1/2 delays, 20 forced pushes and imagination update passed"
+}

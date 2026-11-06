@@ -1,0 +1,156 @@
+mode: auto_safe
+llm:
+  base_url: https://yapi.click/v1
+  model: gpt-6-sol
+  wire_api: responses
+  timeout_seconds: 120
+  max_retries: 2
+  enable_vision: false
+  provider: custom
+  requires_openai_auth: true
+  reasoning_effort: medium
+  store: false
+  max_output_tokens: 4000
+task_context:
+  robot: Unitree Go2
+  task: Go2-Mixed
+  objective: Command-conditioned locomotion over stairs, flat, rough, boxes and slopes;
+    retain 15 cm stair ability and learn variable yaw-rate tracking.
+  framework: SuperMimic model-based reinforcement learning
+  pipeline:
+  - 在 MuJoCo Warp 中采样真实仿真转移并写入 replay buffer。
+  - 用多步自回归窗口拟合 world model。
+  - 冻结 world model 参数，通过想象 rollout 的回报反向传播更新 Actor，并拟合 Critic。
+  deployment: 部署 Actor；世界模型用于训练中的想象与策略优化。
+  terrain:
+    curriculum_rows: 5
+    variants: 10
+    stairs_fraction: 0.5
+    other_terrain_fraction: 0.5
+    types:
+    - ascending stairs 30/40/50 cm treads
+    - descending stairs 30/40 cm treads
+    - flat
+    - rough
+    - boxes
+    - slope
+    - inverted slope
+    stair_height_m:
+    - 0.02
+    - 0.15
+    episode_seconds: 8
+  commands:
+    forward_speed_mps:
+    - 0.2
+    - 0.8
+    lateral_speed_mps:
+    - -0.15
+    - 0.15
+    yaw_rate_rps:
+    - -0.6
+    - 0.6
+    resampling_seconds:
+    - 3
+    - 6
+  evaluation_requirements:
+  - 固定种子，分别报告各台阶高度的上楼进度、完成率和跌倒率。
+  - 报告前向速度跟踪、机身姿态、足端净空和动作平滑性。
+  - 若日志缺少完成率、爬升高度或足端净空，明确要求补采；不得从总回报推断已会爬楼梯。
+  - 最终结论必须结合真实仿真评估与视频；想象回报只用于辅助诊断。
+  diagnostic_instructions:
+  - 先核对任务、课程等级、有效样本量和世界模型预热阶段。
+  - 联合查看世界模型误差、真实奖励项、跌倒终止、梯度与想象回报，识别模型利用和现实/想象偏差。
+  - 区分尚未充分训练、课程推进过快、世界模型偏差、奖励失衡和传感器/观测问题。
+  - 只基于提供的证据给出建议；不得假定缺失的成功率、模型校准结果或真实机器人能力。
+  - 每项建议必须列出证据、预期影响、风险、可回滚修改和固定种子验证方法。
+  - 不替换为 PPO；保留采样、世界模型拟合、想象策略优化三阶段框架。
+  metric_semantics:
+    disabled_chase_dodge: targets_enabled=false in Go2-Stairs. Metrics/target/* and
+      Metrics/hit_rate/* are inactive compatibility slots; zero is expected and is
+      not evidence of stair-task failure.
+    termination: mjlab TerminationManager.reset emits raw counts for selected env_ids.
+      Training averages these counts across logged reset calls. Values can exceed
+      1; they are not normalized probabilities.
+    policy_start_iteration: 1001
+    curriculum: 5 terrain rows; max_level=floor(min(1, common_step_counter/12000)*5),
+      clipped to 4. A change around 1250 is not established as a terrain-row increase.
+  permissions: User authorizes changes to all training parameters, rewards, curriculum,
+    terrain, sampling, world-model/actor/critic architecture and optimization. Structural
+    changes require rebuilding and verified checkpoint compatibility. Preserve the
+    world-model framework and stair goal.
+  domain_randomization:
+    mass_and_inertia_scale:
+    - 0.8
+    - 1.2
+    kp_scale:
+    - 0.8
+    - 1.2
+    kd_scale:
+    - 0.8
+    - 1.2
+    control_delay_steps:
+    - 0
+    - 2
+    control_delay_seconds:
+    - 0
+    - 0.04
+    push_delta_velocity_mps:
+    - -0.4
+    - 0.4
+    push_interval_seconds:
+    - 3
+    - 6
+    prior_friction_com_encoder_randomization: retained
+  world_model_consistency:
+    context_dim: 41
+    context: friction, COM, 13 body mass ratios, 12 kp and 12 kd values
+    action_delay: real and imagined actions use the same raw-command queue; replay
+      stores executed actions
+    pushes: velocity impulses before sampling; prior replay transition is masked across
+      impulse discontinuities
+    actor_commands: first three inactive target-slot channels encode vx, vy, yaw-rate;
+      total observation stays 735
+    critic: privileged command and pending-action queue appended
+diagnostics:
+  interval_iterations: 200
+  trigger_on_anomaly: true
+  max_tokens_per_call: 4000
+  max_tokens_per_experiment: 20000
+anomaly:
+  window: 20
+  stagnation_window: 20
+  stagnation_epsilon: 0.001
+  spike_zscore: 4.0
+  max_anomalies: 20
+  metric_directions:
+    train/wm_loss: down
+    Episode_Reward/track_lin_vel: up
+    Episode_Reward/track_ang_vel: up
+    Episode_Termination/fell_over: down
+parameters:
+  require_human_approval: false
+  scope: all existing TrainCfg, environment and imagination configuration paths
+  application: candidate preflight + 5cm/15cm real evaluation + checkpoint restart;
+    automatic rollback on failed startup
+  protected:
+  - stair-climbing task goal
+  - SuperMimic world-model framework
+  - historical checkpoints and secrets
+client_context:
+  model_context_window: 1000000
+  model_auto_compact_token_limit: 900000
+  note: Imported client settings only. This stateless diagnostic agent does not implement
+    Codex auto-compaction; provider context capacity is not verified.
+online_optimization:
+  enabled: true
+  scope: all_training_configuration
+  application: validated_candidate_and_automatic_checkpoint_restart
+  interval_iterations: 2000
+  max_calls: 10
+  total_token_budget: 200000
+  candidate_training_iterations: 5
+  regression_heights_cm:
+  - 5
+  - 15
+  on_invalid_or_regression: keep current training
+  on_startup_failure: restore previous configuration and checkpoint

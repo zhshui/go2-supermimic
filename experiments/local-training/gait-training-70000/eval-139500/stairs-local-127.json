@@ -1,0 +1,189 @@
+{
+  "checkpoint": "/home/shui/RL/model_139500.ptrom",
+  "iteration": 139500,
+  "height_cm": 15.0,
+  "seed": 127,
+  "episode_seconds": 8,
+  "episodes": [
+    {
+      "trial": 0,
+      "env": 0,
+      "fell": false,
+      "max_ground_rise_m": 1.2162139415740967,
+      "net_ground_rise_m": 1.2162139415740967,
+      "max_forward_progress_m": 4.165521144866943,
+      "net_forward_progress_m": 4.165521144866943,
+      "mean_forward_speed_mps": 0.5225933194160461,
+      "three_step_ascent_without_fall": true,
+      "body_hit": true,
+      "foot_riser_hit": true,
+      "max_airborne_s": 0.03999999538064003,
+      "landings": [
+        21,
+        26,
+        28,
+        21
+      ],
+      "clean_stepped_ascent": false
+    },
+    {
+      "trial": 0,
+      "env": 1,
+      "fell": false,
+      "max_ground_rise_m": 1.3499999046325684,
+      "net_ground_rise_m": 1.3499999046325684,
+      "max_forward_progress_m": 4.308758735656738,
+      "net_forward_progress_m": 4.308758735656738,
+      "mean_forward_speed_mps": 0.540621280670166,
+      "three_step_ascent_without_fall": true,
+      "body_hit": false,
+      "foot_riser_hit": true,
+      "max_airborne_s": 0.019999999552965164,
+      "landings": [
+        21,
+        24,
+        25,
+        21
+      ],
+      "clean_stepped_ascent": false
+    },
+    {
+      "trial": 0,
+      "env": 2,
+      "fell": false,
+      "max_ground_rise_m": 1.2000000476837158,
+      "net_ground_rise_m": 1.2000000476837158,
+      "max_forward_progress_m": 4.144070625305176,
+      "net_forward_progress_m": 4.144070625305176,
+      "mean_forward_speed_mps": 0.5198830962181091,
+      "three_step_ascent_without_fall": true,
+      "body_hit": true,
+      "foot_riser_hit": true,
+      "max_airborne_s": 0.034999996423721313,
+      "landings": [
+        25,
+        26,
+        25,
+        23
+      ],
+      "clean_stepped_ascent": false
+    },
+    {
+      "trial": 0,
+      "env": 3,
+      "fell": false,
+      "max_ground_rise_m": 1.1999998092651367,
+      "net_ground_rise_m": 1.1999998092651367,
+      "max_forward_progress_m": 3.825035333633423,
+      "net_forward_progress_m": 3.825035333633423,
+      "mean_forward_speed_mps": 0.47963064908981323,
+      "three_step_ascent_without_fall": true,
+      "body_hit": true,
+      "foot_riser_hit": true,
+      "max_airborne_s": 0.10500001162290573,
+      "landings": [
+        20,
+        19,
+        23,
+        22
+      ],
+      "clean_stepped_ascent": false
+    },
+    {
+      "trial": 0,
+      "env": 4,
+      "fell": false,
+      "max_ground_rise_m": 0.8999999761581421,
+      "net_ground_rise_m": 0.8999999761581421,
+      "max_forward_progress_m": 3.403062105178833,
+      "net_forward_progress_m": 3.403062105178833,
+      "mean_forward_speed_mps": 0.4266083240509033,
+      "three_step_ascent_without_fall": true,
+      "body_hit": true,
+      "foot_riser_hit": true,
+      "max_airborne_s": 0.03999999538064003,
+      "landings": [
+        22,
+        22,
+        25,
+        20
+      ],
+      "clean_stepped_ascent": false
+    },
+    {
+      "trial": 0,
+      "env": 5,
+      "fell": false,
+      "max_ground_rise_m": 1.0499999523162842,
+      "net_ground_rise_m": 1.0499999523162842,
+      "max_forward_progress_m": 3.3672869205474854,
+      "net_forward_progress_m": 3.3672869205474854,
+      "mean_forward_speed_mps": 0.42255768179893494,
+      "three_step_ascent_without_fall": true,
+      "body_hit": true,
+      "foot_riser_hit": false,
+      "max_airborne_s": 0.019999999552965164,
+      "landings": [
+        21,
+        23,
+        28,
+        21
+      ],
+      "clean_stepped_ascent": false
+    },
+    {
+      "trial": 0,
+      "env": 6,
+      "fell": false,
+      "max_ground_rise_m": 0.75,
+      "net_ground_rise_m": 0.75,
+      "max_forward_progress_m": 2.919954538345337,
+      "net_forward_progress_m": 2.919954538345337,
+      "mean_forward_speed_mps": 0.36635276675224304,
+      "three_step_ascent_without_fall": true,
+      "body_hit": true,
+      "foot_riser_hit": true,
+      "max_airborne_s": 0.019999999552965164,
+      "landings": [
+        26,
+        22,
+        22,
+        19
+      ],
+      "clean_stepped_ascent": false
+    },
+    {
+      "trial": 0,
+      "env": 7,
+      "fell": false,
+      "max_ground_rise_m": 0.7500001192092896,
+      "net_ground_rise_m": 0.7500001192092896,
+      "max_forward_progress_m": 2.6992905139923096,
+      "net_forward_progress_m": 2.636383295059204,
+      "mean_forward_speed_mps": 0.3305474817752838,
+      "three_step_ascent_without_fall": true,
+      "body_hit": true,
+      "foot_riser_hit": true,
+      "max_airborne_s": 0.03999999538064003,
+      "landings": [
+        21,
+        26,
+        23,
+        20
+      ],
+      "clean_stepped_ascent": false
+    }
+  ],
+  "n": 8,
+  "fall_fraction": 0.0,
+  "three_step_success_fraction": 1.0,
+  "mean_net_ground_rise_m": 1.0520267188549042,
+  "mean_net_forward_progress_m": 3.5962590873241425,
+  "mean_forward_speed_mps": 0.45109932497143745,
+  "video_error": null,
+  "clean_stepped_ascent_fraction": 0.0,
+  "body_hit_fraction": 0.875,
+  "foot_riser_hit_fraction": 0.875,
+  "max_airborne_s": 0.10500001162290573,
+  "video": "/home/shui/\u6587\u6863/ChatGPT/super go2/gait-training-70000/eval-139500/policy_139500_15cm.mp4"
+}

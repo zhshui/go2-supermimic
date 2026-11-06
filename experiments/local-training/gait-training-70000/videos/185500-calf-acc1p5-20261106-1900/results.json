@@ -1,0 +1,26 @@
+{
+  "checkpoint": "/root/go2-supermimic/logs/supermimic/2026-11-06_17-41-10_gait_review_calf_acc1p5_185500/model_185500.pt",
+  "seed": 42,
+  "clips": [
+    {
+      "terrain": "flat",
+      "height_m": null,
+      "seconds": 8.0,
+      "fell": false,
+      "ground_delta_m": 0.0,
+      "displacement_m": 4.738701343536377,
+      "yaw_mae_rad_s": 0.1289229719225028,
+      "pushes": 1
+    },
+    {
+      "terrain": "stairs_up_40cm",
+      "height_m": 0.15,
+      "seconds": 8.0,
+      "fell": false,
+      "ground_delta_m": 1.4999999701976776,
+      "displacement_m": 4.848796367645264,
+      "yaw_mae_rad_s": 0.07684523264342397,
+      "pushes": 1
+    }
+  ]
+}

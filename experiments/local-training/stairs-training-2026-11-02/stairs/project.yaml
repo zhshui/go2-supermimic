@@ -1,0 +1,10 @@
+project_root: /root/go2-supermimic
+adapter: mjlab
+task: Go2-Stairs
+training_command: bash /root/go2-supermimic/scripts/train_stairs.sh
+metrics:
+  paths:
+  - logs/supermimic
+checkpoint:
+  pattern: logs/supermimic/*_stairs_formal/model_*.pt
+requirements_file: PROJECT.md

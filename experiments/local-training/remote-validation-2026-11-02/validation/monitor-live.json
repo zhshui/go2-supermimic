@@ -1,0 +1,16 @@
+{
+  "points": 100,
+  "anomalies": [],
+  "llm_called": false,
+  "project_spec": {
+    "name": "",
+    "robot": "",
+    "task": "",
+    "goals": [],
+    "metrics": [],
+    "failure_conditions": [],
+    "allowed_parameters": [],
+    "forbidden_parameters": [],
+    "raw_text": ""
+  }
+}

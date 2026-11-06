@@ -1,0 +1,26 @@
+{
+  "checkpoint": "logs/supermimic/2026-11-04_11-58-47_gait_review_143500/model_143000.pt",
+  "seed": 42,
+  "clips": [
+    {
+      "terrain": "flat",
+      "height_m": null,
+      "seconds": 8.0,
+      "fell": false,
+      "ground_delta_m": 0.0,
+      "displacement_m": 4.594395160675049,
+      "yaw_mae_rad_s": 0.1150026627603853,
+      "pushes": 1
+    },
+    {
+      "terrain": "stairs_up_40cm",
+      "height_m": 0.15,
+      "seconds": 8.0,
+      "fell": false,
+      "ground_delta_m": 0.6000000238418579,
+      "displacement_m": 3.458716630935669,
+      "yaw_mae_rad_s": 0.2351953468255157,
+      "pushes": 1
+    }
+  ]
+}

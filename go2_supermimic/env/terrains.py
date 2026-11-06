@@ -86,3 +86,36 @@ def rough_terrain() -> TerrainEntityCfg:
     terrain_type="generator", terrain_generator=copy.deepcopy(ROUGH_TERRAINS),
     max_init_terrain_level=None,
   ))
+
+
+def stairs_terrain() -> TerrainEntityCfg:
+  """Spawn at the bottom of inverted stairs; moving outwards climbs the steps."""
+  generator = copy.deepcopy(ROUGH_TERRAINS)
+  generator.num_cols = 1
+  generator.sub_terrains = {
+    "stairs": pyramid_stairs_inv(proportion=1.0, step_height_range=(0.02, 0.15),
+                                  step_width=0.4, platform_width=1.5),
+  }
+  return clean_look(TerrainEntityCfg(
+    terrain_type="generator", terrain_generator=generator, max_init_terrain_level=0,
+  ))
+
+
+def mixed_locomotion_terrain() -> TerrainEntityCfg:
+  """Five stair variants and five non-stair columns, with shared difficulty rows."""
+  generator = copy.deepcopy(ROUGH_TERRAINS)
+  generator.num_rows = 5
+  generator.num_cols = 10
+  generator.sub_terrains = {
+    "stairs_up_30cm": pyramid_stairs_inv(proportion=.1, step_height_range=(.02,.15), step_width=.30, platform_width=1.5),
+    "stairs_up_40cm": pyramid_stairs_inv(proportion=.1, step_height_range=(.02,.15), step_width=.40, platform_width=1.5),
+    "stairs_up_50cm": pyramid_stairs_inv(proportion=.1, step_height_range=(.02,.15), step_width=.50, platform_width=1.5),
+    "stairs_down_30cm": pyramid_stairs(proportion=.1, step_height_range=(.02,.15), step_width=.30, platform_width=1.5),
+    "stairs_down_40cm": pyramid_stairs(proportion=.1, step_height_range=(.02,.15), step_width=.40, platform_width=1.5),
+    "flat": flat(proportion=.1),
+    "rough": random_rough(proportion=.1, noise_range=(.01,.04), noise_step=.01),
+    "boxes": box_random_grid(proportion=.1, grid_width=.45, grid_height_range=(.02,.08), platform_width=1.5),
+    "slope": hf_pyramid_slope(proportion=.1, slope_range=(0.,.3), platform_width=1.5),
+    "slope_inv": hf_pyramid_slope_inv(proportion=.1, slope_range=(0.,.3), platform_width=1.5),
+  }
+  return clean_look(TerrainEntityCfg(terrain_type="generator",terrain_generator=generator,max_init_terrain_level=0))

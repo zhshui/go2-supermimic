@@ -1,0 +1,19 @@
+{
+  "iteration": 4450,
+  "time": 1793619028.1999075,
+  "proposal": {
+    "id": "e8bf08cf533641758d8ac4b2df693321",
+    "experiment_id": "52d2c85154f0",
+    "issued_iteration": 4050,
+    "expires_iteration": 6050,
+    "parameter": "actor_lr_scale",
+    "expected_value": 0.3,
+    "suggested_value": 0.27,
+    "rationale": "这是相对 0.3 降低 10% 的可回滚试验。当前没有数值崩溃证据，因此不需要因数值健康问题停训；但想象生存率接近 1，且缺少真实仿真校准，适度降低 actor 更新幅度可用于检验是否存在 world model 利用风险。该决定不宣称策略已具备真实爬楼能力，且不改变采样、world model 拟合和想象策略优化三阶段框架。"
+  },
+  "status": "applied",
+  "parameter": "actor_lr_scale",
+  "old_value": 0.3,
+  "new_value": 0.27,
+  "backup": "/root/go2-supermimic/logs/supermimic/2026-11-02_19-27-50_stairs_llm/online-control/backups/before_4450_actor_lr_scale.pt"
+}

@@ -187,6 +187,7 @@ class BallTargetCfg:
 
 # Per-env state fields and their trailing dims (1 = scalar per env).
 STATE_DIMS = {
+  "velocity_mode": 1, "velocity_command": 3, "action_queue": 24, "action_delay": 1,
   "center": 2, "has_chase": 1, "has_dodge": 1,
   # Chase ball.
   "holder_pos": 2, "holder_vel": 2, "ball_z": 1, "ball_z_vel": 1, "speed_cap": 1,

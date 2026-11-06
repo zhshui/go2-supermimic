@@ -1,0 +1,15 @@
+nohup: ignoring input
+Using Python 3.13.9 environment at: /root/.venvs/go2-gpu
+Resolved 147 packages in 3.71s
+   Building go2-supermimic @ file:///root/go2-supermimic
+      Built go2-supermimic @ file:///root/go2-supermimic
+Prepared 1 package in 675ms
+Uninstalled 1 package in 0.42ms
+Installed 1 package in 3ms
+ ~ go2-supermimic==0.1.0 (from file:///root/go2-supermimic)
+2.10.0+cu128 12.8 NVIDIA GeForce RTX 4090
+tensor(3., device='cuda:0')
+No broken requirements found.
+...........................                                              [100%]
+27 passed in 12.23s
+GPU_VALIDATION_COMPLETE

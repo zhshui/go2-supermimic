@@ -1,0 +1,14 @@
+[
+  {
+    "metric": "train/wm_loss",
+    "kind": "spike",
+    "severity": "high",
+    "message": "train/wm_loss changed unusually at step 125",
+    "evidence": {
+      "value": 1821.8147277832031,
+      "mean": 9.354210217793783,
+      "std": 3.3951227087454066
+    },
+    "step": 125
+  }
+]

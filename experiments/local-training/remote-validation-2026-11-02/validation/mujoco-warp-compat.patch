@@ -1,0 +1,17 @@
+--- a/go2_supermimic/env/env_cfg.py
++++ b/go2_supermimic/env/env_cfg.py
+@@ -35,7 +35,13 @@
+   """Startup event: silence per-step solver iteration-limit warnings (with
+   thousands of worlds one hits the limit nearly every step)."""
+   del env_ids
+-  from mujoco_warp import OverflowType
++  try:
++    from mujoco_warp import OverflowType
++  except ImportError:
++    # Newer MuJoCo Warp versions removed solver-iteration warning flags.
++    return
++  if not all(hasattr(OverflowType, name) for name in ("ITERATIONS", "LS_ITERATIONS")):
++    return
+ 
+   opt = env.sim.wp_model.opt
+   opt.warn_overflow = int(opt.warn_overflow) & ~int(

@@ -1,0 +1,28 @@
+{
+  "checkpoint": "logs/supermimic/2026-11-03_13-07-13_gait_review_80000/model_78000.pt",
+  "seed": 42,
+  "clips": [
+    {
+      "terrain": "flat",
+      "height_m": null,
+      "seconds": 8.0,
+      "fell": false,
+      "ground_delta_m": 0.0,
+      "displacement_m": 4.218508243560791,
+      "yaw_mae_rad_s": 0.11959890120973189,
+      "pushes": 1,
+      "max_airborne_s": 0.019999999552965164
+    },
+    {
+      "terrain": "stairs_up_40cm",
+      "height_m": 0.05,
+      "seconds": 8.0,
+      "fell": false,
+      "ground_delta_m": 0.45000001043081284,
+      "displacement_m": 4.382051944732666,
+      "yaw_mae_rad_s": 0.07567679582874584,
+      "pushes": 1,
+      "max_airborne_s": 0.05499999225139618
+    }
+  ]
+}

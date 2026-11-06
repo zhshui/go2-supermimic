@@ -1,0 +1,573 @@
+[
+  {
+    "checkpoint": "/root/go2-supermimic/logs/supermimic/2026-11-03_10-45-41_mixed_gait_70k/model_66500.pt",
+    "iteration": 66500,
+    "height_cm": 5.0,
+    "seed": 42,
+    "episode_seconds": 8,
+    "episodes": [
+      {
+        "trial": 0,
+        "env": 0,
+        "fell": false,
+        "max_ground_rise_m": 0.45000001788139343,
+        "net_ground_rise_m": 0.45000001788139343,
+        "max_forward_progress_m": 4.66330099105835,
+        "net_forward_progress_m": 4.66330099105835,
+        "mean_forward_speed_mps": 0.5849950313568115,
+        "three_step_ascent_without_fall": true
+      },
+      {
+        "trial": 0,
+        "env": 1,
+        "fell": false,
+        "max_ground_rise_m": 0.45000001788139343,
+        "net_ground_rise_m": 0.45000001788139343,
+        "max_forward_progress_m": 4.567688465118408,
+        "net_forward_progress_m": 4.567688465118408,
+        "mean_forward_speed_mps": 0.5728965997695923,
+        "three_step_ascent_without_fall": true
+      },
+      {
+        "trial": 0,
+        "env": 2,
+        "fell": false,
+        "max_ground_rise_m": 0.5,
+        "net_ground_rise_m": 0.5,
+        "max_forward_progress_m": 4.737806797027588,
+        "net_forward_progress_m": 4.737806797027588,
+        "mean_forward_speed_mps": 0.5943633317947388,
+        "three_step_ascent_without_fall": true
+      },
+      {
+        "trial": 0,
+        "env": 3,
+        "fell": false,
+        "max_ground_rise_m": 0.5,
+        "net_ground_rise_m": 0.5,
+        "max_forward_progress_m": 4.680227279663086,
+        "net_forward_progress_m": 4.680227279663086,
+        "mean_forward_speed_mps": 0.5870479941368103,
+        "three_step_ascent_without_fall": true
+      },
+      {
+        "trial": 0,
+        "env": 4,
+        "fell": false,
+        "max_ground_rise_m": 0.461630254983902,
+        "net_ground_rise_m": 0.461630254983902,
+        "max_forward_progress_m": 4.667966365814209,
+        "net_forward_progress_m": 4.667966365814209,
+        "mean_forward_speed_mps": 0.5856928825378418,
+        "three_step_ascent_without_fall": true
+      },
+      {
+        "trial": 0,
+        "env": 5,
+        "fell": false,
+        "max_ground_rise_m": 0.4000000059604645,
+        "net_ground_rise_m": 0.4000000059604645,
+        "max_forward_progress_m": 4.161637783050537,
+        "net_forward_progress_m": 4.161637783050537,
+        "mean_forward_speed_mps": 0.5220677852630615,
+        "three_step_ascent_without_fall": true
+      },
+      {
+        "trial": 0,
+        "env": 6,
+        "fell": false,
+        "max_ground_rise_m": 0.45000001788139343,
+        "net_ground_rise_m": 0.44999998807907104,
+        "max_forward_progress_m": 4.499521732330322,
+        "net_forward_progress_m": 4.499521732330322,
+        "mean_forward_speed_mps": 0.5644123554229736,
+        "three_step_ascent_without_fall": true
+      },
+      {
+        "trial": 0,
+        "env": 7,
+        "fell": false,
+        "max_ground_rise_m": 0.45000001788139343,
+        "net_ground_rise_m": 0.45000001788139343,
+        "max_forward_progress_m": 4.507912635803223,
+        "net_forward_progress_m": 4.507912635803223,
+        "mean_forward_speed_mps": 0.5656140446662903,
+        "three_step_ascent_without_fall": true
+      },
+      {
+        "trial": 0,
+        "env": 8,
+        "fell": false,
+        "max_ground_rise_m": 0.5,
+        "net_ground_rise_m": 0.5,
+        "max_forward_progress_m": 4.6005096435546875,
+        "net_forward_progress_m": 4.6005096435546875,
+        "mean_forward_speed_mps": 0.5772542357444763,
+        "three_step_ascent_without_fall": true
+      },
+      {
+        "trial": 0,
+        "env": 9,
+        "fell": false,
+        "max_ground_rise_m": 0.45864564180374146,
+        "net_ground_rise_m": 0.45864564180374146,
+        "max_forward_progress_m": 4.58876371383667,
+        "net_forward_progress_m": 4.58876371383667,
+        "mean_forward_speed_mps": 0.5756247639656067,
+        "three_step_ascent_without_fall": true
+      },
+      {
+        "trial": 0,
+        "env": 10,
+        "fell": false,
+        "max_ground_rise_m": 0.45000001788139343,
+        "net_ground_rise_m": 0.45000001788139343,
+        "max_forward_progress_m": 4.5820183753967285,
+        "net_forward_progress_m": 4.5820183753967285,
+        "mean_forward_speed_mps": 0.5748265981674194,
+        "three_step_ascent_without_fall": true
+      },
+      {
+        "trial": 0,
+        "env": 11,
+        "fell": false,
+        "max_ground_rise_m": 0.45000001788139343,
+        "net_ground_rise_m": 0.45000001788139343,
+        "max_forward_progress_m": 4.455838680267334,
+        "net_forward_progress_m": 4.455838680267334,
+        "mean_forward_speed_mps": 0.5590658783912659,
+        "three_step_ascent_without_fall": true
+      },
+      {
+        "trial": 0,
+        "env": 12,
+        "fell": false,
+        "max_ground_rise_m": 0.45000001788139343,
+        "net_ground_rise_m": 0.45000001788139343,
+        "max_forward_progress_m": 4.4990153312683105,
+        "net_forward_progress_m": 4.4990153312683105,
+        "mean_forward_speed_mps": 0.5643516778945923,
+        "three_step_ascent_without_fall": true
+      },
+      {
+        "trial": 0,
+        "env": 13,
+        "fell": false,
+        "max_ground_rise_m": 0.45000001788139343,
+        "net_ground_rise_m": 0.45000001788139343,
+        "max_forward_progress_m": 4.637935638427734,
+        "net_forward_progress_m": 4.637935638427734,
+        "mean_forward_speed_mps": 0.5818650126457214,
+        "three_step_ascent_without_fall": true
+      },
+      {
+        "trial": 0,
+        "env": 14,
+        "fell": false,
+        "max_ground_rise_m": 0.45000001788139343,
+        "net_ground_rise_m": 0.45000001788139343,
+        "max_forward_progress_m": 4.670260429382324,
+        "net_forward_progress_m": 4.670260429382324,
+        "mean_forward_speed_mps": 0.5859610438346863,
+        "three_step_ascent_without_fall": true
+      },
+      {
+        "trial": 0,
+        "env": 15,
+        "fell": false,
+        "max_ground_rise_m": 0.45000001788139343,
+        "net_ground_rise_m": 0.45000001788139343,
+        "max_forward_progress_m": 4.339141368865967,
+        "net_forward_progress_m": 4.339141368865967,
+        "mean_forward_speed_mps": 0.5443901419639587,
+        "three_step_ascent_without_fall": true
+      }
+    ],
+    "n": 16,
+    "fall_fraction": 0.0,
+    "three_step_success_fraction": 1.0,
+    "mean_net_ground_rise_m": 0.4575172532349825,
+    "mean_net_forward_progress_m": 4.553721576929092,
+    "mean_forward_speed_mps": 0.5712768360972404,
+    "video_error": null
+  },
+  {
+    "checkpoint": "/root/go2-supermimic/logs/supermimic/2026-11-03_10-45-41_mixed_gait_70k/model_66500.pt",
+    "iteration": 66500,
+    "height_cm": 15.0,
+    "seed": 42,
+    "episode_seconds": 8,
+    "episodes": [
+      {
+        "trial": 0,
+        "env": 0,
+        "fell": false,
+        "max_ground_rise_m": 1.0499999523162842,
+        "net_ground_rise_m": 1.0499999523162842,
+        "max_forward_progress_m": 3.849292039871216,
+        "net_forward_progress_m": 3.849292039871216,
+        "mean_forward_speed_mps": 0.4821939766407013,
+        "three_step_ascent_without_fall": true
+      },
+      {
+        "trial": 0,
+        "env": 1,
+        "fell": false,
+        "max_ground_rise_m": 1.2000000476837158,
+        "net_ground_rise_m": 1.2000000476837158,
+        "max_forward_progress_m": 4.199740409851074,
+        "net_forward_progress_m": 4.199740409851074,
+        "mean_forward_speed_mps": 0.5270587801933289,
+        "three_step_ascent_without_fall": true
+      },
+      {
+        "trial": 0,
+        "env": 2,
+        "fell": false,
+        "max_ground_rise_m": 1.2000000476837158,
+        "net_ground_rise_m": 1.2000000476837158,
+        "max_forward_progress_m": 4.018510818481445,
+        "net_forward_progress_m": 4.018510818481445,
+        "mean_forward_speed_mps": 0.5038182735443115,
+        "three_step_ascent_without_fall": true
+      },
+      {
+        "trial": 0,
+        "env": 3,
+        "fell": false,
+        "max_ground_rise_m": 1.3499999046325684,
+        "net_ground_rise_m": 1.3499999046325684,
+        "max_forward_progress_m": 4.384075164794922,
+        "net_forward_progress_m": 4.384075164794922,
+        "mean_forward_speed_mps": 0.5499723553657532,
+        "three_step_ascent_without_fall": true
+      },
+      {
+        "trial": 0,
+        "env": 4,
+        "fell": false,
+        "max_ground_rise_m": 1.3499999046325684,
+        "net_ground_rise_m": 1.3499999046325684,
+        "max_forward_progress_m": 4.4312357902526855,
+        "net_forward_progress_m": 4.4312357902526855,
+        "mean_forward_speed_mps": 0.5558637380599976,
+        "three_step_ascent_without_fall": true
+      },
+      {
+        "trial": 0,
+        "env": 5,
+        "fell": false,
+        "max_ground_rise_m": 0.8999998569488525,
+        "net_ground_rise_m": 0.8999998569488525,
+        "max_forward_progress_m": 3.446681499481201,
+        "net_forward_progress_m": 3.446681499481201,
+        "mean_forward_speed_mps": 0.4320923089981079,
+        "three_step_ascent_without_fall": true
+      },
+      {
+        "trial": 0,
+        "env": 6,
+        "fell": false,
+        "max_ground_rise_m": 1.2000000476837158,
+        "net_ground_rise_m": 1.2000000476837158,
+        "max_forward_progress_m": 3.9741289615631104,
+        "net_forward_progress_m": 3.9741289615631104,
+        "mean_forward_speed_mps": 0.4983774721622467,
+        "three_step_ascent_without_fall": true
+      },
+      {
+        "trial": 0,
+        "env": 7,
+        "fell": false,
+        "max_ground_rise_m": 1.2000000476837158,
+        "net_ground_rise_m": 1.2000000476837158,
+        "max_forward_progress_m": 3.9392166137695312,
+        "net_forward_progress_m": 3.9392166137695312,
+        "mean_forward_speed_mps": 0.49434611201286316,
+        "three_step_ascent_without_fall": true
+      },
+      {
+        "trial": 0,
+        "env": 8,
+        "fell": false,
+        "max_ground_rise_m": 1.2000000476837158,
+        "net_ground_rise_m": 1.2000000476837158,
+        "max_forward_progress_m": 3.9955132007598877,
+        "net_forward_progress_m": 3.9955132007598877,
+        "mean_forward_speed_mps": 0.5012441277503967,
+        "three_step_ascent_without_fall": true
+      },
+      {
+        "trial": 0,
+        "env": 9,
+        "fell": false,
+        "max_ground_rise_m": 1.0499998331069946,
+        "net_ground_rise_m": 1.0499998331069946,
+        "max_forward_progress_m": 3.8150217533111572,
+        "net_forward_progress_m": 3.8150217533111572,
+        "mean_forward_speed_mps": 0.4785473942756653,
+        "three_step_ascent_without_fall": true
+      },
+      {
+        "trial": 0,
+        "env": 10,
+        "fell": false,
+        "max_ground_rise_m": 1.0499999523162842,
+        "net_ground_rise_m": 1.0499999523162842,
+        "max_forward_progress_m": 3.542816162109375,
+        "net_forward_progress_m": 3.542816162109375,
+        "mean_forward_speed_mps": 0.4440993070602417,
+        "three_step_ascent_without_fall": true
+      },
+      {
+        "trial": 0,
+        "env": 11,
+        "fell": false,
+        "max_ground_rise_m": 1.2000000476837158,
+        "net_ground_rise_m": 1.2000000476837158,
+        "max_forward_progress_m": 4.148585319519043,
+        "net_forward_progress_m": 4.148585319519043,
+        "mean_forward_speed_mps": 0.520373523235321,
+        "three_step_ascent_without_fall": true
+      },
+      {
+        "trial": 0,
+        "env": 12,
+        "fell": false,
+        "max_ground_rise_m": 1.1999998092651367,
+        "net_ground_rise_m": 1.1999998092651367,
+        "max_forward_progress_m": 4.007992744445801,
+        "net_forward_progress_m": 4.007992744445801,
+        "mean_forward_speed_mps": 0.5026059746742249,
+        "three_step_ascent_without_fall": true
+      },
+      {
+        "trial": 0,
+        "env": 13,
+        "fell": false,
+        "max_ground_rise_m": 1.3499999046325684,
+        "net_ground_rise_m": 1.3499999046325684,
+        "max_forward_progress_m": 4.595798492431641,
+        "net_forward_progress_m": 4.595798492431641,
+        "mean_forward_speed_mps": 0.5766324400901794,
+        "three_step_ascent_without_fall": true
+      },
+      {
+        "trial": 0,
+        "env": 14,
+        "fell": false,
+        "max_ground_rise_m": 1.3499999046325684,
+        "net_ground_rise_m": 1.3499999046325684,
+        "max_forward_progress_m": 4.414116859436035,
+        "net_forward_progress_m": 4.414116859436035,
+        "mean_forward_speed_mps": 0.5538880825042725,
+        "three_step_ascent_without_fall": true
+      },
+      {
+        "trial": 0,
+        "env": 15,
+        "fell": false,
+        "max_ground_rise_m": 1.0499999523162842,
+        "net_ground_rise_m": 1.0499999523162842,
+        "max_forward_progress_m": 3.590202808380127,
+        "net_forward_progress_m": 3.590202808380127,
+        "mean_forward_speed_mps": 0.45032361149787903,
+        "three_step_ascent_without_fall": true
+      }
+    ],
+    "n": 16,
+    "fall_fraction": 0.0,
+    "three_step_success_fraction": 1.0,
+    "mean_net_ground_rise_m": 1.1812499538064003,
+    "mean_net_forward_progress_m": 4.022058039903641,
+    "mean_forward_speed_mps": 0.5044648423790932,
+    "video_error": null
+  },
+  {
+    "mixed_terrain_evaluation": {
+      "checkpoint": "/root/go2-supermimic/logs/supermimic/2026-11-03_10-45-41_mixed_gait_70k/model_66500.pt",
+      "iteration": 66500,
+      "seed": 42,
+      "episode_seconds": 8,
+      "episodes": 40,
+      "difficulty": 1.0,
+      "fall_fraction": 0.0,
+      "mean_forward_progress_m": 1.2697044610977173,
+      "mean_velocity_error_mps": 0.07323829084634781,
+      "mean_yaw_rate_error_rps": 0.11096207052469254,
+      "push_events": 47,
+      "by_terrain": [
+        {
+          "terrain": "stairs_up_30cm",
+          "episodes": 4,
+          "fall_fraction": 0.0,
+          "mean_forward_progress_m": 0.7461389303207397,
+          "mean_velocity_error_mps": 0.09131890535354614,
+          "mean_yaw_rate_error_rps": 0.15541568398475647,
+          "airborne_fraction": 0.2030075192451477,
+          "long_flight_fraction": 0.05137844383716583,
+          "stance_slip_mps": 0.2551129460334778,
+          "sampled_levels": [
+            1,
+            1,
+            2,
+            4
+          ]
+        },
+        {
+          "terrain": "stairs_up_40cm",
+          "episodes": 4,
+          "fall_fraction": 0.0,
+          "mean_forward_progress_m": 0.30390214920043945,
+          "mean_velocity_error_mps": 0.06809037923812866,
+          "mean_yaw_rate_error_rps": 0.09619167447090149,
+          "airborne_fraction": 0.20426064729690552,
+          "long_flight_fraction": 0.038847118616104126,
+          "stance_slip_mps": 0.20107907056808472,
+          "sampled_levels": [
+            0,
+            2,
+            1,
+            0
+          ]
+        },
+        {
+          "terrain": "stairs_up_50cm",
+          "episodes": 4,
+          "fall_fraction": 0.0,
+          "mean_forward_progress_m": 0.48438960313796997,
+          "mean_velocity_error_mps": 0.06479844450950623,
+          "mean_yaw_rate_error_rps": 0.08715474605560303,
+          "airborne_fraction": 0.17481201887130737,
+          "long_flight_fraction": 0.02506265603005886,
+          "stance_slip_mps": 0.21241247653961182,
+          "sampled_levels": [
+            1,
+            3,
+            0,
+            0
+          ]
+        },
+        {
+          "terrain": "stairs_down_30cm",
+          "episodes": 4,
+          "fall_fraction": 0.0,
+          "mean_forward_progress_m": 1.8439300060272217,
+          "mean_velocity_error_mps": 0.07555331289768219,
+          "mean_yaw_rate_error_rps": 0.12489429861307144,
+          "airborne_fraction": 0.2011278122663498,
+          "long_flight_fraction": 0.03947368636727333,
+          "stance_slip_mps": 0.18832163512706757,
+          "sampled_levels": [
+            3,
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "terrain": "stairs_down_40cm",
+          "episodes": 4,
+          "fall_fraction": 0.0,
+          "mean_forward_progress_m": 3.021636486053467,
+          "mean_velocity_error_mps": 0.10706296563148499,
+          "mean_yaw_rate_error_rps": 0.13638216257095337,
+          "airborne_fraction": 0.201127827167511,
+          "long_flight_fraction": 0.04385964572429657,
+          "stance_slip_mps": 0.26638156175613403,
+          "sampled_levels": [
+            3,
+            3,
+            2,
+            3
+          ]
+        },
+        {
+          "terrain": "flat",
+          "episodes": 4,
+          "fall_fraction": 0.0,
+          "mean_forward_progress_m": 2.641840934753418,
+          "mean_velocity_error_mps": 0.05132453143596649,
+          "mean_yaw_rate_error_rps": 0.06792009621858597,
+          "airborne_fraction": 0.20864661037921906,
+          "long_flight_fraction": 0.05263157933950424,
+          "stance_slip_mps": 0.1919940561056137,
+          "sampled_levels": [
+            2,
+            3,
+            4,
+            3
+          ]
+        },
+        {
+          "terrain": "rough",
+          "episodes": 4,
+          "fall_fraction": 0.0,
+          "mean_forward_progress_m": -0.08030480146408081,
+          "mean_velocity_error_mps": 0.06812315434217453,
+          "mean_yaw_rate_error_rps": 0.11213663965463638,
+          "airborne_fraction": 0.1898496150970459,
+          "long_flight_fraction": 0.03822055459022522,
+          "stance_slip_mps": 0.17497506737709045,
+          "sampled_levels": [
+            2,
+            1,
+            3,
+            4
+          ]
+        },
+        {
+          "terrain": "boxes",
+          "episodes": 4,
+          "fall_fraction": 0.0,
+          "mean_forward_progress_m": 1.2746742963790894,
+          "mean_velocity_error_mps": 0.07745025306940079,
+          "mean_yaw_rate_error_rps": 0.1183270588517189,
+          "airborne_fraction": 0.21929824352264404,
+          "long_flight_fraction": 0.05325814336538315,
+          "stance_slip_mps": 0.23869509994983673,
+          "sampled_levels": [
+            3,
+            1,
+            4,
+            4
+          ]
+        },
+        {
+          "terrain": "slope",
+          "episodes": 4,
+          "fall_fraction": 0.0,
+          "mean_forward_progress_m": 1.6691021919250488,
+          "mean_velocity_error_mps": 0.06631261110305786,
+          "mean_yaw_rate_error_rps": 0.09203094244003296,
+          "airborne_fraction": 0.19548872113227844,
+          "long_flight_fraction": 0.033834584057331085,
+          "stance_slip_mps": 0.16905823349952698,
+          "sampled_levels": [
+            3,
+            1,
+            4,
+            3
+          ]
+        },
+        {
+          "terrain": "slope_inv",
+          "episodes": 4,
+          "fall_fraction": 0.0,
+          "mean_forward_progress_m": 0.791734516620636,
+          "mean_velocity_error_mps": 0.062348321080207825,
+          "mean_yaw_rate_error_rps": 0.11916741728782654,
+          "airborne_fraction": 0.23621554672718048,
+          "long_flight_fraction": 0.08082706481218338,
+          "stance_slip_mps": 0.18106235563755035,
+          "sampled_levels": [
+            4,
+            0,
+            4,
+            2
+          ]
+        }
+      ]
+    }
+  }
+]

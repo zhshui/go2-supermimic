@@ -43,7 +43,7 @@ def test_world_model_scan_warm_start_is_exact():
   old["in_norm.var"] = torch.rand(in_old) + 0.5
   assert expand_world_model_scan(old, new)
   n = 32
-  s, a, ap, xi = torch.randn(n, st.STATE_DIM), torch.randn(n, 12), torch.randn(n, 12), torch.randn(n, 4)
+  s, a, ap, xi = torch.randn(n, st.STATE_DIM), torch.randn(n, 12), torch.randn(n, 12), torch.randn(n, st.CONTEXT_DIM)
   x = torch.cat([s, a, ap, xi], -1)
   ref_net = mlp(in_old, hidden, st.STATE_DIM + 3)
   ref_net.load_state_dict({k[4:]: v for k, v in old.items() if k.startswith("net.")})

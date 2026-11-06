@@ -1,0 +1,11 @@
+{
+  "calls": 1,
+  "total_tokens": 9242,
+  "budget_tokens": 9242,
+  "last_iteration": 4050,
+  "status": "ready",
+  "request_id": "e8bf08cf533641758d8ac4b2df693321",
+  "request_started_at": 1793618920.2092135,
+  "last_control_status": "proposed",
+  "last_completed_at": 1793619025.3705678
+}

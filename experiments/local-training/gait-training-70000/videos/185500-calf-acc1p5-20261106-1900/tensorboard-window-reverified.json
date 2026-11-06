@@ -1,0 +1,449 @@
+{
+  "183500": {
+    "train/wm_loss": {
+      "windows": [
+        {
+          "range": "(182500,183000]",
+          "n": 10,
+          "first_step": 182550,
+          "last_step": 183000,
+          "median": 0.3724132180213928
+        },
+        {
+          "range": "(183000,183500]",
+          "n": 10,
+          "first_step": 183050,
+          "last_step": 183500,
+          "median": 0.405053973197937
+        }
+      ]
+    },
+    "train/imagined_return": {
+      "windows": [
+        {
+          "range": "(182500,183000]",
+          "n": 10,
+          "first_step": 182550,
+          "last_step": 183000,
+          "median": 2.366329789161682
+        },
+        {
+          "range": "(183000,183500]",
+          "n": 10,
+          "first_step": 183050,
+          "last_step": 183500,
+          "median": 2.3651938438415527
+        }
+      ]
+    },
+    "train/critic_loss": {
+      "windows": [
+        {
+          "range": "(182500,183000]",
+          "n": 10,
+          "first_step": 182550,
+          "last_step": 183000,
+          "median": 0.004237524699419737
+        },
+        {
+          "range": "(183000,183500]",
+          "n": 10,
+          "first_step": 183050,
+          "last_step": 183500,
+          "median": 0.00420338474214077
+        }
+      ],
+      "spikes": [
+        [
+          182450,
+          83.64839935302734
+        ],
+        [
+          182550,
+          284.91815185546875
+        ]
+      ]
+    },
+    "train/actor_grad_norm": {
+      "windows": [
+        {
+          "range": "(182500,183000]",
+          "n": 10,
+          "first_step": 182550,
+          "last_step": 183000,
+          "median": 1.8182494640350342
+        },
+        {
+          "range": "(183000,183500]",
+          "n": 10,
+          "first_step": 183050,
+          "last_step": 183500,
+          "median": 2.3063396215438843
+        }
+      ]
+    },
+    "Episode_Reward/tilt_rate_l2": {
+      "windows": [
+        {
+          "range": "(182500,183000]",
+          "n": 10,
+          "first_step": 182550,
+          "last_step": 183000,
+          "median": -0.08420023694634438
+        },
+        {
+          "range": "(183000,183500]",
+          "n": 10,
+          "first_step": 183050,
+          "last_step": 183500,
+          "median": -0.0791301429271698
+        }
+      ]
+    },
+    "Episode_Reward/cts_vertical_speed": {
+      "windows": [
+        {
+          "range": "(182500,183000]",
+          "n": 10,
+          "first_step": 182550,
+          "last_step": 183000,
+          "median": -0.07555991038680077
+        },
+        {
+          "range": "(183000,183500]",
+          "n": 10,
+          "first_step": 183050,
+          "last_step": 183500,
+          "median": -0.07204258069396019
+        }
+      ]
+    },
+    "Episode_Reward/cts_leg_collision": {
+      "windows": [
+        {
+          "range": "(182500,183000]",
+          "n": 10,
+          "first_step": 182550,
+          "last_step": 183000,
+          "median": -1.9702730774879456
+        },
+        {
+          "range": "(183000,183500]",
+          "n": 10,
+          "first_step": 183050,
+          "last_step": 183500,
+          "median": -2.22524356842041
+        }
+      ]
+    },
+    "Episode_Reward/riser_clearance": {
+      "windows": [
+        {
+          "range": "(182500,183000]",
+          "n": 10,
+          "first_step": 182550,
+          "last_step": 183000,
+          "median": -0.020501457154750824
+        },
+        {
+          "range": "(183000,183500]",
+          "n": 10,
+          "first_step": 183050,
+          "last_step": 183500,
+          "median": -0.020738188177347183
+        }
+      ]
+    },
+    "Episode_Reward/joint_acc_l2": {
+      "windows": [
+        {
+          "range": "(182500,183000]",
+          "n": 10,
+          "first_step": 182550,
+          "last_step": 183000,
+          "median": -0.09743820130825043
+        },
+        {
+          "range": "(183000,183500]",
+          "n": 10,
+          "first_step": 183050,
+          "last_step": 183500,
+          "median": -0.10169517993927002
+        }
+      ]
+    },
+    "Episode_Termination/fell_over": {
+      "windows": [
+        {
+          "range": "(182500,183000]",
+          "n": 10,
+          "first_step": 182550,
+          "last_step": 183000,
+          "median": 0.40833333134651184
+        },
+        {
+          "range": "(183000,183500]",
+          "n": 10,
+          "first_step": 183050,
+          "last_step": 183500,
+          "median": 0.2182539701461792
+        }
+      ]
+    },
+    "Episode_Reward/upright": {
+      "windows": [
+        {
+          "range": "(182500,183000]",
+          "n": 10,
+          "first_step": 182550,
+          "last_step": 183000,
+          "median": 0.0
+        },
+        {
+          "range": "(183000,183500]",
+          "n": 10,
+          "first_step": 183050,
+          "last_step": 183500,
+          "median": 0.0
+        }
+      ]
+    },
+    "Episode_Reward/base_vertical_speed_l2": {
+      "windows": [
+        {
+          "range": "(182500,183000]",
+          "n": 10,
+          "first_step": 182550,
+          "last_step": 183000,
+          "median": 0.0
+        },
+        {
+          "range": "(183000,183500]",
+          "n": 10,
+          "first_step": 183050,
+          "last_step": 183500,
+          "median": 0.0
+        }
+      ]
+    }
+  },
+  "185500": {
+    "train/wm_loss": {
+      "windows": [
+        {
+          "range": "(184500,185000]",
+          "n": 10,
+          "first_step": 184550,
+          "last_step": 185000,
+          "median": 0.37978552281856537
+        },
+        {
+          "range": "(185000,185500]",
+          "n": 10,
+          "first_step": 185050,
+          "last_step": 185500,
+          "median": 0.42701689898967743
+        }
+      ]
+    },
+    "train/imagined_return": {
+      "windows": [
+        {
+          "range": "(184500,185000]",
+          "n": 10,
+          "first_step": 184550,
+          "last_step": 185000,
+          "median": 2.345694899559021
+        },
+        {
+          "range": "(185000,185500]",
+          "n": 10,
+          "first_step": 185050,
+          "last_step": 185500,
+          "median": 2.3449556827545166
+        }
+      ]
+    },
+    "train/critic_loss": {
+      "windows": [
+        {
+          "range": "(184500,185000]",
+          "n": 10,
+          "first_step": 184550,
+          "last_step": 185000,
+          "median": 0.004373154602944851
+        },
+        {
+          "range": "(185000,185500]",
+          "n": 10,
+          "first_step": 185050,
+          "last_step": 185500,
+          "median": 0.00442414334975183
+        }
+      ],
+      "spikes": []
+    },
+    "train/actor_grad_norm": {
+      "windows": [
+        {
+          "range": "(184500,185000]",
+          "n": 10,
+          "first_step": 184550,
+          "last_step": 185000,
+          "median": 1.3512610793113708
+        },
+        {
+          "range": "(185000,185500]",
+          "n": 10,
+          "first_step": 185050,
+          "last_step": 185500,
+          "median": 1.3255334496498108
+        }
+      ]
+    },
+    "Episode_Reward/tilt_rate_l2": {
+      "windows": [
+        {
+          "range": "(184500,185000]",
+          "n": 10,
+          "first_step": 184550,
+          "last_step": 185000,
+          "median": -0.0860566534101963
+        },
+        {
+          "range": "(185000,185500]",
+          "n": 10,
+          "first_step": 185050,
+          "last_step": 185500,
+          "median": -0.0765339657664299
+        }
+      ]
+    },
+    "Episode_Reward/cts_vertical_speed": {
+      "windows": [
+        {
+          "range": "(184500,185000]",
+          "n": 10,
+          "first_step": 184550,
+          "last_step": 185000,
+          "median": -0.07383989915251732
+        },
+        {
+          "range": "(185000,185500]",
+          "n": 10,
+          "first_step": 185050,
+          "last_step": 185500,
+          "median": -0.06528719142079353
+        }
+      ]
+    },
+    "Episode_Reward/cts_leg_collision": {
+      "windows": [
+        {
+          "range": "(184500,185000]",
+          "n": 10,
+          "first_step": 184550,
+          "last_step": 185000,
+          "median": -2.0204474329948425
+        },
+        {
+          "range": "(185000,185500]",
+          "n": 10,
+          "first_step": 185050,
+          "last_step": 185500,
+          "median": -2.127350330352783
+        }
+      ]
+    },
+    "Episode_Reward/riser_clearance": {
+      "windows": [
+        {
+          "range": "(184500,185000]",
+          "n": 10,
+          "first_step": 184550,
+          "last_step": 185000,
+          "median": -0.01765198353677988
+        },
+        {
+          "range": "(185000,185500]",
+          "n": 10,
+          "first_step": 185050,
+          "last_step": 185500,
+          "median": -0.019953844137489796
+        }
+      ]
+    },
+    "Episode_Reward/joint_acc_l2": {
+      "windows": [
+        {
+          "range": "(184500,185000]",
+          "n": 10,
+          "first_step": 184550,
+          "last_step": 185000,
+          "median": -0.1419137865304947
+        },
+        {
+          "range": "(185000,185500]",
+          "n": 10,
+          "first_step": 185050,
+          "last_step": 185500,
+          "median": -0.14790867269039154
+        }
+      ]
+    },
+    "Episode_Termination/fell_over": {
+      "windows": [
+        {
+          "range": "(184500,185000]",
+          "n": 10,
+          "first_step": 184550,
+          "last_step": 185000,
+          "median": 0.5
+        },
+        {
+          "range": "(185000,185500]",
+          "n": 10,
+          "first_step": 185050,
+          "last_step": 185500,
+          "median": 0.4058823585510254
+        }
+      ]
+    },
+    "Episode_Reward/upright": {
+      "windows": [
+        {
+          "range": "(184500,185000]",
+          "n": 10,
+          "first_step": 184550,
+          "last_step": 185000,
+          "median": 0.0
+        },
+        {
+          "range": "(185000,185500]",
+          "n": 10,
+          "first_step": 185050,
+          "last_step": 185500,
+          "median": 0.0
+        }
+      ]
+    },
+    "Episode_Reward/base_vertical_speed_l2": {
+      "windows": [
+        {
+          "range": "(184500,185000]",
+          "n": 10,
+          "first_step": 184550,
+          "last_step": 185000,
+          "median": 0.0
+        },
+        {
+          "range": "(185000,185500]",
+          "n": 10,
+          "first_step": 185050,
+          "last_step": 185500,
+          "median": 0.0
+        }
+      ]
+    }
+  }
+}

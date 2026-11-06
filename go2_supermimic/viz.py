@@ -67,6 +67,8 @@ def status_lines(term, i: int = 0) -> list[tuple[str, tuple[int, int, int]]]:
   chase, dodge = bool(term.has_chase[i]), bool(term.has_dodge[i])
   base = term.base_local()[i]
   rows = [("Chase + dodge" if chase and dodge else "Chase" if chase else "Dodge", FG)]
+  if not term.cfg.targets_enabled:
+    rows[0] = ("Stairs", FG)
   rows.append((f"Robot     {term.robot.data.root_link_lin_vel_w[i, :2].norm().item():4.2f} m/s",
                YELLOW))
   if chase:

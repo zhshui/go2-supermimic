@@ -1,0 +1,98 @@
+[
+  {
+    "label": "baseline",
+    "height_m": 0.0,
+    "smoothness": {
+      "native_joint_acc": {
+        "count": 100512,
+        "rms": 80.76290688459264,
+        "p95_abs": 86.81898193359375
+      },
+      "velocity_difference_acc": {
+        "count": 100512,
+        "rms": 49.93397571651396,
+        "p95_abs": 99.08805999755857
+      },
+      "normalized_action_delta": {
+        "count": 100512,
+        "rms": 0.22318121311589198,
+        "p95_abs": 0.512571895122528
+      },
+      "nonfinite_native_samples": 0,
+      "sample_period_s": 0.02,
+      "skip_initial_s": 1.0
+    }
+  },
+  {
+    "label": "candidate",
+    "height_m": 0.0,
+    "smoothness": {
+      "native_joint_acc": {
+        "count": 100512,
+        "rms": 80.04806110949355,
+        "p95_abs": 85.03895072937011
+      },
+      "velocity_difference_acc": {
+        "count": 100512,
+        "rms": 48.48087541204008,
+        "p95_abs": 96.42209358215332
+      },
+      "normalized_action_delta": {
+        "count": 100512,
+        "rms": 0.21618549095387263,
+        "p95_abs": 0.4993439555168152
+      },
+      "nonfinite_native_samples": 0,
+      "sample_period_s": 0.02,
+      "skip_initial_s": 1.0
+    }
+  },
+  {
+    "label": "baseline",
+    "height_m": 0.15,
+    "smoothness": {
+      "native_joint_acc": {
+        "count": 100512,
+        "rms": 171.74120658009946,
+        "p95_abs": 180.4243797302245
+      },
+      "velocity_difference_acc": {
+        "count": 100512,
+        "rms": 112.80646837499411,
+        "p95_abs": 238.0232864379882
+      },
+      "normalized_action_delta": {
+        "count": 100512,
+        "rms": 0.49550483281207736,
+        "p95_abs": 1.0888205647468565
+      },
+      "nonfinite_native_samples": 0,
+      "sample_period_s": 0.02,
+      "skip_initial_s": 1.0
+    }
+  },
+  {
+    "label": "candidate",
+    "height_m": 0.15,
+    "smoothness": {
+      "native_joint_acc": {
+        "count": 100512,
+        "rms": 169.7675031334845,
+        "p95_abs": 179.31651077270496
+      },
+      "velocity_difference_acc": {
+        "count": 100512,
+        "rms": 112.22386487204203,
+        "p95_abs": 235.89698791503886
+      },
+      "normalized_action_delta": {
+        "count": 100512,
+        "rms": 0.49160485780984736,
+        "p95_abs": 1.0807749509811402
+      },
+      "nonfinite_native_samples": 0,
+      "sample_period_s": 0.02,
+      "skip_initial_s": 1.0
+    }
+  }
+]

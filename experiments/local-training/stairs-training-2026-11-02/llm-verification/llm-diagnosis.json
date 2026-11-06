@@ -1,0 +1,187 @@
+{
+  "points": 2043,
+  "anomalies": [],
+  "llm_called": true,
+  "project_spec": {
+    "name": "Go2-Stairs：基于世界模型的楼梯攀爬",
+    "robot": "Unitree Go2，仿真训练。",
+    "task": "Go2-Stairs：从倒金字塔中心底部向外向上攀爬；台阶 2–15 cm，踏面 40 cm，5 级课程；8 秒一回合。",
+    "goals": [
+      "使用 SuperMimic：真实仿真采样 → 世界模型多步拟合 → 冻结世界模型参数，通过想象回报反向传播优化 Actor，并训练 Critic。",
+      "跟踪前向 0.6 m/s、零侧向速度和零偏航，保持机身稳定并减少跌倒。",
+      "从低台阶逐步推进到 15 cm 台阶；每个高度单独验证上楼进度、完成率与跌倒率。",
+      "最终部署 Actor；世界模型用于训练期策略优化，不把想象回报当作真实上楼成功率。"
+    ],
+    "metrics": [
+      "train/wm_loss：世界模型拟合误差；需额外留出数据检验多步预测泛化。",
+      "train/imagined_return、train/imagined_survival：辅助指标，必须和真实仿真对照。",
+      "train/actor_grad_norm、train/critic_loss：更新数值健康度。",
+      "Episode_Reward/track_lin_vel、Episode_Reward/track_ang_vel：真实跟踪奖励。",
+      "Episode_Termination/fell_over：跌倒终止统计；区分回合计数、比例和每分钟率，不混用。",
+      "需额外评估：分台阶高度完成率、净爬升高度、前向进度、机身姿态、足端净空、动作平滑性及固定种子视频。"
+    ],
+    "failure_conditions": [
+      "非有限参数、损失、梯度或仿真状态，进程崩溃或 CUDA OOM。",
+      "世界模型误差持续上升，同时真实爬楼表现下降。",
+      "想象回报上涨但真实跌倒或攀爬进度恶化，怀疑模型利用。",
+      "连续多个评估窗口爬升无改善；必须说明窗口和样本量，不能由少量早期样本判断。",
+      "高台阶失败不能用低台阶均值掩盖；缺少成功率/爬升指标时要求补采，不伪造结果。"
+    ],
+    "allowed_parameters": [
+      "reward_weight",
+      "curriculum_threshold",
+      "domain_randomization_range",
+      "learning_rate"
+    ],
+    "forbidden_parameters": [
+      "SuperMimic 采样、世界模型拟合、想象优化三阶段算法。",
+      "Actor、Critic、World Model 网络结构及观测/动作维度。",
+      "机器人模型、关节控制接口、电机和关节限制。",
+      "已有 checkpoint；每次改变训练设定需要独立实验、备份和固定种子对比。"
+    ],
+    "raw_text": "# Go2-Stairs：基于世界模型的楼梯攀爬\n\n## 机器人\nUnitree Go2，仿真训练。\n\n## 训练任务\nGo2-Stairs：从倒金字塔中心底部向外向上攀爬；台阶 2–15 cm，踏面 40 cm，5 级课程；8 秒一回合。\n\n## 训练目标\n- 使用 SuperMimic：真实仿真采样 → 世界模型多步拟合 → 冻结世界模型参数，通过想象回报反向传播优化 Actor，并训练 Critic。\n- 跟踪前向 0.6 m/s、零侧向速度和零偏航，保持机身稳定并减少跌倒。\n- 从低台阶逐步推进到 15 cm 台阶；每个高度单独验证上楼进度、完成率与跌倒率。\n- 最终部署 Actor；世界模型用于训练期策略优化，不把想象回报当作真实上楼成功率。\n\n## 主要指标\n- train/wm_loss：世界模型拟合误差；需额外留出数据检验多步预测泛化。\n- train/imagined_return、train/imagined_survival：辅助指标，必须和真实仿真对照。\n- train/actor_grad_norm、train/critic_loss：更新数值健康度。\n- Episode_Reward/track_lin_vel、Episode_Reward/track_ang_vel：真实跟踪奖励。\n- Episode_Termination/fell_over：跌倒终止统计；区分回合计数、比例和每分钟率，不混用。\n- 需额外评估：分台阶高度完成率、净爬升高度、前向进度、机身姿态、足端净空、动作平滑性及固定种子视频。\n\n## 失败判定\n- 非有限参数、损失、梯度或仿真状态，进程崩溃或 CUDA OOM。\n- 世界模型误差持续上升，同时真实爬楼表现下降。\n- 想象回报上涨但真实跌倒或攀爬进度恶化，怀疑模型利用。\n- 连续多个评估窗口爬升无改善；必须说明窗口和样本量，不能由少量早期样本判断。\n- 高台阶失败不能用低台阶均值掩盖；缺少成功率/爬升指标时要求补采，不伪造结果。\n\n## 允许自动建议的参数\n- reward_weight\n- curriculum_threshold\n- domain_randomization_range\n- learning_rate\n\n## 禁止修改\n- SuperMimic 采样、世界模型拟合、想象优化三阶段算法。\n- Actor、Critic、World Model 网络结构及观测/动作维度。\n- 机器人模型、关节控制接口、电机和关节限制。\n- 已有 checkpoint；每次改变训练设定需要独立实验、备份和固定种子对比。\n"
+  },
+  "diagnosis": {
+    "problem": [
+      "当前无法确认策略已经学会爬楼梯或已达到15 cm台阶目标，因为提供的数据缺少按台阶高度划分的完成率、净爬升高度、前向进度和视频证据。",
+      "世界模型训练在约1250至1550步出现明显退化：wm_loss从约1.25升至3.57，随后逐步恢复；该阶段与真实跟踪奖励下降、姿态奖励下降和跌倒率升高同时出现。",
+      "想象指标与真实任务指标存在明显不一致：imagined_return从3.52升至6.68，imagined_survival始终约0.998至1.000，但真实跌倒率在部分阶段达到约1.0至1.5，且楼梯相关目标指标始终为0。",
+      "部分终止指标疑似存在统计或记录口径问题：Episode_Termination/time_out出现4096、676.5、194.9等非典型值；Episode_Termination/fell_over在若干点也出现大于1的值。"
+    ],
+    "evidence": [
+      {
+        "observation": "wm_loss在步数50至1200从2.164下降至约1.037，但在1300至1550升至3.566；之后下降至4300步的0.400。",
+        "interpretation": "世界模型误差不是单调收敛，训练中期存在数据分布变化、课程切换或拟合不稳定的可观测事件。"
+      },
+      {
+        "observation": "步数1350至1650附近，Episode_Reward/upright降至约0.12至0.36，track_lin_vel降至约0.21至0.33，track_ang_vel降至约0.06至0.20，fell_over记录约1.0至1.5。",
+        "interpretation": "该阶段真实仿真行为明显恶化，且与世界模型误差上升时间相近。"
+      },
+      {
+        "observation": "步数3250至4300，upright约0.90至0.96，track_lin_vel约1.51至1.82，track_ang_vel约0.31至0.42，fell_over多数记录为0至约0.056。",
+        "interpretation": "后期提供的真实奖励项和跌倒相关记录相较中期改善，但这些指标不能单独证明完成了楼梯攀爬。"
+      },
+      {
+        "observation": "imagined_return从步数1050的3.523升至4300的6.684，imagined_survival在同一期间始终接近1。",
+        "interpretation": "想象轨迹的预测回报和存活率持续较高，但没有对应的真实上楼成功指标可验证其任务有效性。"
+      },
+      {
+        "observation": "Metrics/hit_rate/ball、low_bar、high_bar以及Metrics/target/near、tags、hits、dist、obstacle_contact在所有记录点均为0。",
+        "interpretation": "这些指标可能未接入当前楼梯任务、未触发、被错误归零，或任务目标检测没有工作；仅凭其为0不能判断策略是否成功。"
+      },
+      {
+        "observation": "actor_grad_norm为约0.23至7.23，未见非有限值；critic_loss大多低于0.02，但最高至少达到0.0366和0.0175等局部峰值，末端约0.00357。",
+        "interpretation": "提供的数据未显示明显的非有限更新或持续发散，但梯度和critic_loss存在阶段性波动。"
+      }
+    ],
+    "possible_causes": [
+      {
+        "cause": "课程推进或训练数据分布在约1250至1550步发生变化，导致世界模型暂时失配。",
+        "basis": "该区间wm_loss从约1.25上升至3.57，并同时伴随真实姿态、速度跟踪和跌倒指标恶化。",
+        "confidence": "中等"
+      },
+      {
+        "cause": "世界模型在想象优化中存在现实偏差或模型利用。",
+        "basis": "imagined_return和imagined_survival持续改善或保持接近理想值，而真实跌倒和楼梯任务指标没有可验证的同步改善。",
+        "confidence": "中等；尚无留出集多步误差或想象与真实轨迹配对数据"
+      },
+      {
+        "cause": "奖励可能更强地反映平地速度、姿态或存活，而没有充分反映实际净爬升和楼梯完成。",
+        "basis": "后期track_lin_vel和upright改善，但楼梯完成率、爬升高度、足端净空等核心任务指标缺失；总回报不能替代这些指标。",
+        "confidence": "中等"
+      },
+      {
+        "cause": "终止统计的聚合、归一化或日志键映射存在问题。",
+        "basis": "time_out出现4096、676.5、194.9等值，fell_over也出现大于1的值；这些数值与比例、回合计数和每分钟率的定义不一致。",
+        "confidence": "高"
+      },
+      {
+        "cause": "楼梯目标检测或指标记录未连接到当前环境。",
+        "basis": "多个障碍物和target指标在全部步数均为0，且没有其他楼梯专用成功指标。",
+        "confidence": "中等"
+      }
+    ],
+    "suggestions": [
+      {
+        "action": "暂停依据想象回报或当前总回报推进课程，先补采固定台阶高度的真实仿真评估。",
+        "parameter": null,
+        "evidence": "imagined_return上升至6.68，但缺少真实完成率、净爬升和前向进度；楼梯相关指标全为0。",
+        "expected_impact": "确认当前策略是否真正产生上楼行为，并区分平地跟踪改善与楼梯能力改善。",
+        "risk": "增加评估成本；不会直接改善策略。",
+        "rollback": "不改变训练参数和已有checkpoint，仅删除或隔离新增评估输出。",
+        "verification": "固定种子，分别测试2至15 cm台阶；每个高度至少报告回合数、完成率、净爬升、前向进度、跌倒率、8秒内超时率和视频。"
+      },
+      {
+        "action": "对步数1200至1600附近的训练事件做时间对齐检查，确认是否发生课程切换、数据源切换、回放缓冲区重建或有效样本比例变化。",
+        "parameter": "curriculum_threshold",
+        "evidence": "wm_loss在该区间急升，真实奖励和跌倒指标同时恶化。",
+        "expected_impact": "若证实课程切换过早，可通过降低或延后curriculum_threshold减少世界模型和策略的分布突变。",
+        "risk": "课程推进变慢，可能降低训练效率；不能在未确认切换事件前直接修改。",
+        "rollback": "为修改后的curriculum_threshold建立独立实验，保留原实验和checkpoint；若固定种子评估变差则恢复原值。",
+        "verification": "固定训练种子和其他设置，比较切换前后wm_loss、留出集多步误差、真实跌倒率和各台阶完成率；至少覆盖多个200步评估窗口。"
+      },
+      {
+        "action": "增加世界模型留出数据上的单步和多步预测误差，并把相同初始状态的想象轨迹与真实仿真轨迹配对比较。",
+        "parameter": null,
+        "evidence": "训练wm_loss后期下降，但imagined_survival接近1且缺少现实校准证据。",
+        "expected_impact": "识别世界模型是否只在训练数据上变好，以及是否存在想象存活率虚高。",
+        "risk": "需要额外采样和存储；不会改变算法结构。",
+        "rollback": "仅移除新增评估分支，不修改SuperMimic三阶段流程。",
+        "verification": "固定种子和冻结对应版本的Actor，在多个台阶高度上比较想象与真实的姿态、速度、终止和净爬升误差。"
+      },
+      {
+        "action": "修正终止指标的记录口径，分别记录terminated回合数、fell_over回合数、比例、每分钟率以及有效回合样本量。",
+        "parameter": null,
+        "evidence": "time_out和fell_over出现大于1的值，当前无法确定其是计数、比例还是速率。",
+        "expected_impact": "避免把不同统计量误判为跌倒率或超时率，并提高训练窗口比较的有效性。",
+        "risk": "历史日志无法自动恢复正确口径；需重新采集。",
+        "rollback": "保留现有原始日志，新增字段而不是覆盖旧字段。",
+        "verification": "在固定环境中用已知回合数手工核对：fell_over_count除以episode_count应等于fell_over_rate，并验证time_out_count不超过episode_count。"
+      },
+      {
+        "action": "在确认楼梯指标有效后，再考虑小范围调整reward_weight，使净爬升、楼梯完成和稳定性与速度跟踪的目标关系可观测。",
+        "parameter": "reward_weight",
+        "evidence": "现有速度和upright指标后期改善，但没有证据证明净爬升或楼梯完成改善。",
+        "expected_impact": "可能减少只追求平地速度或存活的行为，提升任务相关行为的可辨识度。",
+        "risk": "奖励失衡可能增加跌倒、动作抖动或速度跟踪退化；当前缺少完成指标，不应直接调参。",
+        "rollback": "独立实验、备份当前checkpoint、固定种子；若真实跌倒率上升或净爬升无改善则恢复原reward_weight。",
+        "verification": "比较各台阶高度的完成率、净爬升、跌倒率、速度跟踪、姿态、足端净空和动作平滑性，不能只比较总回报。"
+      }
+    ],
+    "risk": {
+      "level": "高",
+      "items": [
+        "不能据此确认15 cm台阶能力或部署就绪。",
+        "想象回报和想象存活率可能高估真实任务表现。",
+        "楼梯专用指标全为0，存在任务检测或日志接线缺陷的风险。",
+        "终止统计口径异常，可能导致跌倒率和超时率判断错误。",
+        "中期世界模型误差和真实行为同步恶化，继续依赖该阶段产生的策略更新可能放大现实与想象偏差。"
+      ]
+    },
+    "verification": [
+      "固定训练和评估种子，按2、5、8、10、12、15 cm至少分别评估；每个高度报告明确的回合数和置信区间或至少报告样本量。",
+      "对每个高度记录完成率、最大净爬升、前向进度、跌倒率、超时率、机身姿态、足端净空、动作平滑性和速度跟踪。",
+      "检查楼梯完成事件是否在仿真状态中真实触发，并与视频逐回合对照；不能从总回报推断完成。",
+      "检查世界模型训练集与留出集的单步、多步误差，以及想象和真实轨迹的终止、姿态和净爬升差异。",
+      "重新核对time_out和fell_over的原始计数、分母、聚合窗口和日志键映射。",
+      "检查步数1200至1600附近的课程等级、台阶高度、有效回放样本分布和数据采集状态，并与wm_loss峰值对齐。"
+    ],
+    "needs_data": [
+      "每个台阶高度的真实仿真评估回合数、完成率、最大净爬升和前向进度。",
+      "每个高度的跌倒回合数、总回合数、超时回合数，以及明确的统计单位。",
+      "固定种子评估视频或逐回合状态轨迹。",
+      "台阶高度、课程等级和curriculum_threshold随训练步数的实际记录，尤其是1200至1600步区间。",
+      "世界模型留出集单步和多步预测误差，以及想象轨迹与真实轨迹的配对误差。",
+      "足端净空、机身roll/pitch/yaw、动作平滑性和实际前向位移数据。",
+      "Episode_Termination/time_out和fell_over的原始计数、归一化方式、分母及聚合窗口。",
+      "确认Metrics/target和hit_rate系列是否属于当前Go2-Stairs任务，以及为何从全程均为0。"
+    ]
+  },
+  "token_usage": [
+    {
+      "model": "gpt-6-sol",
+      "prompt_tokens": 43701,
+      "completion_tokens": 3037
+    }
+  ]
+}

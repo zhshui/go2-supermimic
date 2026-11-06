@@ -1,0 +1,36 @@
+{
+  "checkpoint": "logs/supermimic/2026-11-02_22-23-46_mixed_commands_dr_60k/model_60000.pt",
+  "seed": 42,
+  "clips": [
+    {
+      "terrain": "stairs_up_40cm",
+      "height_m": 0.15,
+      "seconds": 8.0,
+      "fell": false,
+      "ground_delta_m": 0.8999999761581421,
+      "displacement_m": 3.5624959468841553,
+      "yaw_mae_rad_s": 0.10452485580071993,
+      "pushes": 1
+    },
+    {
+      "terrain": "stairs_down_40cm",
+      "height_m": 0.1,
+      "seconds": 8.0,
+      "fell": false,
+      "ground_delta_m": -0.6000000238418579,
+      "displacement_m": 4.105134963989258,
+      "yaw_mae_rad_s": 0.13559352712680056,
+      "pushes": 1
+    },
+    {
+      "terrain": "rough",
+      "height_m": null,
+      "seconds": 8.0,
+      "fell": false,
+      "ground_delta_m": -0.004410451278090477,
+      "displacement_m": 3.8080220222473145,
+      "yaw_mae_rad_s": 0.05475422282490814,
+      "pushes": 1
+    }
+  ]
+}

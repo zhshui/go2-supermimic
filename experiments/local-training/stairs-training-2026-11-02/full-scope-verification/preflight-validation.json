@@ -1,0 +1,213 @@
+{
+  "status": "passed",
+  "metrics": [
+    {
+      "checkpoint": "/root/rl_training_agent/runs/stairs/full-scope-preflight/smoke/2026-11-02_20-27-18_preflight/model_15505.pt",
+      "iteration": 15505,
+      "height_cm": 5.0,
+      "seed": 42,
+      "episode_seconds": 8,
+      "episodes": [
+        {
+          "trial": 0,
+          "env": 0,
+          "fell": false,
+          "max_ground_rise_m": 0.45000001788139343,
+          "net_ground_rise_m": 0.45000001788139343,
+          "max_forward_progress_m": 4.3958916664123535,
+          "net_forward_progress_m": 4.3958916664123535,
+          "mean_forward_speed_mps": 0.551531195640564,
+          "three_step_ascent_without_fall": true
+        },
+        {
+          "trial": 0,
+          "env": 1,
+          "fell": false,
+          "max_ground_rise_m": 0.45000001788139343,
+          "net_ground_rise_m": 0.45000001788139343,
+          "max_forward_progress_m": 4.561156272888184,
+          "net_forward_progress_m": 4.561156272888184,
+          "mean_forward_speed_mps": 0.5723468661308289,
+          "three_step_ascent_without_fall": true
+        },
+        {
+          "trial": 0,
+          "env": 2,
+          "fell": false,
+          "max_ground_rise_m": 0.45000001788139343,
+          "net_ground_rise_m": 0.45000001788139343,
+          "max_forward_progress_m": 4.648284435272217,
+          "net_forward_progress_m": 4.648284435272217,
+          "mean_forward_speed_mps": 0.5830937623977661,
+          "three_step_ascent_without_fall": true
+        },
+        {
+          "trial": 0,
+          "env": 3,
+          "fell": false,
+          "max_ground_rise_m": 0.5,
+          "net_ground_rise_m": 0.5,
+          "max_forward_progress_m": 4.565883636474609,
+          "net_forward_progress_m": 4.565883636474609,
+          "mean_forward_speed_mps": 0.5728191137313843,
+          "three_step_ascent_without_fall": true
+        },
+        {
+          "trial": 0,
+          "env": 4,
+          "fell": false,
+          "max_ground_rise_m": 0.5,
+          "net_ground_rise_m": 0.5,
+          "max_forward_progress_m": 4.685362815856934,
+          "net_forward_progress_m": 4.685362815856934,
+          "mean_forward_speed_mps": 0.587848961353302,
+          "three_step_ascent_without_fall": true
+        },
+        {
+          "trial": 0,
+          "env": 5,
+          "fell": false,
+          "max_ground_rise_m": 0.45000001788139343,
+          "net_ground_rise_m": 0.44999998807907104,
+          "max_forward_progress_m": 4.460771560668945,
+          "net_forward_progress_m": 4.460771560668945,
+          "mean_forward_speed_mps": 0.5596814751625061,
+          "three_step_ascent_without_fall": true
+        },
+        {
+          "trial": 0,
+          "env": 6,
+          "fell": false,
+          "max_ground_rise_m": 0.45000001788139343,
+          "net_ground_rise_m": 0.45000001788139343,
+          "max_forward_progress_m": 4.580718040466309,
+          "net_forward_progress_m": 4.580718040466309,
+          "mean_forward_speed_mps": 0.5745619535446167,
+          "three_step_ascent_without_fall": true
+        },
+        {
+          "trial": 0,
+          "env": 7,
+          "fell": false,
+          "max_ground_rise_m": 0.45000001788139343,
+          "net_ground_rise_m": 0.45000001788139343,
+          "max_forward_progress_m": 4.494951248168945,
+          "net_forward_progress_m": 4.494951248168945,
+          "mean_forward_speed_mps": 0.56390780210495,
+          "three_step_ascent_without_fall": true
+        }
+      ],
+      "n": 8,
+      "fall_fraction": 0.0,
+      "three_step_success_fraction": 1.0,
+      "mean_net_ground_rise_m": 0.4625000096857548,
+      "mean_net_forward_progress_m": 4.549127459526062,
+      "mean_forward_speed_mps": 0.5707238912582397,
+      "video_error": null
+    },
+    {
+      "checkpoint": "/root/rl_training_agent/runs/stairs/full-scope-preflight/smoke/2026-11-02_20-27-18_preflight/model_15505.pt",
+      "iteration": 15505,
+      "height_cm": 15.0,
+      "seed": 42,
+      "episode_seconds": 8,
+      "episodes": [
+        {
+          "trial": 0,
+          "env": 0,
+          "fell": false,
+          "max_ground_rise_m": 1.0499998331069946,
+          "net_ground_rise_m": 1.0499998331069946,
+          "max_forward_progress_m": 3.5991742610931396,
+          "net_forward_progress_m": 3.5991742610931396,
+          "mean_forward_speed_mps": 0.4512512683868408,
+          "three_step_ascent_without_fall": true
+        },
+        {
+          "trial": 0,
+          "env": 1,
+          "fell": false,
+          "max_ground_rise_m": 1.2000000476837158,
+          "net_ground_rise_m": 1.2000000476837158,
+          "max_forward_progress_m": 4.177051544189453,
+          "net_forward_progress_m": 4.177051544189453,
+          "mean_forward_speed_mps": 0.5242732763290405,
+          "three_step_ascent_without_fall": true
+        },
+        {
+          "trial": 0,
+          "env": 2,
+          "fell": false,
+          "max_ground_rise_m": 1.0499999523162842,
+          "net_ground_rise_m": 1.0499999523162842,
+          "max_forward_progress_m": 3.6549766063690186,
+          "net_forward_progress_m": 3.6549766063690186,
+          "mean_forward_speed_mps": 0.45820698142051697,
+          "three_step_ascent_without_fall": true
+        },
+        {
+          "trial": 0,
+          "env": 3,
+          "fell": false,
+          "max_ground_rise_m": 1.3499999046325684,
+          "net_ground_rise_m": 1.3499999046325684,
+          "max_forward_progress_m": 4.191956996917725,
+          "net_forward_progress_m": 4.191956996917725,
+          "mean_forward_speed_mps": 0.5255715250968933,
+          "three_step_ascent_without_fall": true
+        },
+        {
+          "trial": 0,
+          "env": 4,
+          "fell": false,
+          "max_ground_rise_m": 1.0500000715255737,
+          "net_ground_rise_m": 1.0500000715255737,
+          "max_forward_progress_m": 3.8358421325683594,
+          "net_forward_progress_m": 3.8358421325683594,
+          "mean_forward_speed_mps": 0.4807266294956207,
+          "three_step_ascent_without_fall": true
+        },
+        {
+          "trial": 0,
+          "env": 5,
+          "fell": false,
+          "max_ground_rise_m": 1.1999998092651367,
+          "net_ground_rise_m": 1.1999998092651367,
+          "max_forward_progress_m": 4.0323591232299805,
+          "net_forward_progress_m": 4.0323591232299805,
+          "mean_forward_speed_mps": 0.5057788491249084,
+          "three_step_ascent_without_fall": true
+        },
+        {
+          "trial": 0,
+          "env": 6,
+          "fell": false,
+          "max_ground_rise_m": 0.8999999761581421,
+          "net_ground_rise_m": 0.8999999761581421,
+          "max_forward_progress_m": 3.124309539794922,
+          "net_forward_progress_m": 3.124309539794922,
+          "mean_forward_speed_mps": 0.39263176918029785,
+          "three_step_ascent_without_fall": true
+        },
+        {
+          "trial": 0,
+          "env": 7,
+          "fell": false,
+          "max_ground_rise_m": 1.3499999046325684,
+          "net_ground_rise_m": 1.3499999046325684,
+          "max_forward_progress_m": 4.1892266273498535,
+          "net_forward_progress_m": 4.1892266273498535,
+          "mean_forward_speed_mps": 0.5258597731590271,
+          "three_step_ascent_without_fall": true
+        }
+      ],
+      "n": 8,
+      "fall_fraction": 0.0,
+      "three_step_success_fraction": 1.0,
+      "mean_net_ground_rise_m": 1.143749937415123,
+      "mean_net_forward_progress_m": 3.8506121039390564,
+      "mean_forward_speed_mps": 0.4830375090241432,
+      "video_error": null
+    }
+  ]
+}

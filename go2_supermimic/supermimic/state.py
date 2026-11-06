@@ -28,7 +28,7 @@ from go2_supermimic.target.terrain import SCAN_POINTS, ground
 
 STATE_DIM = 70
 POSE_DELTA_DIM = 3
-CONTEXT_DIM = 4  # foot friction (1), base COM offset (3)
+CONTEXT_DIM = 41  # friction + COM (4), mass ratios (13), actual kp/kd (24)
 NUM_JOINTS = 12
 
 # Slices into s.
@@ -109,6 +109,18 @@ class RobotConsts:
   soft_limits: torch.Tensor  # (N, 12, 2)
 
 
+def actual_pd_gains(robot):
+  kp = torch.zeros_like(robot.data.joint_pos)
+  kd = torch.zeros_like(kp)
+  for actuator in robot.actuators:
+    ids = actuator.target_ids
+    k = getattr(actuator,"stiffness",None)
+    d = getattr(actuator,"damping",None)
+    kp[:,ids] = k if k is not None else float(actuator.cfg.stiffness)
+    kd[:,ids] = d if d is not None else float(actuator.cfg.damping)
+  return kp, kd
+
+
 def robot_consts(env) -> RobotConsts:
   robot = env.scene["robot"]
   term = env.action_manager.get_term("joint_pos")
@@ -132,8 +144,8 @@ def robot_consts(env) -> RobotConsts:
   return RobotConsts(
     default_q=robot.data.default_joint_pos.clone(),
     action_scale=scale.clone(),
-    kp=torch.tensor(kp, device=dev),
-    kd=torch.tensor(kd, device=dev),
+    kp=actual_pd_gains(robot)[0],
+    kd=actual_pd_gains(robot)[1],
     effort=torch.tensor(eff, device=dev),
     soft_limits=robot.data.soft_joint_pos_limits.clone(),
   )
@@ -214,7 +226,11 @@ class ContextReader:
     self.foot_geom = robot.indexing.geom_ids[local_geoms[0]]
     self.base_body = robot.indexing.body_ids[local_body[0]]
     self.env = env
-    self.base_ipos0 = self._ipos().clone()
+    self.base_ipos0 = env.sim.get_default_field("body_ipos")[self.base_body].expand(env.num_envs,3).clone()
+    self.robot = robot
+    self.body_ids = robot.indexing.body_ids
+    assert len(self.body_ids) == 13, "update context mass layout for a different robot"
+    self.mass0 = env.sim.get_default_field("body_mass")[self.body_ids].clone()
 
   def _ipos(self) -> torch.Tensor:
     ipos = self.env.sim.model.body_ipos
@@ -227,7 +243,10 @@ class ContextReader:
     mu = fr[:, self.foot_geom, 0] if fr.ndim == 3 else fr[self.foot_geom, 0].expand(
       self.env.num_envs
     )
-    return torch.cat([mu.unsqueeze(-1), self._ipos() - self.base_ipos0], dim=-1)
+    mass = self.env.sim.model.body_mass
+    masses = mass[:, self.body_ids] if mass.ndim == 2 else mass[self.body_ids].expand(self.env.num_envs,-1)
+    kp, kd = actual_pd_gains(self.robot)
+    return torch.cat([mu.unsqueeze(-1), self._ipos()-self.base_ipos0, masses/self.mass0.clamp_min(1e-6), kp/100.0, kd/10.0], dim=-1)
 
 
 def obs_frame(

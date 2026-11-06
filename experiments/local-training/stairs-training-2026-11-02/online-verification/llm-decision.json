@@ -1,0 +1,159 @@
+{
+  "iteration": 4050,
+  "request_id": "e8bf08cf533641758d8ac4b2df693321",
+  "diagnosis": {
+    "problem": "当前证据不足以判断 Go2 已经学会稳定爬楼梯。训练日志仅包含第 4050 次迭代的单点指标，且缺少真实仿真评估中的上楼进度、完成率、跌倒率、前向速度跟踪、机身姿态、足端净空、动作平滑性和视频证据。",
+    "evidence": [
+      {
+        "observation": "当前迭代为 4050，策略更新起始迭代为 1001。",
+        "interpretation": "已进入策略更新阶段，但没有足够的时间序列证据判断训练趋势或稳定性。"
+      },
+      {
+        "observation": "world model loss 为 0.15610507503151894，但只有 1 个样本。",
+        "interpretation": "无法判断 world model 误差是否收敛、是否随课程等级变化，或是否在关键楼梯接触状态下失真。"
+      },
+      {
+        "observation": "imagined_return 为 6.669868469238281，imagined_reward 为 0.06670742481946945。",
+        "interpretation": "只能说明当前想象 rollout 产生了这些回报，不能据此推断真实仿真中的爬楼成功。"
+      },
+      {
+        "observation": "imagined_survival 为 0.999961793422699。",
+        "interpretation": "想象 rollout 几乎不终止，可能表示策略在 world model 中表现稳定，也可能表示 world model 未正确预测跌倒或策略利用了模型偏差；现有数据无法区分。"
+      },
+      {
+        "observation": "actor_grad_norm 为 1.5415383577346802，critic_loss 为 2.602377899165731e-05，nonfinite_steps 为 0。",
+        "interpretation": "未观察到非有限数值或明显数值崩溃。低 critic loss 单独不能证明价值估计在真实楼梯状态上准确。"
+      },
+      {
+        "observation": "课程包含 5 个 terrain rows，max_level 由 common_step_counter 计算；提供的证据没有 terrain level、common_step_counter 或有效样本量。",
+        "interpretation": "无法判断课程是否推进过快、当前是否覆盖 15 cm 台阶，或 replay buffer 是否包含足够的高难度接触样本。"
+      },
+      {
+        "observation": "targets_enabled=false，因此 Metrics/target/* 和 Metrics/hit_rate/* 为非活动兼容槽位。",
+        "interpretation": "这些指标为零是预期行为，不能作为楼梯任务失败证据。"
+      }
+    ],
+    "possible_causes": [
+      {
+        "cause": "尚未充分训练或高难度样本不足",
+        "status": "可能，但未证实",
+        "evidence": "当前仅有一次迭代指标，且缺少有效样本量、当前课程等级和 15 cm 台阶覆盖率。"
+      },
+      {
+        "cause": "world model 偏差导致想象生存率虚高",
+        "status": "可能，但未证实",
+        "evidence": "imagined_survival 接近 1，但没有对应的真实仿真 rollout、world model 校准误差或跌倒预测混淆统计。"
+      },
+      {
+        "cause": "课程推进过快",
+        "status": "无法判断",
+        "evidence": "缺少 common_step_counter、terrain level 时间序列和各课程等级的样本量；不能把迭代 1250 附近的变化解释为 terrain-row 增加。"
+      },
+      {
+        "cause": "奖励失衡",
+        "status": "无法判断",
+        "evidence": "没有真实奖励各分项、爬升奖励、速度跟踪奖励、姿态惩罚、跌倒惩罚或接触相关奖励。"
+      },
+      {
+        "cause": "传感器或观测问题",
+        "status": "无法判断",
+        "evidence": "没有观测有效性、缺失值、延迟、归一化范围或传感器噪声统计。"
+      }
+    ],
+    "suggestions": [
+      {
+        "action": "进行固定种子的真实仿真评估，分别覆盖 0.02 m 至 0.15 m 的台阶高度。",
+        "evidence": "任务要求真实仿真评估，但当前没有任何完成率、进度或跌倒数据。",
+        "expected_impact": "直接区分策略是否能爬楼，并显示从低台阶到 15 cm 的泛化曲线。",
+        "risk": "评估成本增加；若评估环境或观测配置与训练不一致，结果可能不可比。",
+        "rollback": "不修改训练参数，仅移除或暂停新增评估任务即可回滚。",
+        "fixed_seed_verification": "对每个台阶高度使用相同的固定种子集合，报告上楼进度、完成率和跌倒率，并保留每回合轨迹。"
+      },
+      {
+        "action": "补充并按台阶高度分组记录前向速度跟踪、机身姿态、足端净空、动作平滑性、跌倒终止和真实奖励分项。",
+        "evidence": "这些关键诊断指标当前全部缺失。",
+        "expected_impact": "区分速度跟踪失败、足端碰撞、侧翻、姿态失稳和动作抖动等不同失败模式。",
+        "risk": "增加日志和评估开销；指标定义不一致会降低跨实验可比性。",
+        "rollback": "保留已有训练日志格式，停用新增诊断记录即可回滚。",
+        "fixed_seed_verification": "在相同固定种子下逐回合保存指标，并将跌倒时间与足端接触、姿态异常和速度误差对齐。"
+      },
+      {
+        "action": "检查真实仿真 rollout 与 imagined rollout 的生存率、终止时间和奖励分布差异。",
+        "evidence": "imagined_survival 接近 1，但没有真实仿真对应值。",
+        "expected_impact": "识别 world model 是否低估跌倒或高估爬楼收益。",
+        "risk": "需要额外 rollout 和对齐状态；若时间步或终止语义不一致，差异会被误读。",
+        "rollback": "仅删除对比分析，不改变采样、world model 拟合或策略优化流程。",
+        "fixed_seed_verification": "使用同一初始状态和动作序列，比较真实仿真与 world model 的终止、奖励和关键状态误差。"
+      },
+      {
+        "action": "记录课程等级、common_step_counter、每个 terrain row 的有效样本量和 replay buffer 分布。",
+        "evidence": "当前无法判断课程推进速度或高难度数据是否足够。",
+        "expected_impact": "确认训练是否覆盖目标 15 cm 台阶，并识别高难度样本稀缺。",
+        "risk": "增加统计存储；若样本分组定义不一致，可能造成错误的课程判断。",
+        "rollback": "停止新增统计字段即可回滚，不影响现有训练流程。",
+        "fixed_seed_verification": "固定种子运行相同训练区间，检查 terrain level 随 common_step_counter 的实际变化和各等级样本比例。"
+      },
+      {
+        "action": "将 actor_lr_scale 从 0.3 暂时降低到 0.27，作为一次可回滚的保守试验；保持其他参数和三阶段框架不变。",
+        "evidence": "imagined_survival 接近 1，而当前没有真实评估或 world model 校准证据；actor_grad_norm 为有限值，且没有 nonfinite_steps，因此没有数值崩溃证据，但存在需要验证的想象优化偏差风险。",
+        "expected_impact": "降低 actor 依据可能失真的想象 rollout 快速利用 world model 偏差的幅度，同时保留策略优化能力。",
+        "risk": "策略学习可能变慢；现有证据不足以证明降低学习率一定改善真实爬楼性能。",
+        "rollback": "使用变更前 checkpoint，将 actor_lr_scale 恢复为 0.3；该试验不修改全局 lr、world model、奖励或课程参数。",
+        "fixed_seed_verification": "从变更前 checkpoint 使用固定训练和评估种子，至少比较后续一个 2000 迭代窗口中的真实仿真完成率、跌倒率、进度、真实奖励分项、world model 误差和 imagined/real survival 差异。"
+      }
+    ],
+    "risk": {
+      "overall": "中到高",
+      "basis": [
+        "imagined_survival 接近 1，但没有真实仿真对应证据。",
+        "world model loss、imagined return 和其他指标均只有单点记录，无法判断趋势。",
+        "缺少任务核心成功指标，不能排除策略只是在想象模型中表现良好。",
+        "没有证据表明当前训练已覆盖 15 cm 台阶。"
+      ],
+      "numerical_health": "当前未观察到 nonfinite_steps，actor_grad_norm 和 critic_loss 均为有限值；这只能排除已观测的明显数值异常，不能证明训练或策略有效。"
+    },
+    "verification": [
+      "固定种子评估每个台阶高度，报告每回合上楼进度、完成率和跌倒率。",
+      "分别报告真实仿真和想象 rollout 的 survival、终止时间与回报分布。",
+      "按台阶高度报告前向速度误差、机身 roll/pitch/yaw、足端净空和动作变化率。",
+      "记录 terrain level、common_step_counter、每个 level 的有效样本量和 replay buffer 覆盖情况。",
+      "对 world model 进行多步预测误差评估，重点覆盖楼梯边缘、足端接触和跌倒前状态。",
+      "比较 actor_lr_scale=0.30 与 0.27 在相同 checkpoint、固定训练种子和固定评估种子下的结果；仅当真实仿真指标改善且想象/真实偏差未扩大时保留修改。",
+      "不要使用总回报或 imagined_return 单独宣称已学会爬楼梯。"
+    ],
+    "needs_data": [
+      "固定种子的真实仿真评估结果。",
+      "各台阶高度的上楼进度、完成率和跌倒率。",
+      "前向速度跟踪、机身姿态、足端净空和动作平滑性。",
+      "真实奖励各分项和跌倒终止统计。",
+      "world model 多步预测误差及其在接触、楼梯边缘和跌倒前状态上的分布。",
+      "terrain level、common_step_counter、课程变化时间序列和各等级有效样本量。",
+      "replay buffer 中各台阶高度和失败类型的样本分布。",
+      "训练指标从预热阶段到当前迭代的时间序列，而非仅第 4050 次迭代单点。",
+      "真实仿真 rollout 与 imagined rollout 的状态、奖励和终止对齐数据。",
+      "评估视频，用于确认进度、跌倒、侧翻、足端碰撞和动作抖动。"
+    ],
+    "optimization_decision": {
+      "action": "reduce",
+      "parameter": "actor_lr_scale",
+      "suggested_value": 0.27,
+      "rationale": "这是相对 0.3 降低 10% 的可回滚试验。当前没有数值崩溃证据，因此不需要因数值健康问题停训；但想象生存率接近 1，且缺少真实仿真校准，适度降低 actor 更新幅度可用于检验是否存在 world model 利用风险。该决定不宣称策略已具备真实爬楼能力，且不改变采样、world model 拟合和想象策略优化三阶段框架。"
+    }
+  },
+  "usage": {
+    "model": "gpt-6-sol",
+    "prompt_tokens": 6302,
+    "completion_tokens": 2940
+  },
+  "control_status": "proposed",
+  "proposal": {
+    "id": "e8bf08cf533641758d8ac4b2df693321",
+    "experiment_id": "52d2c85154f0",
+    "issued_iteration": 4050,
+    "expires_iteration": 6050,
+    "parameter": "actor_lr_scale",
+    "expected_value": 0.3,
+    "suggested_value": 0.27,
+    "rationale": "这是相对 0.3 降低 10% 的可回滚试验。当前没有数值崩溃证据，因此不需要因数值健康问题停训；但想象生存率接近 1，且缺少真实仿真校准，适度降低 actor 更新幅度可用于检验是否存在 world model 利用风险。该决定不宣称策略已具备真实爬楼能力，且不改变采样、world model 拟合和想象策略优化三阶段框架。"
+  }
+}

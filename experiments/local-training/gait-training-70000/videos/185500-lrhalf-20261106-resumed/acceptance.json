@@ -1,0 +1,9 @@
+{
+  "candidate": "/root/go2-supermimic/logs/supermimic/2026-11-06_19-11-46_gait_review_calf_acc1p5_lrhalf_185500/model_185500.pt",
+  "accepted_for_continuation": true,
+  "issues": [],
+  "next_target": 187500,
+  "video_directory": "/tmp/go2-gait-videos/185500-calf-acc1p5-lrhalf-20261106",
+  "target_met": false,
+  "full_chat_report_pending": true
+}

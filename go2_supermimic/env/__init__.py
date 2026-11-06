@@ -3,7 +3,7 @@
 from mjlab.rl import RslRlOnPolicyRunnerCfg
 from mjlab.tasks.registry import register_mjlab_task
 
-from go2_supermimic.env.env_cfg import go2_chase_env_cfg
+from go2_supermimic.env.env_cfg import go2_chase_env_cfg, go2_stairs_env_cfg, go2_mixed_env_cfg
 
 for task_id, kw in (
   ("Go2-Chase-Flat", {}),
@@ -16,3 +16,17 @@ for task_id, kw in (
     play_env_cfg=go2_chase_env_cfg(play=True, **kw),
     rl_cfg=RslRlOnPolicyRunnerCfg(),  # unused: training is SuperMimic (scripts/train.py)
   )
+
+register_mjlab_task(
+  task_id="Go2-Stairs",
+  env_cfg=go2_stairs_env_cfg(),
+  play_env_cfg=go2_stairs_env_cfg(play=True),
+  rl_cfg=RslRlOnPolicyRunnerCfg(),
+)
+
+register_mjlab_task(
+  task_id="Go2-Mixed",
+  env_cfg=go2_mixed_env_cfg(),
+  play_env_cfg=go2_mixed_env_cfg(play=True),
+  rl_cfg=RslRlOnPolicyRunnerCfg(),
+)

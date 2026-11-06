@@ -1,0 +1,209 @@
+Setting seed: 0
+Warp 1.19.0 initialized:
+   CUDA Toolkit 13.4, Driver 13.0
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 4090" (24 GiB, sm_89, mempool enabled)
+   Kernel cache:
+     /root/.cache/warp/1.19.0
+Module mujoco_warp._src.smooth e32b4e8 load on device 'cuda:0' took 1.76 ms  (cached)
+Module _nxn_broadphase__locals__kernel_8e6bae75 8e6bae7 load on device 'cuda:0' took 0.64 ms  (cached)
+Module ccd_kernel_builder__locals__ccd_kernel_26a80e4c 26a80e4 load on device 'cuda:0' took 0.96 ms  (cached)
+Module ccd_kernel_builder__locals__ccd_kernel_26a80e4c da9a7cc load on device 'cuda:0' took 1.06 ms  (cached)
+Module _primitive_narrowphase__locals__primitive_narrowphase_a9da0ad9 a9da0ad load on device 'cuda:0' took 1.07 ms  (cached)
+Module mujoco_warp._src.constraint d81df1c load on device 'cuda:0' took 0.62 ms  (cached)
+Module _friction_dof__locals__kernel_98f73a3f 98f73a3 load on device 'cuda:0' took 0.61 ms  (cached)
+Module _limit_slide_hinge__locals__kernel_7aedeb47 7aedeb4 load on device 'cuda:0' took 0.60 ms  (cached)
+Module _efc_contact_init__locals__kernel_0c82a751 0c82a75 load on device 'cuda:0' took 0.59 ms  (cached)
+Module _efc_contact_jac_dense__locals__kernel_c022b097 af0b8f0 load on device 'cuda:0' took 0.68 ms  (cached)
+Module _efc_contact_update__locals__kernel_afcbe206 afcbe20 load on device 'cuda:0' took 0.59 ms  (cached)
+Module mujoco_warp._src.sensor 1732059 load on device 'cuda:0' took 1.33 ms  (cached)
+Module mujoco_warp._src.forward be54cd7 load on device 'cuda:0' took 0.84 ms  (cached)
+Module mujoco_warp._src.passive dc2a9f0 load on device 'cuda:0' took 0.95 ms  (cached)
+Module mujoco_warp._src.forward 1d3533c load on device 'cuda:0' took 0.94 ms  (cached)
+Module _qfrc_smooth__locals__kernel_4258d405 4258d40 load on device 'cuda:0' took 0.57 ms  (cached)
+Module mujoco_warp._src.support 9814593 load on device 'cuda:0' took 0.60 ms  (cached)
+Module _tile_cholesky_factorize_solve_block__locals__kernel_c6333a70 d797617 load on device 'cuda:0' took 42.57 ms  (cached)
+Module _solve_init_dof__locals__kernel_862a1917 862a191 load on device 'cuda:0' took 0.60 ms  (cached)
+Module mujoco_warp._src.solver 339c2f5 load on device 'cuda:0' took 0.93 ms  (cached)
+Module _solve_init_jaref_kernel__locals__kernel_91f9fff1 91f9fff load on device 'cuda:0' took 0.60 ms  (cached)
+Module mul_m_kernel__locals___mul_m_972d9bf0 972d9bf load on device 'cuda:0' took 0.58 ms  (cached)
+Module _update_constraint_efc__locals__kernel_98654588 9865458 load on device 'cuda:0' took 0.62 ms  (cached)
+Module _update_constraint_init_qfrc_constraint_dense__locals__kernel_cdb78c33 cdb78c3 load on device 'cuda:0' took 0.63 ms  (cached)
+Module _update_gradient_zero_grad_dot__locals__kernel_871f7ea5 871f7ea load on device 'cuda:0' took 0.58 ms  (cached)
+Module _update_gradient_grad__locals__kernel_1708178a 1708178 load on device 'cuda:0' took 0.60 ms  (cached)
+Module _update_gradient_JTDAJ_dense_tiled__locals__kernel_509bff38 d08bec5 load on device 'cuda:0' took 1.16 ms  (cached)
+Module _update_gradient_cholesky__locals__kernel_0747fda0 49b9281 load on device 'cuda:0' took 44.37 ms  (cached)
+Module _linesearch_iterative_kernel__locals__kernel_1fbb6541 4e4c032 load on device 'cuda:0' took 0.73 ms  (cached)
+Module _contact_sort__locals__contact_sort_1a8f8c92 eadab4b load on device 'cuda:0' took 0.66 ms  (cached)
+Module mujoco_warp._src.derivative 3dc8889 load on device 'cuda:0' took 0.71 ms  (cached)
+Module _next_time_builder__locals___next_time_0a0c2660 0a0c266 load on device 'cuda:0' took 0.64 ms  (cached)
+Module reset_data__locals__reset_xfrc_applied_67d781b3 67d781b load on device 'cuda:0' took 0.63 ms  (cached)
+Module reset_data__locals__reset_M_b85ae5c6 b85ae5c load on device 'cuda:0' took 0.52 ms  (cached)
+Module reset_data__locals__reset_mocap_4a02d0ee 4a02d0e load on device 'cuda:0' took 0.49 ms  (cached)
+Module reset_data__locals__reset_contact_73dd9a4c 73dd9a4 load on device 'cuda:0' took 0.49 ms  (cached)
+Module reset_data__locals__reset_sleep_6f87d6aa 6f87d6a load on device 'cuda:0' took 0.48 ms  (cached)
+Module reset_data__locals__reset_nworld_6bf0ac6b 6bf0ac6 load on device 'cuda:0' took 0.51 ms  (cached)
+Module mujoco_warp._src.render_util 8734dbe load on device 'cuda:0' took 0.78 ms  (cached)
+Module mujoco_warp._src.bvh 057526e load on device 'cuda:0' took 0.77 ms  (cached)
+Module mujoco_warp._src.ray 3d99f14 load on device 'cuda:0' took 0.86 ms  (cached)
+
++---------------------------------+
+|         Base Environment        |
++------------------------+--------+
+| Property               | Value  |
++------------------------+--------+
+| Number of environments | 32     |
+| Environment device     | cuda:0 |
+| Environment seed       | 0      |
+| Physics step-size      | 0.005  |
+| Environment step-size  | 0.02   |
++------------------------+--------+
+
+[INFO] <EventManager> contains 2 active terms.
++-------------------------------------+
+| Active Event Terms in Mode: 'reset' |
++--------+----------------------------+
+| Index  | Name                       |
++--------+----------------------------+
+|   0    | reset_base                 |
+|   1    | reset_robot_joints         |
++--------+----------------------------+
++---------------------------------------+
+| Active Event Terms in Mode: 'startup' |
++--------+------------------------------+
+| Index  | Name                         |
++--------+------------------------------+
+|   0    | encoder_bias                 |
+|   1    | base_com                     |
+|   2    | foot_friction_slide          |
+|   3    | foot_friction_spin           |
+|   4    | foot_friction_roll           |
+|   5    | quiet_solver_warnings        |
++--------+------------------------------+
++-----------------------------+
+| Domain Randomization Fields |
++-------+---------------------+
+| Index | Field Name          |
++-------+---------------------+
+|   0   | body_ipos           |
+|   1   | body_subtreemass    |
+|   2   | dof_invweight0      |
+|   3   | body_invweight0     |
+|   4   | tendon_length0      |
+|   5   | tendon_invweight0   |
+|   6   | actuator_acc0       |
+|   7   | geom_friction       |
++-------+---------------------+
+
+Module repeat_array_kernel_64344f6c 0d2b4d2 load on device 'cuda:0' took 0.63 ms  (cached)
+Module repeat_array_kernel_64344f6c 1bbf2cb load on device 'cuda:0' took 0.64 ms  (cached)
+Module repeat_array_kernel_64344f6c fff5561 load on device 'cuda:0' took 0.81 ms  (cached)
+[INFO] <CommandManager> contains 1 active terms.
++--------------------------------+
+|      Active Command Terms      |
++-------+--------+---------------+
+| Index | Name   |      Type     |
++-------+--------+---------------+
+|   0   | target | TargetCommand |
++-------+--------+---------------+
+
+[INFO] <ActionManager> contains 1 active terms.
++---------------------------------+
+| Active Action Terms (shape: 12) |
++-------+-----------+-------------+
+| Index | Name      |   Dimension |
++-------+-----------+-------------+
+|   0   | joint_pos |          12 |
++-------+-----------+-------------+
+
+[INFO] <ObservationManager> contains 1 groups.
++------------------------------------------------------------+
+| Active Observation Terms in Group: 'actor' (shape: (350,)) |
++--------+------------------------+--------------------------+
+| Index  | Name                   |          Shape           |
++--------+------------------------+--------------------------+
+|   0    | base_ang_vel           |     (15,)  ← 5×(3,)      |
+|   1    | projected_gravity      |     (15,)  ← 5×(3,)      |
+|   2    | joint_pos              |     (60,)  ← 5×(12,)     |
+|   3    | joint_vel              |     (60,)  ← 5×(12,)     |
+|   4    | actions                |     (60,)  ← 5×(12,)     |
+|   5    | target                 |    (140,)  ← 5×(28,)     |
++--------+------------------------+--------------------------+
+
+[INFO] <TerminationManager> contains 2 active terms.
++------------------------------+
+|   Active Termination Terms   |
++-------+-----------+----------+
+| Index | Name      | Time Out |
++-------+-----------+----------+
+|   0   | time_out  |   True   |
+|   1   | fell_over |  False   |
++-------+-----------+----------+
+
+[INFO] <RewardManager> contains 18 active terms.
++---------------------------------------+
+|          Active Reward Terms          |
++-------+--------------------+----------+
+| Index | Name               |   Weight |
++-------+--------------------+----------+
+|   0   | chase_approach     |      1.5 |
+|   1   | chase_tag          |     15.0 |
+|   2   | facing_target      |      0.5 |
+|   3   | evade_danger       |     -2.0 |
+|   4   | hit                |   -100.0 |
+|   5   | evade_anticipate   |     -1.5 |
+|   6   | outside_arena      |     -2.0 |
+|   7   | upright            |      1.0 |
+|   8   | tilt_rate_l2       |    -0.05 |
+|   9   | hard_landing       |     -0.5 |
+|   10  | crouch             |    -30.0 |
+|   11  | joint_deviation_l2 |     -0.1 |
+|   12  | base_height_low    |    -10.0 |
+|   13  | terminated         |   -200.0 |
+|   14  | action_rate_l2     |    -0.05 |
+|   15  | dof_pos_limits     |     -1.0 |
+|   16  | joint_torques_l2   |   -2e-05 |
+|   17  | joint_acc_l2       | -2.5e-07 |
++-------+--------------------+----------+
+
+[INFO] <NullCurriculumManager> (inactive)
+[INFO] <MetricsManager> contains 1 active terms.
++-------------------------+
+|   Active Metrics Terms  |
++-------+-----------------+
+| Index | Name            |
++-------+-----------------+
+|   0   | mean_action_acc |
++-------+-----------------+
+
+[INFO] <NullRecorderManager> (inactive)
+Module mujoco_warp._src.io cb9d06d load on device 'cuda:0' took 1766.83 ms  (compiled)
+Module _tile_cholesky_factorize_block__locals__kernel_c65d824f e18da83 load on device 'cuda:0' took 1961.17 ms  (compiled)
+Module _tile_cholesky_solve_block__locals__kernel_2b5f8f40 8bd3d02 load on device 'cuda:0' took 1790.91 ms  (compiled)
+it 5/120 | 0.0 min | env_steps 0.0M | wm_loss 4.997 | archive 4 | hit_rate 0.00/0.00/0.00 | fast_yaw 0
+it 10/120 | 0.0 min | env_steps 0.0M | wm_loss 6.427 | archive 4 | hit_rate 0.00/0.00/0.00 | fast_yaw 0
+it 15/120 | 0.1 min | env_steps 0.0M | wm_loss 5.931 | imagined_return -0.07577 | imagined_reward -0.01167 | imagined_survival 1 | actor_grad_norm 0.07079 | critic_loss 0.1011 | archive 5 | hit_rate 0.00/0.00/0.00 | fast_yaw 0
+it 20/120 | 0.1 min | env_steps 0.0M | wm_loss 6.766 | imagined_return -0.02807 | imagined_reward -0.004797 | imagined_survival 1 | actor_grad_norm 0.07596 | critic_loss 0.05909 | archive 5 | hit_rate 0.00/0.00/0.00 | fast_yaw 0
+it 25/120 | 0.1 min | env_steps 0.0M | wm_loss 6.911 | imagined_return -0.1803 | imagined_reward -0.0177 | imagined_survival 1 | actor_grad_norm 0.08204 | critic_loss 0.1056 | archive 5 | hit_rate 0.00/0.00/0.00 | fast_yaw 0
+it 30/120 | 0.2 min | env_steps 0.0M | wm_loss 8.247 | imagined_return 0.02108 | imagined_reward -0.00196 | imagined_survival 1 | actor_grad_norm 0.101 | critic_loss 0.04015 | archive 5 | hit_rate 0.00/0.00/0.00 | fast_yaw 0
+it 35/120 | 0.2 min | env_steps 0.0M | wm_loss 7.006 | imagined_return -0.19 | imagined_reward -0.00378 | imagined_survival 1 | actor_grad_norm 0.1081 | critic_loss 0.04013 | archive 5 | hit_rate 0.00/0.00/0.00 | fast_yaw 0
+it 40/120 | 0.2 min | env_steps 0.0M | wm_loss 7.033 | imagined_return -0.2514 | imagined_reward -0.004838 | imagined_survival 1 | actor_grad_norm 0.1252 | critic_loss 0.03262 | archive 5 | hit_rate 0.00/0.00/0.00 | fast_yaw 0
+it 45/120 | 0.3 min | env_steps 0.0M | wm_loss 6.704 | imagined_return -0.268 | imagined_reward -0.008933 | imagined_survival 1 | actor_grad_norm 0.1456 | critic_loss 0.06395 | archive 5 | hit_rate 0.00/0.00/0.00 | fast_yaw 0
+it 50/120 | 0.3 min | env_steps 0.0M | wm_loss 7.432 | imagined_return -0.3349 | imagined_reward -0.01975 | imagined_survival 1 | actor_grad_norm 0.1587 | critic_loss 0.08844 | archive 5 | hit_rate 0.00/0.00/0.00 | fast_yaw 0
+it 55/120 | 0.3 min | env_steps 0.0M | wm_loss 7.894 | imagined_return -0.3697 | imagined_reward -0.01722 | imagined_survival 1 | actor_grad_norm 0.1895 | critic_loss 0.09586 | archive 5 | hit_rate 0.00/0.00/0.00 | fast_yaw 0
+it 60/120 | 0.4 min | env_steps 0.0M | wm_loss 7.803 | imagined_return -0.2838 | imagined_reward -0.004966 | imagined_survival 0.9999 | actor_grad_norm 0.1638 | critic_loss 0.03337 | archive 5 | hit_rate 0.00/0.00/0.00 | fast_yaw 0
+saved logs/supermimic/2026-11-02_18-09-13_agent_gpu_smoke/model_60.pt
+it 65/120 | 0.4 min | env_steps 0.0M | wm_loss 7.53 | imagined_return -0.5411 | imagined_reward -0.02009 | imagined_survival 0.9999 | actor_grad_norm 0.1488 | critic_loss 0.06131 | archive 5 | hit_rate 0.00/0.00/0.00 | fast_yaw 0
+it 70/120 | 0.4 min | env_steps 0.0M | wm_loss 9.085 | imagined_return -0.6319 | imagined_reward -0.02286 | imagined_survival 0.9999 | actor_grad_norm 0.127 | critic_loss 0.08562 | archive 5 | hit_rate 0.00/0.00/0.00 | fast_yaw 0
+it 75/120 | 0.5 min | env_steps 0.0M | wm_loss 8.847 | imagined_return -0.9582 | imagined_reward -0.03066 | imagined_survival 0.9999 | actor_grad_norm 0.1321 | critic_loss 0.09047 | archive 5 | hit_rate 0.00/0.00/0.00 | fast_yaw 0
+it 80/120 | 0.5 min | env_steps 0.0M | wm_loss 9.66 | imagined_return -1.231 | imagined_reward -0.02513 | imagined_survival 0.9999 | actor_grad_norm 0.1541 | critic_loss 0.05828 | archive 5 | hit_rate 0.00/0.00/0.00 | fast_yaw 0
+it 85/120 | 0.5 min | env_steps 0.0M | wm_loss 11.31 | imagined_return -1.819 | imagined_reward -0.0293 | imagined_survival 0.9995 | actor_grad_norm 0.1546 | critic_loss 0.03331 | archive 5 | hit_rate 0.00/0.00/0.00 | fast_yaw 0
+it 90/120 | 0.5 min | env_steps 0.0M | wm_loss 10.87 | imagined_return -2.517 | imagined_reward -0.03863 | imagined_survival 0.9995 | actor_grad_norm 0.1821 | critic_loss 0.06516 | archive 5 | hit_rate 0.00/0.00/0.00 | fast_yaw 0.0141
+it 95/120 | 0.6 min | env_steps 0.0M | wm_loss 9.903 | imagined_return -2.447 | imagined_reward -0.03517 | imagined_survival 0.9996 | actor_grad_norm 0.1552 | critic_loss 0.06989 | archive 5 | hit_rate 0.00/0.00/0.00 | fast_yaw 0.0125
+it 100/120 | 0.6 min | env_steps 0.0M | wm_loss 11.07 | imagined_return -2.161 | imagined_reward -0.03889 | imagined_survival 0.9908 | actor_grad_norm 0.1522 | critic_loss 0.09845 | archive 5 | hit_rate 0.00/0.00/0.00 | fast_yaw 0.0172 | tags 0 | hits 0 | dist 0.829 | obstacle_contact 0 | fell_over 1
+it 105/120 | 0.7 min | env_steps 0.0M | wm_loss 14.8 | imagined_return -1.987 | imagined_reward -0.03267 | imagined_survival 0.9997 | actor_grad_norm 0.1233 | critic_loss 0.05658 | archive 5 | hit_rate 0.00/0.00/0.00 | fast_yaw 0.0328
+it 110/120 | 0.7 min | env_steps 0.0M | wm_loss 15.2 | imagined_return -1.986 | imagined_reward -0.04227 | imagined_survival 0.9996 | actor_grad_norm 0.1348 | critic_loss 0.09642 | archive 5 | hit_rate 0.00/0.00/0.00 | fast_yaw 0.0281
+it 115/120 | 0.7 min | env_steps 0.0M | wm_loss 14.85 | imagined_return -2.051 | imagined_reward -0.05245 | imagined_survival 0.9997 | actor_grad_norm 0.1037 | critic_loss 0.1475 | archive 5 | hit_rate 0.00/0.00/0.00 | fast_yaw 0.00937 | tags 0 | hits 3 | dist 1.76 | obstacle_contact 0 | fell_over 1
+it 120/120 | 0.8 min | env_steps 0.0M | wm_loss 18.22 | imagined_return -2.162 | imagined_reward -0.04145 | imagined_survival 0.9996 | actor_grad_norm 0.09004 | critic_loss 0.03564 | archive 5 | hit_rate 0.00/0.00/0.00 | fast_yaw 0
+saved logs/supermimic/2026-11-02_18-09-13_agent_gpu_smoke/model_120.pt

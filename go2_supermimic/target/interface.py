@@ -101,4 +101,8 @@ def oracle_observation(st: dict[str, torch.Tensor], base: torch.Tensor,
     p = yaw_rotate_inverse(pos - base, yaw)
     v = yaw_rotate_inverse(vel, yaw)
     slots.append(pack_slot(p, v, zeros3, ones, torch.zeros_like(yaw), active, shape))
-  return torch.cat(slots, dim=-1)
+  result = torch.cat(slots, dim=-1)
+  if "velocity_mode" in st:
+    command = st["velocity_command"] * st["velocity_mode"].unsqueeze(-1)
+    result = torch.cat([torch.where(st["velocity_mode"].bool().unsqueeze(-1), command, result[:, :3]), result[:, 3:]], -1)
+  return result

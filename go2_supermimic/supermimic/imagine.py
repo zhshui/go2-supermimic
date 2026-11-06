@@ -11,11 +11,13 @@ differentiable (SuperMimic Eq. 2 with the soft survival weight c_t).
 from __future__ import annotations
 
 import math
-from dataclasses import dataclass
+from dataclasses import dataclass, fields
 
 import torch
 
 from go2_supermimic.supermimic import state as st
+from go2_supermimic.supermimic.locomotion import stair_tracking, locomotion_command, delayed_action
+from go2_supermimic.supermimic.locomotion import diagonal_support_score, riser_clearance_cost, tread_edge_risk, upward_launch_cost, advance_support_time, merge_leg_collision_probabilities
 from go2_supermimic.target import obstacles as ob
 from go2_supermimic.target import terrain as tr
 from go2_supermimic.target.collision import (
@@ -36,6 +38,8 @@ class RewardWeights:
   """Same names and values as env_cfg.py; rewards are multiplied by dt there too."""
 
   chase_approach: float = 1.5
+  track_lin_vel: float = 0.0
+  track_ang_vel: float = 0.0
   chase_tag: float = 15.0
   facing_target: float = 0.5
   evade_danger: float = -2.0
@@ -46,6 +50,12 @@ class RewardWeights:
   upright: float = 1.0
   tilt_rate_l2: float = -0.05
   hard_landing: float = -0.5
+  excessive_flight: float = 0.0
+  stance_slip: float = 0.0
+  upward_launch: float = 0.0
+  riser_clearance: float = 0.0
+  diagonal_support: float = 0.0
+  base_vertical_speed_l2: float = 0.0
   crouch: float = -30.0
   joint_deviation_l2: float = -0.1
   base_height_low: float = -10.0
@@ -54,6 +64,22 @@ class RewardWeights:
   dof_pos_limits: float = -1.0
   joint_torques_l2: float = -2e-5
   joint_acc_l2: float = -2.5e-7
+  cts_track_lin: float = 0.0
+  cts_track_yaw: float = 0.0
+  cts_vertical_speed: float = 0.0
+  cts_base_height: float = 0.0
+  cts_power: float = 0.0
+  cts_leg_collision: float = 0.0
+  cts_feet_regulation: float = 0.0
+  cts_action_smooth: float = 0.0
+  feet_air_time: float = 0.0
+  tread_edge: float = 0.0
+
+  @classmethod
+  def from_env_rewards(cls, rewards):
+    """Absent environment terms must also be disabled in actor training."""
+    return cls(**{f.name: rewards[f.name].weight if f.name in rewards else 0.0
+                  for f in fields(cls)})
 
 
 @dataclass(kw_only=True)
@@ -73,6 +99,8 @@ class ImagineCfg:
   """Back-propagate through the LiDAR and the height scan (the actor's and the
   world model's): how moving and turning change what the robot senses. Detaching
   them leaves a wrong gradient near obstacles and terrain (the policy circles)."""
+  riser_swing_only: bool = False
+  leg_collision_proximal_calf: bool = False
   weights: RewardWeights = None  # type: ignore[assignment]
   compile: bool = False
   """torch.compile one imagined step (fuses the many small elementwise kernels)."""
@@ -91,7 +119,7 @@ def planar_velocity_world(s: torch.Tensor, yaw: torch.Tensor) -> torch.Tensor:
 # State, both objects (yaw-frame position 3, velocity 3, active 1), the dodge
 # obstacle shape (is_bar, half_len), the chase ball's remaining escape time and
 # sim context; with obstacles the LiDAR, on terrain the height scan is appended.
-CRITIC_DIM = st.STATE_DIM + 2 * 7 + 2 + 1 + st.CONTEXT_DIM
+CRITIC_DIM = st.STATE_DIM + 2 * 7 + 2 + 1 + st.CONTEXT_DIM + 28
 
 
 class Imagination:
@@ -133,7 +161,7 @@ class Imagination:
     q = s1[:, st.Q] + k["default_q"]
     lim = k["soft_limits"]
     q_target = a * k["action_scale"] + k["default_q"]
-    tau = (c.kp * (q_target - q) - c.kd * s1[:, st.QD]).clamp(-c.effort, c.effort)
+    tau = (k.get("kp",c.kp) * (q_target - q) - k.get("kd",c.kd) * s1[:, st.QD]).clamp(-c.effort, c.effort)
     g = s1[:, st.GRAV]
     r_arena = (pose1[:, :2] - gst["center"]).norm(dim=-1)
 
@@ -149,15 +177,71 @@ class Imagination:
       "obstacle_contact": obstacle_penetration(geom, gst["obst"]),
       "upright": torch.exp(-(g[:, :2].square().sum(-1)) / 0.4**2),
       "tilt_rate_l2": s1[:, st.W_B][:, :2].square().sum(-1),
+      "base_vertical_speed_l2": s1[:, st.V_YAW][:, 2].square(),
       "hard_landing": (-s1[:, 6]).clamp(min=0.0).square() * (feet_min < 0.05).float(),
       "crouch": crouch_violation(gst, pose1[:, :2], s1[:, 0]),
       "joint_deviation_l2": s1[:, st.Q].square().sum(-1),
       "base_height_low": (0.18 - s1[:, 0]).clamp(min=0.0),
-      "action_rate_l2": (a - a_prev).square().sum(-1),
+      "action_rate_l2": (k.get("raw_action",a) - k.get("raw_action_prev",a_prev)).square().sum(-1),
       "dof_pos_limits": ((lim[..., 0] - q).clamp(min=0) + (q - lim[..., 1]).clamp(min=0)).sum(-1),
       "joint_torques_l2": tau.square().sum(-1),
       "joint_acc_l2": ((s1[:, st.QD] - s0[:, st.QD]) / cfg.dt).square().sum(-1),
     }
+    terms.update(stair_tracking(s1[:, st.V_YAW], s1[:, st.W_B], locomotion_command(gst,s1[:, st.V_YAW])))
+    if w.cts_track_lin or w.cts_track_yaw or w.cts_vertical_speed:
+      # Undo pitch then roll on the yaw-frame velocity. Gravity encodes both.
+      sin_pitch = g[:, 0].clamp(-1 + 1e-5, 1 - 1e-5)
+      cos_pitch = (1 - sin_pitch.square()).sqrt()
+      sin_roll, cos_roll = -g[:, 1] / cos_pitch, -g[:, 2] / cos_pitch
+      vx, vy, vz = s1[:, st.V_YAW].unbind(-1)
+      x = cos_pitch * vx - sin_pitch * vz
+      z = sin_pitch * vx + cos_pitch * vz
+      velocity = torch.stack((x, cos_roll * vy + sin_roll * z,
+                              -sin_roll * vy + cos_roll * z), -1)
+      track = stair_tracking(velocity, s1[:, st.W_B], locomotion_command(gst, velocity))
+      terms["cts_track_lin"] = track["track_lin_vel"]
+      terms["cts_track_yaw"] = track["track_ang_vel"]
+      terms["cts_vertical_speed"] = velocity[:, 2].square()
+    if w.cts_base_height:
+      terms["cts_base_height"] = (self.scan(s1, pose1, gst, cfg.sensor_grad).mean(-1) - 0.35).square()
+    if w.cts_power:
+      terms["cts_power"] = (tau * s1[:, st.QD]).abs().sum(-1)
+    if w.cts_leg_collision:
+      # The world model predicts limb positions, without contact forces.
+      limbs = st.limb_points_world(s1, pose1)
+      thighs = (limbs["hips"] + limbs["knees"]) * 0.5
+      calves = 0.25 * limbs["knees"] + 0.75 * limbs["feet"]
+      points = torch.cat((thighs, calves), dim=1)
+      if cfg.leg_collision_proximal_calf:
+        proximal_calves = 0.75 * limbs["knees"] + 0.25 * limbs["feet"]
+        points = torch.cat((points, proximal_calves), dim=1)
+      floor = tr.ground(points[..., :2].reshape(-1, 2), self.field).reshape_as(points[..., 2])
+      base_floor = tr.ground(pose1[:, :2], self.field)
+      clearance = points[..., 2] + base_floor[:, None] - floor
+      collision_probability = torch.sigmoid((0.025 - clearance) / 0.008)
+      terms["cts_leg_collision"] = merge_leg_collision_probabilities(collision_probability, cfg.leg_collision_proximal_calf)
+    if w.cts_feet_regulation:
+      terms["cts_feet_regulation"] = k["cts_feet_regulation"]
+    if w.tread_edge:
+      terms["tread_edge"] = k["tread_edge"]
+    if w.feet_air_time:
+      terms["feet_air_time"] = k["feet_air_time"]
+    if w.cts_action_smooth:
+      change = k["raw_action"] - 2 * k["raw_action_prev"] + k["raw_action_prev2"]
+      terms["cts_action_smooth"] = change.square().sum(-1)
+    if w.excessive_flight or w.stance_slip:
+      terms["excessive_flight"] = ((gst["gait_flight_time"] - 0.04) / 0.06).clamp(0.0, 2.0)
+      terms["stance_slip"] = k["stance_slip"]
+    if w.diagonal_support:
+      terms["diagonal_support"] = k["diagonal_support"]
+    if w.riser_clearance:
+      feet = geom["feet"]
+      base_ground = tr.ground(pose1[:, :2], self.field)
+      feet_world = torch.cat((feet[..., :2], feet[..., 2:3] + base_ground[:, None, None]), dim=-1)
+      support_time = gst.get("riser_support_time", torch.zeros_like(feet_world[..., 0])) if cfg.riser_swing_only else None
+      terms["riser_clearance"] = riser_clearance_cost(feet_world, yaw, self.field, st.FOOT_RADIUS, support_time=support_time)
+    if w.upward_launch:
+      terms["upward_launch"] = upward_launch_cost(s1[:, st.V_YAW][:, 2], k["terrain_relief"])
     total = sum(getattr(w, name) * v for name, v in terms.items())
     # Annealed jump/duck hint; its weight is a tensor so changing it does not
     # trigger torch.compile recompilation.
@@ -208,13 +292,17 @@ class Imagination:
       parts.append(self.lidar(pose, gst, grad=False))
     if self.use_scan:
       parts.append(self.scan(s, pose, gst, grad=False))
-    return torch.cat(parts + [xi], dim=-1)
+    return torch.cat(parts + [xi, locomotion_command(gst,s[:,st.V_YAW]), gst["action_queue"], gst["action_delay"].unsqueeze(-1)], dim=-1)
 
   def _step(self, s, pose, a_prev, hist, gst, xi, enc_bias, k, dt, actor, wm):
     """One imagined step. Pure function of its inputs (compiled when cfg.compile)."""
     cfg = self.cfg
     crit_in = self.critic_input(s, pose, gst, xi)
-    a = actor(hist)
+    raw_action = actor(hist)
+    raw_previous = gst["action_queue"][:, :12]
+    raw_previous2 = gst["action_queue"][:, 12:24]
+    a, next_queue = delayed_action(raw_action,gst["action_queue"],gst["action_delay"])
+    gst = {**gst,"action_queue":next_queue}
     relief = self.relief(pose, gst, cfg.sensor_grad)
     s_next, dpose = wm(s, a, a_prev, xi, relief)
     pose_next = st.apply_pose_delta(pose, dpose)
@@ -222,14 +310,57 @@ class Imagination:
     v_w = planar_velocity_world(s_next, yaw)
     gst = advance(gst, dt, pose_next[:, :2].detach(), v_w.detach(), yaw.detach(), self.target_cfg,
                   self.field)
-    r, _ = self._rewards(s, s_next, pose_next, gst, a, a_prev, k)
+    step_k = {**k, "raw_action": raw_action, "raw_action_prev": raw_previous,
+              "raw_action_prev2": raw_previous2}
+    if (cfg.weights.excessive_flight or cfg.weights.stance_slip or
+        cfg.weights.diagonal_support or cfg.weights.cts_feet_regulation or
+        cfg.weights.feet_air_time or cfg.weights.tread_edge or cfg.riser_swing_only):
+      feet = st.limb_points_world(s, pose)["feet"]
+      feet_next = st.limb_points_world(s_next, pose_next)["feet"]
+      xy = feet_next[..., :2]
+      floor = tr.ground(xy.reshape(-1, 2), self.field).reshape_as(feet_next[..., 2])
+      base_floor = tr.ground(pose_next[:, :2], self.field)
+      clearance = feet_next[..., 2] + base_floor[:, None] - floor - st.FOOT_RADIUS
+      contact = torch.sigmoid((0.012 - clearance) / 0.008)
+      if cfg.riser_swing_only:
+        previous_support_time = gst.get("riser_support_time", torch.zeros_like(contact))
+        gst = {**gst, "riser_support_time": advance_support_time(previous_support_time, contact, cfg.dt)}
+      if cfg.weights.diagonal_support:
+        step_k["diagonal_support"] = diagonal_support_score(contact)
+      airborne = 1.0 - contact.amax(dim=-1)
+      previous_flight = gst.get("gait_flight_time", torch.zeros_like(airborne))
+      gst = {**gst, "gait_flight_time": (previous_flight + cfg.dt) * airborne}
+      speed_sq = ((xy - feet[..., :2]) / cfg.dt).square().sum(-1)
+      step_k["stance_slip"] = (contact * speed_sq.clamp(max=4.0)).mean(-1)
+      if cfg.weights.tread_edge:
+        step_k["tread_edge"] = (contact * tread_edge_risk(xy, self.field)).sum(-1)
+      if cfg.weights.feet_air_time:
+        previous_contact = gst.get("cts_previous_contact")
+        if previous_contact is None:
+          foot_floor = tr.ground(feet[..., :2].reshape(-1, 2), self.field).reshape_as(contact)
+          base_floor_before = tr.ground(pose[:, :2], self.field)
+          foot_clearance = feet[..., 2] + base_floor_before[:, None] - foot_floor - st.FOOT_RADIUS
+          previous_contact = torch.sigmoid((0.012 - foot_clearance) / 0.008)
+        air_time = gst.get("cts_air_time", torch.zeros_like(contact))
+        touchdown = (contact - previous_contact).clamp_min(0.0)
+        moving = locomotion_command(gst, s_next[:, st.V_YAW])[:, :2].norm(dim=-1) > 0.1
+        step_k["feet_air_time"] = ((air_time - 0.25) * touchdown).sum(-1) * moving
+        gst = {**gst, "cts_previous_contact": contact,
+               "cts_air_time": (air_time + cfg.dt) * (1.0 - contact)}
+      if cfg.weights.cts_feet_regulation:
+        step_k["cts_feet_regulation"] = (
+          torch.exp(-clearance.clamp(0.0, 1.0) / (0.35 * 0.025)) * speed_sq
+        ).sum(-1)
+    if cfg.weights.upward_launch:
+      step_k["terrain_relief"] = self.relief(pose_next, gst, cfg.sensor_grad)
+    r, _ = self._rewards(s, s_next, pose_next, gst, a, a_prev, step_k)
     d = self.fall_prob(s_next)
     r = r + cfg.weights.terminated * d * cfg.dt
     base = torch.cat([pose_next[:, :2], s_next[:, st.Z]], dim=-1)
     tgt = oracle_observation(gst, base, yaw)
     lidar = self.lidar(pose_next, gst, cfg.sensor_grad) if self.use_obst else None
     scan = self.scan(s_next, pose_next, gst, cfg.sensor_grad) if self.use_scan else None
-    frame = st.obs_frame(s_next, a, tgt, enc_bias, noise=True, lidar=lidar, height_scan=scan)
+    frame = st.obs_frame(s_next, raw_action, tgt, enc_bias, noise=True, lidar=lidar, height_scan=scan)
     hist = st.push_history(hist, frame, self.h, self.terms)
     return s_next, pose_next, a, hist, gst, r, d, crit_in
 
@@ -247,6 +378,8 @@ class Imagination:
     xi, enc_bias = seed["xi"], seed["enc_bias"]
     dt = torch.full((B,), cfg.dt, device=self.device)
     k = {
+      "kp": self.c.kp[env_ids] if self.c.kp.ndim == 2 else self.c.kp,
+      "kd": self.c.kd[env_ids] if self.c.kd.ndim == 2 else self.c.kd,
       "default_q": self.c.default_q[env_ids],
       "action_scale": self.c.action_scale[env_ids],
       "soft_limits": self.c.soft_limits[env_ids],

@@ -11,9 +11,10 @@ One loop, three phases per iteration (SuperMimic Alg. A.1):
 from __future__ import annotations
 
 import argparse
+import os
 import time
 from collections import defaultdict
-from dataclasses import asdict, dataclass, fields
+from dataclasses import asdict, dataclass
 from datetime import datetime
 from pathlib import Path
 
@@ -33,7 +34,7 @@ class TrainCfg:
   task: str = "Go2-Chase-Terrain"
   num_envs: int = 4096
   buffer_len: int = 1000
-  iterations: int = 40_000
+  iterations: int = 60_000
   warmup_iterations: int = 300
   """World-model-only iterations before policy updates start."""
   collect_steps: int = 1
@@ -62,6 +63,8 @@ class TrainCfg:
   wm_rewarmup_iterations: int = 1500
   """When resuming into a world model of a different shape, fit it this long
   before the policy moves again."""
+  lr_schedule_start: int = 0
+  actor_freeze_until: int = 0
   lr: float = 2e-4
   actor_lr_scale: float = 1.0
   """The actor's learning rate relative to lr. Fine-tuning on terrain wants smaller
@@ -163,7 +166,7 @@ def clip_grads(params, global_norm: float, elem: float) -> torch.Tensor:
 def lr_at(cfg: TrainCfg, it: int) -> float:
   import math
 
-  t = min(1.0, it / cfg.lr_decay_iterations)
+  t = min(1.0, max(0.0, (it-cfg.lr_schedule_start) / max(1,cfg.lr_decay_iterations)))
   frac = cfg.lr_final_frac + (1 - cfg.lr_final_frac) * 0.5 * (1 + math.cos(math.pi * t))
   return cfg.lr * frac
 
@@ -237,6 +240,29 @@ class Trainer:
     env_cfg.commands["target"].target.curriculum_steps = cfg.target_curriculum_iterations
     if "terrain_levels" in env_cfg.curriculum:
       env_cfg.curriculum["terrain_levels"].params["steps"] = cfg.terrain_curriculum_iterations
+    self.runtime_overrides = {}
+    override_path = os.getenv("GO2_STAIRS_OVERRIDES")
+    if override_path:
+      import yaml
+      self.runtime_overrides = yaml.safe_load(Path(override_path).read_text()) or {}
+    elif cfg.resume:
+      saved_cfg = torch.load(cfg.resume, map_location="cpu", weights_only=False).get("cfg", {})
+      self.runtime_overrides = saved_cfg.get("runtime_overrides", {})
+    if self.runtime_overrides.get("environment"):
+      from rl_training_agent.config_overrides import apply_paths
+      apply_paths(env_cfg, self.runtime_overrides["environment"])
+      terrain = env_cfg.scene.terrain
+      generator = terrain.terrain_generator if terrain is not None else None
+      if generator is not None and generator.curriculum:
+        generator.sub_terrains = {name: tile for name, tile in generator.sub_terrains.items()
+                                  if tile.proportion > 0.0}
+
+      if env_cfg.scene.num_envs != cfg.num_envs:
+        raise ValueError("Change num_envs through TrainCfg so replay and scene dimensions agree")
+    for event_name in ("mass_density","pd_gains","base_com","foot_friction_slide","foot_friction_spin","foot_friction_roll"):
+      event = env_cfg.events.get(event_name)
+      if event is not None and event.mode != "startup":
+        raise ValueError("Physical context is constant per environment; reset-time DR requires per-transition context storage")
     self.env_cfg = env_cfg
     self.env = ManagerBasedRlEnv(cfg=env_cfg, device="cuda:0")
     self.dev = self.env.device
@@ -261,10 +287,15 @@ class Trainer:
     self.explore = torch.arange(cfg.num_envs, device=self.dev) < int(cfg.explore_frac * cfg.num_envs)
     self.ou = torch.zeros(cfg.num_envs, st.NUM_JOINTS, device=self.dev)
     # Imagination uses the env's reward weights, so the two cannot drift apart.
-    weights = RewardWeights(**{f.name: env_cfg.rewards[f.name].weight
-                               for f in fields(RewardWeights) if f.name in env_cfg.rewards})
+    weights = RewardWeights.from_env_rewards(env_cfg.rewards)
     imag_cfg = ImagineCfg(horizon=cfg.horizon, compile=cfg.compile, sensor_grad=cfg.sensor_grad,
                           weights=weights)
+    if self.runtime_overrides.get("imagination"):
+      from rl_training_agent.config_overrides import apply_paths
+      apply_paths(imag_cfg, self.runtime_overrides["imagination"])
+      cfg.horizon = imag_cfg.horizon
+      cfg.sensor_grad = imag_cfg.sensor_grad
+      cfg.compile = imag_cfg.compile
     self.field = self.term.height_field  # None on flat ground
     self.terms = st.obs_terms(env_cfg)
     self.imag = Imagination(imag_cfg, self.consts, self.term.cfg.target, self.history, self.dev,
@@ -291,7 +322,7 @@ class Trainer:
     self.writer = SummaryWriter(str(self.log_dir))
     self.ep_stats: dict[str, list[float]] = defaultdict(list)
     self.env_steps = 0
-    self.actor_frozen_until = 0
+    self.actor_frozen_until = cfg.actor_freeze_until
     self.policy_start = cfg.warmup_iterations
     self.lr_scale = 1.0
     self.ramp_start = 0
@@ -314,6 +345,8 @@ class Trainer:
         self.opt_wm.load_state_dict(ckpt["opt_wm"])
     elif expand_world_model_scan(ckpt["world_model"], self.wm):
       print("world model: ground-scan inputs added (zero weight, same predictions)", flush=True)
+    elif expand_world_model_context(ckpt["world_model"], self.wm):
+      print("world model: physical context expanded with zero-weight new inputs",flush=True)
     else:
       self.policy_start = max(self.policy_start, self.cfg.wm_rewarmup_iterations)
       self.actor_frozen_until = max(
@@ -336,6 +369,14 @@ class Trainer:
             flush=True)
     else:
       raise ValueError(f"actor inputs {old_obs_dim} -> {new_obs_dim}: no warm start for this")
+    if self.term.cfg.velocity_commands and not ckpt.get("velocity_commands",False):
+      offset = self.history * sum(dim for name,dim in self.terms[:5])
+      indices = torch.tensor([offset+t*28+j for t in range(self.history) for j in range(3)],device=self.dev)
+      with torch.no_grad():
+        self.actor.net[0].weight[:,indices] = 0
+        self.actor.norm.mean[indices] = 0
+        self.actor.norm.var[indices] = 1
+      print("actor: velocity-command columns enabled with zero initial weights",flush=True)
     critic_sd = self.critic.state_dict()
     same_critic = all(
       k in ckpt["critic"] and ckpt["critic"][k].shape == v.shape for k, v in critic_sd.items()
@@ -355,6 +396,13 @@ class Trainer:
       # One env step per iteration: the env-side curricula count env steps.
       self.start_it = int(ckpt.get("iteration", 0))
       self.env.common_step_counter = self.start_it
+      if not same_critic or self.cfg.reset_critic:
+        self.actor_frozen_until = max(self.actor_frozen_until, self.start_it + self.cfg.critic_warmup_iterations)
+        self.ramp_start = self.actor_frozen_until
+      if not same_wm:
+        self.policy_start = max(self.policy_start, self.start_it + self.cfg.wm_rewarmup_iterations)
+        self.actor_frozen_until = max(self.actor_frozen_until, self.policy_start + self.cfg.critic_warmup_iterations)
+        self.ramp_start = self.policy_start
       print(f"continuing at iteration {self.start_it}", flush=True)
 
   # Phase 1.
@@ -364,6 +412,14 @@ class Trainer:
     env, cfg = self.env, self.cfg
     for _ in range(cfg.collect_steps):
       s = st.robot_state(env, field=self.field)
+      if self.term.cfg.velocity_commands:
+        from go2_supermimic.env.locomotion_dynamics import random_push_before_state
+        from go2_supermimic.target.interface import yaw_rotate_inverse
+        delta, pushed = random_push_before_state(env)
+        s[:, st.V_YAW] += yaw_rotate_inverse(delta, env.scene["robot"].data.heading_w)
+        if self.buf.size and pushed.any():
+          self.buf.done[pushed, (self.buf.ptr-1)%self.buf.L] = 1.0
+        self.ep_stats["Metrics/locomotion/push_events"].append(float(pushed.sum()))
       pose = st.planar_pose(env)
       gen = pack_generator(self.term.gen)
       relief = self._relief(pose)
@@ -378,6 +434,10 @@ class Trainer:
       if self.driver is not None:
         cmd = self.steer(dt, pose[:, :2], pose[:, 2], self.term.gen.center,
                          self.term.gen.chase_pos[:, :2], self.term.has_chase)
+        if not self.term.cfg.targets_enabled:
+          from go2_supermimic.supermimic.locomotion import FORWARD_SPEED
+          cmd = torch.zeros_like(cmd)
+          cmd[:, 0] = FORWARD_SPEED
         a = torch.where(moe.unsqueeze(-1), self.driver.act(cmd), a)
       if n_exp:
         a = torch.where(exp.unsqueeze(-1), self.expert.act(self.obs), a)
@@ -393,20 +453,28 @@ class Trainer:
         self.driver.reset(done)
         self.steer.resample(done, self.term.gen.center)
       self.ou = torch.where(done.unsqueeze(-1), torch.zeros_like(self.ou), self.ou)
-      self.buf.add(s, pose, a, self.a_prev, self.obs, gen, done, relief)
+      executed = env.action_manager.get_term("joint_pos").last_executed_action.clone() if self.term.cfg.velocity_commands else a
+      self.buf.add(s, pose, executed, self.a_prev, self.obs, gen, done, relief)
       keep = ~done
       if keep.any():
         s1 = st.robot_state(env, field=self.field)
         dpose = st.pose_delta(pose, st.planar_pose(env))
         self.wm.update_stats(
-          s[keep], a[keep], self.a_prev[keep], self.xi[keep], relief[keep], s1[keep], dpose[keep]
+          s[keep], executed[keep], self.a_prev[keep], self.xi[keep], relief[keep], s1[keep], dpose[keep]
         )
       self.actor.norm.update(self.obs)
       # Fast turning (|yaw rate| > 3 rad/s): watches for circling / spinning.
       wz = env.scene["robot"].data.root_link_ang_vel_b[:, 2].abs()
       self.ep_stats["Metrics/fast_yaw"].append(float((wz > 3.0).float().mean()))
-      self.a_prev = torch.where(done.unsqueeze(-1), torch.zeros_like(a), a)
+      self.a_prev = torch.where(done.unsqueeze(-1), torch.zeros_like(executed), executed)
       self.obs = obs["actor"]
+      if self.term.cfg.velocity_commands:
+        d = env.scene["robot"].data
+        from go2_supermimic.target.interface import yaw_rotate_inverse
+        v = yaw_rotate_inverse(d.root_link_lin_vel_w,d.heading_w)
+        cmd = self.term.gen.velocity_command
+        self.ep_stats["Metrics/locomotion/yaw_error"].append(float((d.root_link_ang_vel_b[:,2]-cmd[:,2]).abs().mean()))
+        self.ep_stats["Metrics/locomotion/velocity_error"].append(float((v[:,:2]-cmd[:,:2]).norm(dim=-1).mean()))
       self.env_steps += env.num_envs
       for k, v in extras.get("log", {}).items():
         if k.startswith(("Episode_Reward", "Metrics/target", "Episode_Termination")):  # env logs
@@ -552,8 +620,10 @@ class Trainer:
     torch.save(
       {
         "supermimic": True,
+        "scan_grid": tr.SCAN_GRID,
+        "velocity_commands": bool(self.term.cfg.velocity_commands),
         "iteration": it,
-        "cfg": asdict(self.cfg),
+        "cfg": {**asdict(self.cfg), "runtime_overrides": getattr(self, "runtime_overrides", {})},
         "actor": self.actor.state_dict(),
         "critic": self.critic.state_dict(),
         "world_model": self.wm.state_dict(),
@@ -612,6 +682,12 @@ class Trainer:
         self.writer.add_scalar("time/minutes", elapsed / 60, it)
         print(" | ".join(line), flush=True)
         self._collapse_guard(falls_mean)
+        if os.environ.get("RL_AGENT_CONTROL_DIR"):
+          try:
+            from rl_training_agent.online_control import poll
+            poll(self, stats)
+          except Exception as exc:
+            print(f"LLM_CONTROL unavailable: {type(exc).__name__}: {exc}", flush=True)
       if it % cfg.save_interval == 0 or it == cfg.iterations:
         if self.collapse_strikes == 0:
           self.last_ckpt = self.save(it)
@@ -637,6 +713,28 @@ class Trainer:
       self.opt_critic = torch.optim.Adam(self.critic.parameters(), lr=self.cfg.lr)
       print(f"collapse guard: {falls:.1f} falls, rolled back to {self.last_ckpt}, "
             f"lr scale {self.lr_scale:.3g}", flush=True)
+
+
+def expand_world_model_context(old, model):
+  new = model.state_dict()
+  key = "net.0.weight"
+  if key not in old or old[key].shape[0] != new[key].shape[0]:
+    return False
+  prefix = st.STATE_DIM + 2*st.NUM_JOINTS + 4
+  new_prefix = st.STATE_DIM + 2*st.NUM_JOINTS + st.CONTEXT_DIM
+  if old[key].shape[1] != prefix + tr.SCAN_POINTS or new[key].shape[1] != new_prefix + tr.SCAN_POINTS:
+    return False
+  for name, value in old.items():
+    if name == key:
+      new[name].zero_(); new[name][:,:prefix] = value[:,:prefix]; new[name][:,new_prefix:] = value[:,prefix:]
+    elif name in ("in_norm.mean","in_norm.var"):
+      new[name][:prefix] = value[:prefix]; new[name][new_prefix:] = value[prefix:]
+    elif name not in new or new[name].shape != value.shape:
+      return False
+    else:
+      new[name] = value.clone()
+  model.load_state_dict(new)
+  return True
 
 
 def main() -> None:

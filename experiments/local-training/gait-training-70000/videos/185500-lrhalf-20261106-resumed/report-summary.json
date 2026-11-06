@@ -1,0 +1,104 @@
+{
+  "183500": {
+    "checkpoint": "/root/go2-supermimic/logs/supermimic/2026-11-06_16-08-39_gait_review_calf_only_183500/model_183500.pt",
+    "flat": {
+      "passes": 64,
+      "episodes": 96,
+      "long_flight_episodes": 3,
+      "alternating_episodes": 96,
+      "vertical_speed_rms": 0.07507350047429402,
+      "tilt_rate_rms": 0.4222157597541809,
+      "max_airborne_s": 0.07999999821186066,
+      "falls": 0
+    },
+    "stairs": {
+      "0.05": {
+        "n": 48,
+        "rise": 0.5251766908913851,
+        "edge_landings": 0,
+        "max_airborne_s": 0.059999991208314896,
+        "body_hit": 1,
+        "foot_riser_hit": 6,
+        "fall": 0,
+        "three_step_success": 48,
+        "clean_stepped_ascent": 42,
+        "clean_centered_ascent": 41
+      },
+      "0.1": {
+        "n": 48,
+        "rise": 1.0668955656389396,
+        "edge_landings": 0,
+        "max_airborne_s": 0.059999991208314896,
+        "body_hit": 0,
+        "foot_riser_hit": 2,
+        "fall": 0,
+        "three_step_success": 48,
+        "clean_stepped_ascent": 46,
+        "clean_centered_ascent": 46
+      },
+      "0.15": {
+        "n": 48,
+        "rise": 1.5347022712230682,
+        "edge_landings": 5,
+        "max_airborne_s": 0.059999991208314896,
+        "body_hit": 0,
+        "foot_riser_hit": 8,
+        "fall": 0,
+        "three_step_success": 48,
+        "clean_stepped_ascent": 40,
+        "clean_centered_ascent": 40
+      }
+    }
+  },
+  "185500": {
+    "checkpoint": "/root/go2-supermimic/logs/supermimic/2026-11-06_19-11-46_gait_review_calf_acc1p5_lrhalf_185500/model_185500.pt",
+    "flat": {
+      "passes": 65,
+      "episodes": 96,
+      "long_flight_episodes": 3,
+      "alternating_episodes": 96,
+      "vertical_speed_rms": 0.07566795746485393,
+      "tilt_rate_rms": 0.42042532563209534,
+      "max_airborne_s": 0.07999999821186066,
+      "falls": 1
+    },
+    "stairs": {
+      "0.05": {
+        "n": 48,
+        "rise": 0.5227767365674177,
+        "edge_landings": 0,
+        "max_airborne_s": 0.059999991208314896,
+        "body_hit": 0,
+        "foot_riser_hit": 6,
+        "fall": 0,
+        "three_step_success": 48,
+        "clean_stepped_ascent": 42,
+        "clean_centered_ascent": 42
+      },
+      "0.1": {
+        "n": 48,
+        "rise": 1.0708174568911393,
+        "edge_landings": 0,
+        "max_airborne_s": 0.059999991208314896,
+        "body_hit": 0,
+        "foot_riser_hit": 1,
+        "fall": 0,
+        "three_step_success": 48,
+        "clean_stepped_ascent": 47,
+        "clean_centered_ascent": 47
+      },
+      "0.15": {
+        "n": 48,
+        "rise": 1.5478690788149834,
+        "edge_landings": 2,
+        "max_airborne_s": 0.059999991208314896,
+        "body_hit": 1,
+        "foot_riser_hit": 6,
+        "fall": 0,
+        "three_step_success": 48,
+        "clean_stepped_ascent": 42,
+        "clean_centered_ascent": 41
+      }
+    }
+  }
+}

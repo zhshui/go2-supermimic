@@ -22,7 +22,7 @@ from mjlab.utils.noise import UniformNoiseCfg as Unoise
 
 from go2_supermimic.env import mdp
 from go2_supermimic.env.command import TargetCommandCfg
-from go2_supermimic.env.terrains import clean_look, rough_terrain
+from go2_supermimic.env.terrains import clean_look, rough_terrain, stairs_terrain, mixed_locomotion_terrain
 from go2_supermimic.robot.go2 import FOOT_GEOM_NAMES, GO2_ACTION_SCALE, get_go2_robot_cfg
 from go2_supermimic.target import obstacles as ob
 
@@ -35,7 +35,13 @@ def _quiet_solver_warnings(env, env_ids) -> None:
   """Startup event: silence per-step solver iteration-limit warnings (with
   thousands of worlds one hits the limit nearly every step)."""
   del env_ids
-  from mujoco_warp import OverflowType
+  try:
+    from mujoco_warp import OverflowType
+  except ImportError:
+    # Newer MuJoCo Warp versions removed solver-iteration warning flags.
+    return
+  if not all(hasattr(OverflowType, name) for name in ("ITERATIONS", "LS_ITERATIONS")):
+    return
 
   opt = env.sim.wp_model.opt
   opt.warn_overflow = int(opt.warn_overflow) & ~int(
@@ -241,4 +247,83 @@ def go2_chase_env_cfg(play: bool = False, terrain: bool = False,
 
   if play:
     cfg.episode_length_s = int(1e9)
+  return cfg
+
+
+def go2_stairs_env_cfg(play: bool = False) -> ManagerBasedRlEnvCfg:
+  """SuperMimic terrain framework with fixed forward locomotion on ascending stairs."""
+  cfg = go2_chase_env_cfg(play=play, terrain=True)
+  cfg.scene.terrain = stairs_terrain()
+  cfg.commands[CMD].targets_enabled = False
+  cfg.commands[CMD].kind_curriculum = False
+  # Keep resets fully inside the bottom platform, facing one staircase.
+  cfg.events["reset_base"].params["pose_range"].update(
+    x=(-0.1, 0.1), y=(-0.1, 0.1), yaw=(-0.1, 0.1),
+  )
+  # At 0.6 m/s an episode covers the staircase without reaching the next tile.
+  cfg.episode_length_s = 8.0
+  for name in ("chase_approach", "chase_tag", "facing_target", "evade_danger", "hit",
+               "evade_anticipate", "outside_arena", "crouch"):
+    del cfg.rewards[name]
+  cfg.rewards.update({
+    name: RewardTermCfg(func=mdp.stair_tracking_reward, weight=weight,
+                       params={"term_name": name})
+    for name, weight in (("track_lin_vel", 2.0), ("track_ang_vel", 0.5))
+  })
+  return cfg
+
+
+def go2_mixed_env_cfg(play: bool = False) -> ManagerBasedRlEnvCfg:
+  """Locomotion over stairs, flat ground, rough ground, boxes and both slope directions."""
+  cfg = go2_stairs_env_cfg(play=play)
+  cfg.scene.terrain = mixed_locomotion_terrain()
+  cfg.scene.sensors += (ContactSensorCfg(
+    name="cts_leg_contact",
+    primary=ContactMatch(mode="body", pattern=".*(thigh|calf)$", entity="robot"),
+    fields=("found", "force"), reduce="netforce",
+  ),)
+  cfg.rewards.update({
+    "cts_track_lin": RewardTermCfg(func=mdp.cts_tracking_reward, weight=0.0,
+                                    params={"term_name": "track_lin_vel"}),
+    "cts_track_yaw": RewardTermCfg(func=mdp.cts_tracking_reward, weight=0.0,
+                                    params={"term_name": "track_ang_vel"}),
+    "cts_vertical_speed": RewardTermCfg(func=mdp.cts_vertical_speed, weight=0.0),
+    "cts_base_height": RewardTermCfg(func=mdp.cts_base_height, weight=0.0, params={"target": 0.35}),
+    "cts_power": RewardTermCfg(func=mdp.cts_power, weight=0.0),
+    "cts_leg_collision": RewardTermCfg(func=mdp.cts_leg_collision, weight=0.0),
+    "cts_feet_regulation": RewardTermCfg(func=mdp.cts_feet_regulation, weight=0.0,
+                                         params={"height_target": 0.35}),
+    "tread_edge": RewardTermCfg(func=mdp.tread_edge, weight=0.0),
+    "feet_air_time": RewardTermCfg(
+      func=mdp.cts_feet_air_time, weight=0.0,
+      params={"target": 0.25, "contact_threshold": 1.0, "min_command": 0.1},
+    ),
+    "cts_action_smooth": RewardTermCfg(func=envs_mdp.action_acc_l2, weight=0.0),
+  })
+  cfg.rewards["excessive_flight"] = RewardTermCfg(func=mdp.excessive_flight, weight=-0.75)
+  cfg.rewards["base_vertical_speed_l2"] = RewardTermCfg(func=mdp.base_vertical_speed_l2, weight=0.0)
+  cfg.rewards["diagonal_support"] = RewardTermCfg(func=mdp.diagonal_support, weight=0.0)
+  cfg.rewards["riser_clearance"] = RewardTermCfg(func=mdp.riser_clearance, weight=0.0, params={"swing_only": False})
+  cfg.rewards["upward_launch"] = RewardTermCfg(func=mdp.upward_launch, weight=0.0)
+  cfg.rewards["stance_slip"] = RewardTermCfg(func=mdp.stance_slip, weight=-0.4)
+  from dataclasses import fields
+  import copy
+  from go2_supermimic.env.locomotion_dynamics import DelayedJointPositionActionCfg
+  original = cfg.actions["joint_pos"]
+  cfg.actions["joint_pos"] = DelayedJointPositionActionCfg(**{f.name:getattr(original,f.name) for f in fields(original) if f.init})
+  cfg.commands[CMD].velocity_commands = True
+  cfg.commands[CMD].field_res = 0.04
+  cfg.commands[CMD].pushes_enabled = True
+  cfg.commands[CMD].resampling_time_range = (3.0, 6.0)
+  cfg.scene.entities["robot"] = copy.deepcopy(cfg.scene.entities["robot"])
+  for actuator in cfg.scene.entities["robot"].articulation.actuators:
+    actuator.delay_min_lag = 0
+    actuator.delay_max_lag = 0
+  cfg.events["mass_density"] = EventTermCfg(mode="startup",func=envs_mdp.dr.pseudo_inertia,
+    params={"asset_cfg":SceneEntityCfg("robot",body_names=(".*",)),"alpha_range":(0.5*math.log(.8),0.5*math.log(1.2))})
+  cfg.events["pd_gains"] = EventTermCfg(mode="startup",func=envs_mdp.dr.pd_gains,
+    params={"asset_cfg":SceneEntityCfg("robot"),"kp_range":(.8,1.2),"kd_range":(.8,1.2),"operation":"scale"})
+  density_event = cfg.events.pop("mass_density")
+  cfg.events = {"mass_density": density_event, **cfg.events}
+  cfg.curriculum["terrain_levels"].params["start_step"] = 0
   return cfg

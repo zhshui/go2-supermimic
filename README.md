@@ -32,6 +32,7 @@ Every task combines the same two games:
 | `Go2-Chase-Flat` | open flat ground | – | chase / dodge / both (30 / 30 / 40 %) | balls + bars |
 | `Go2-Chase-Obstacles` | tall boxes, pillars and walls, placed per episode | 16-ray planar LiDAR | chase / dodge / both (30 / 30 / 40 %) | balls + bars (slower) |
 | `Go2-Chase-Terrain` | pyramid stairs up and down, box grids, rough ground, slopes; 5 difficulty rows | 11 × 7 height scan | chase / chase + dodge (60 / 40 %) | bars |
+| `Go2-Stairs` | ascending stairs from a central bottom platform; 5 difficulty rows | 11 × 7 height scan | forward locomotion | none |
 
 Among obstacles the chase ball slides along them and throws wait for a clear line to the robot.
 On terrain, steps grow from 2 to 10 cm and box edges from 2 to 8 cm; harder rows open during
@@ -64,6 +65,24 @@ resuming training, which also needs the world model and critic).
 | `terrain.pt` | `Go2-Chase-Terrain` | 735 |
 
 ### Train
+
+Stair climbing uses the same SuperMimic actor/world-model training as `Go2-Chase-Terrain`.
+It tracks a fixed forward speed of 0.6 m/s and zero yaw rate, with upright posture,
+low-base-height, landing, joint-limit, torque, acceleration and action-smoothness terms,
+plus a fall penalty. Chase/dodge rewards and targets are disabled in both simulation and
+imagination; their observation slots remain zero to preserve checkpoint dimensions.
+Only inverted pyramid stairs are generated: the robot starts at the bottom and climbs
+outwards. Step heights progress from 2 to 15 cm (40 cm treads); episodes last 8 seconds,
+including evaluation, to restart at the bottom. These are initial training settings,
+not a validated trained policy.
+
+```bash
+python scripts/train.py --task Go2-Stairs --run-name stairs
+# Optional: warm-start from a full terrain training checkpoint, with a fresh critic.
+python scripts/train.py --task Go2-Stairs --resume <terrain-training-model.pt> \
+    --reset-critic true --actor-lr-scale 0.3 --warmup-iterations 1000 --run-name stairs
+python scripts/eval.py Go2-Stairs --checkpoint <stairs-model.pt> --num-envs 1 --seconds 30
+```
 
 ```bash
 # Flat ground, from scratch (see "How the released policies were trained" on length).
@@ -231,3 +250,7 @@ This repository re-implements the training method of SuperMimic; please cite the
 MIT (see [LICENSE](LICENSE)). The Go2 model and meshes in `go2_supermimic/robot/` come from
 MuJoCo Menagerie and keep their own license
 ([LICENSE_menagerie_go2](go2_supermimic/robot/LICENSE_menagerie_go2)).
+
+## Fork: stairs and mixed-terrain locomotion experiments
+
+This fork includes task configurations, training and evaluation changes for Go2 stairs and mixed-terrain command following. [Experiment archive](experiments/local-training/README.md) contains policies, 210 videos, metrics, checksums, validation results and known limitations. The latest checkpoint is experimental; see the rejected-trial status before interpreting results.

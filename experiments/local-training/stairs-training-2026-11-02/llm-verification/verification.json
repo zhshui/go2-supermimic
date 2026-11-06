@@ -1,0 +1,20 @@
+{
+  "verified_at_unix": 1793618309.3829205,
+  "model": "gpt-6-sol",
+  "provider": "custom",
+  "base_url": "https://yapi.click/v1",
+  "wire_api": "responses",
+  "reasoning_effort": "medium",
+  "store": false,
+  "metric_points": 2043,
+  "usage": [
+    {
+      "model": "gpt-6-sol",
+      "prompt_tokens": 43701,
+      "completion_tokens": 3037
+    }
+  ],
+  "training_status": "stopped_by_user",
+  "resume_checkpoint": "/root/go2-supermimic/logs/supermimic/2026-11-02_18-42-39_stairs_formal/model_4000.pt",
+  "network": "SSH reverse tunnel to workstation proxy; workstation and proxy must stay online"
+}

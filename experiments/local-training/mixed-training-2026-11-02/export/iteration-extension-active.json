@@ -1,0 +1,31 @@
+{
+  "pid": 6779,
+  "experiment_id": "c7c83a2d249c",
+  "task": "Go2-Mixed",
+  "num_envs": 4096,
+  "iterations": 60000,
+  "status": "running",
+  "started_at_unix": 1793629387.063145,
+  "log_dir": "/root/go2-supermimic/logs/supermimic/2026-11-02_22-23-46_mixed_commands_dr_60k",
+  "control_dir": "/root/go2-supermimic/logs/supermimic/2026-11-02_22-23-46_mixed_commands_dr_60k/online-control",
+  "policy_start": 30000,
+  "actor_unfrozen_after": 31000,
+  "runtime_features": {
+    "context_dim": 41,
+    "actor_obs_dim": 735,
+    "mass_ratio_min": 0.8000051975250244,
+    "mass_ratio_max": 1.1999986171722412,
+    "com_std": [
+      0.014365416951477528,
+      0.014382881112396717,
+      0.01740485616028309
+    ],
+    "yaw_command_min": -0.5998562574386597,
+    "yaw_command_max": 0.5998097062110901,
+    "delay_steps": [
+      0.0,
+      1.0,
+      2.0
+    ]
+  }
+}

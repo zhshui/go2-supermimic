@@ -13,3 +13,8 @@ checkpoints/
 *.pt
 !weights/*.pt
 *.mp4
+
+# Published experiment artifacts and locomotion policies
+!experiments/local-training/**/videos/
+!experiments/local-training/**/*.mp4
+!weights/locomotion/*.pt

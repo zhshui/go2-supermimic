@@ -1,0 +1,74 @@
+# Go2-Stairs 的 LLM 诊断配置；agent.yaml 链接到本文件，CLI 实际读取它。
+# API Key 只从 OPENAI_API_KEY 读取。仅显式 analyze --llm 才会调用模型。
+mode: observe_only
+llm:
+  # null 表示采用 OPENAI_BASE_URL、RL_AGENT_MODEL、RL_AGENT_WIRE_API 环境变量。
+  base_url: null
+  model: null
+  wire_api: null
+  timeout_seconds: 60
+  max_retries: 2
+  enable_vision: false
+
+task_context:
+  robot: Unitree Go2
+  task: Go2-Stairs
+  objective: 稳定向上爬楼梯；从低台阶逐步泛化到 15 cm 台阶，减少跌倒和侧翻。
+  framework: SuperMimic model-based reinforcement learning
+  pipeline:
+    - 在 MuJoCo Warp 中采样真实仿真转移并写入 replay buffer。
+    - 用多步自回归窗口拟合 world model。
+    - 冻结 world model 参数，通过想象 rollout 的回报反向传播更新 Actor，并拟合 Critic。
+  deployment: 部署 Actor；世界模型用于训练中的想象与策略优化。
+  terrain:
+    direction: 从倒金字塔楼梯中心底部向外攀爬
+    step_height_m: [0.02, 0.15]
+    step_width_m: 0.4
+    difficulty_rows: 5
+    episode_seconds: 8
+  commands:
+    forward_speed_mps: 0.6
+    lateral_speed_mps: 0.0
+    yaw_rate_rps: 0.0
+  evaluation_requirements:
+    - 固定种子，分别报告各台阶高度的上楼进度、完成率和跌倒率。
+    - 报告前向速度跟踪、机身姿态、足端净空和动作平滑性。
+    - 若日志缺少完成率、爬升高度或足端净空，明确要求补采；不得从总回报推断已会爬楼梯。
+    - 最终结论必须结合真实仿真评估与视频；想象回报只用于辅助诊断。
+  diagnostic_instructions:
+    - 先核对任务、课程等级、有效样本量和世界模型预热阶段。
+    - 联合查看世界模型误差、真实奖励项、跌倒终止、梯度与想象回报，识别模型利用和现实/想象偏差。
+    - 区分尚未充分训练、课程推进过快、世界模型偏差、奖励失衡和传感器/观测问题。
+    - 只基于提供的证据给出建议；不得假定缺失的成功率、模型校准结果或真实机器人能力。
+    - 每项建议必须列出证据、预期影响、风险、可回滚修改和固定种子验证方法。
+    - 不替换为 PPO；保留采样、世界模型拟合、想象策略优化三阶段框架。
+
+# 以下为诊断策略元数据；CLI 不会仅因这些字段自动定时调用 API。
+diagnostics:
+  interval_iterations: 200
+  trigger_on_anomaly: true
+  max_tokens_per_call: 4000
+  max_tokens_per_experiment: 20000
+anomaly:
+  window: 20
+  stagnation_window: 20
+  stagnation_epsilon: 0.001
+  spike_zscore: 4.0
+  max_anomalies: 20
+  metric_directions:
+    train/wm_loss: down
+    Episode_Reward/track_lin_vel: up
+    Episode_Reward/track_ang_vel: up
+    Episode_Termination/fell_over: down
+parameters:
+  require_human_approval: true
+  safe_allowlist:
+    - reward_weight
+    - curriculum_threshold
+    - domain_randomization_range
+    - learning_rate
+  protected:
+    - world_model_training_and_imagination_pipeline
+    - observation_action_dimensions
+    - actor_critic_world_model_architecture
+    - robot_geometry_and_joint_motor_limits

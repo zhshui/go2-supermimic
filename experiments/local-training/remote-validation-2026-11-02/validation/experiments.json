@@ -1,0 +1,16 @@
+[
+  {
+    "experiment_id": "df5cd6529854",
+    "task": "Go2-Chase-Flat",
+    "status": "completed",
+    "base_config": "/root/rl_training_agent/validation/train-smoke.sh",
+    "proposed_config": null,
+    "reason": "120-iteration GPU smoke validation of rl_training_agent",
+    "diagnosis_json": null,
+    "checkpoint": "/root/rl_training_agent/data/experiments/df5cd6529854/checkpoints/model_120.pt",
+    "start_step": 0,
+    "end_step": 120,
+    "result_json": "{\"validation\": \"passed\", \"run_dir\": \"/root/go2-supermimic/logs/supermimic/2026-11-02_18-09-13_agent_gpu_smoke\", \"metric_points\": 304}",
+    "created_at": "2026-11-02T10:10:01.815365+00:00"
+  }
+]

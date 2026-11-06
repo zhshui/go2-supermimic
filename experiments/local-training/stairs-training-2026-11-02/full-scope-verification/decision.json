@@ -1,0 +1,17 @@
+{
+  "action": "hold",
+  "rationale": {
+    "action": "hold",
+    "change": "暂不修改采样、世界模型、Actor、Critic、奖励或课程参数。",
+    "evidence": [
+      "迭代14000在2 cm至15 cm的固定seed测试中均达到three_step_success_fraction=1.0且fall_fraction=0.0。",
+      "迭代4000到14000的15 cm表现明显改善。",
+      "当前训练无nonfinite_steps，且没有当前真实评估证据证明发生退化。"
+    ],
+    "expected_impact": "避免在缺少当前真实回归证据时引入无依据的超参数或架构变化。",
+    "risk": "如果迭代14000之后已经发生真实性能回退，继续训练可能扩大回退。",
+    "rollback": "无需回滚参数；保留当前checkpoint，并以最后一个通过真实回归测试的checkpoint作为回退点。",
+    "verification": "使用固定seed 42和与已有结果相同的n=96、8秒协议，在当前迭代16950至少评估2 cm、5 cm、10 cm、15 cm；比较fall_fraction、three_step_success_fraction、mean_net_ground_rise_m、mean_net_forward_progress_m和mean_forward_speed_mps。"
+  },
+  "normalized_from": "explicit suggestion action=hold"
+}

@@ -1,0 +1,80 @@
+{
+  "0.05": {
+    "baseline": {
+      "n": 48,
+      "rise": 0.5296619484821955,
+      "edge_landings": 0,
+      "max_airborne_s": 0.059999991208314896,
+      "body_hit": 0,
+      "foot_riser_hit": 4,
+      "fall": 0,
+      "three_step_success": 48,
+      "clean_stepped_ascent": 44,
+      "clean_centered_ascent": 43
+    },
+    "candidate": {
+      "n": 48,
+      "rise": 0.5289452945192655,
+      "edge_landings": 0,
+      "max_airborne_s": 0.059999991208314896,
+      "body_hit": 0,
+      "foot_riser_hit": 3,
+      "fall": 0,
+      "three_step_success": 48,
+      "clean_stepped_ascent": 45,
+      "clean_centered_ascent": 45
+    }
+  },
+  "0.1": {
+    "baseline": {
+      "n": 48,
+      "rise": 1.0895833546916645,
+      "edge_landings": 0,
+      "max_airborne_s": 0.059999991208314896,
+      "body_hit": 0,
+      "foot_riser_hit": 1,
+      "fall": 0,
+      "three_step_success": 48,
+      "clean_stepped_ascent": 47,
+      "clean_centered_ascent": 47
+    },
+    "candidate": {
+      "n": 48,
+      "rise": 1.0913963541388512,
+      "edge_landings": 0,
+      "max_airborne_s": 0.059999991208314896,
+      "body_hit": 0,
+      "foot_riser_hit": 2,
+      "fall": 0,
+      "three_step_success": 48,
+      "clean_stepped_ascent": 46,
+      "clean_centered_ascent": 46
+    }
+  },
+  "0.15": {
+    "baseline": {
+      "n": 48,
+      "rise": 1.540736546119054,
+      "edge_landings": 2,
+      "max_airborne_s": 0.07999999821186066,
+      "body_hit": 1,
+      "foot_riser_hit": 8,
+      "fall": 0,
+      "three_step_success": 48,
+      "clean_stepped_ascent": 39,
+      "clean_centered_ascent": 39
+    },
+    "candidate": {
+      "n": 48,
+      "rise": 1.5417375192046165,
+      "edge_landings": 5,
+      "max_airborne_s": 0.059999991208314896,
+      "body_hit": 1,
+      "foot_riser_hit": 10,
+      "fall": 0,
+      "three_step_success": 48,
+      "clean_stepped_ascent": 37,
+      "clean_centered_ascent": 37
+    }
+  }
+}

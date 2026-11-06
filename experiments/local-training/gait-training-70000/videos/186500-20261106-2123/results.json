@@ -1,0 +1,19 @@
+{
+  "checkpoint": "/root/go2-supermimic/logs/supermimic/2026-11-06_20-18-29_gait_review_calf_acc1p5_lrhalf_187500/model_186500.pt",
+  "seed": 42,
+  "clips": [
+    {
+      "terrain": "stairs_up_40cm",
+      "height_m": 0.15,
+      "seconds": 10.0,
+      "fell": false,
+      "ground_delta_m": 1.649999976158142,
+      "displacement_m": 6.040709018707275,
+      "yaw_mae_rad_s": 0.10609390595974401,
+      "pushes": 1,
+      "platform_reached": true,
+      "platform_time_s": 9.14,
+      "platform_detection": "base and all four foot XY projections on top-height surface"
+    }
+  ]
+}

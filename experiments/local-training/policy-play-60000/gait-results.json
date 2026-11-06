@@ -1,0 +1,86 @@
+{
+  "checkpoint": "logs/supermimic/2026-11-02_22-23-46_mixed_commands_dr_60k/model_60000.pt",
+  "seed": 42,
+  "clips": [
+    {
+      "terrain": "stairs_up_40cm",
+      "height_m": 0.15,
+      "seconds": 8.0,
+      "fell": false,
+      "ground_delta_m": 0.8999999761581421,
+      "displacement_m": 3.6018309593200684,
+      "yaw_mae_rad_s": 0.10762755860828965,
+      "pushes": 1,
+      "contact_histogram": {
+        "0": 130,
+        "1": 35,
+        "2": 45,
+        "3": 113,
+        "4": 76
+      },
+      "flights_over_60ms": 23,
+      "longest_flight_s": 0.16,
+      "flight_fraction": 0.3258145363408521
+    },
+    {
+      "terrain": "stairs_down_40cm",
+      "height_m": 0.1,
+      "seconds": 8.0,
+      "fell": false,
+      "ground_delta_m": -0.6000000238418579,
+      "displacement_m": 4.105149745941162,
+      "yaw_mae_rad_s": 0.13559624060514597,
+      "pushes": 1,
+      "contact_histogram": {
+        "0": 83,
+        "1": 47,
+        "2": 45,
+        "3": 110,
+        "4": 114
+      },
+      "flights_over_60ms": 20,
+      "longest_flight_s": 0.1,
+      "flight_fraction": 0.20802005012531327
+    },
+    {
+      "terrain": "rough",
+      "height_m": null,
+      "seconds": 8.0,
+      "fell": false,
+      "ground_delta_m": -0.005176283419132233,
+      "displacement_m": 3.8577330112457275,
+      "yaw_mae_rad_s": 0.05591231491183279,
+      "pushes": 1,
+      "contact_histogram": {
+        "0": 77,
+        "1": 40,
+        "2": 41,
+        "3": 103,
+        "4": 138
+      },
+      "flights_over_60ms": 19,
+      "longest_flight_s": 0.08,
+      "flight_fraction": 0.19298245614035087
+    },
+    {
+      "terrain": "flat",
+      "height_m": null,
+      "seconds": 8.0,
+      "fell": false,
+      "ground_delta_m": 0.0,
+      "displacement_m": 3.8680927753448486,
+      "yaw_mae_rad_s": 0.0445148663730699,
+      "pushes": 1,
+      "contact_histogram": {
+        "0": 82,
+        "1": 33,
+        "2": 41,
+        "3": 103,
+        "4": 140
+      },
+      "flights_over_60ms": 26,
+      "longest_flight_s": 0.08,
+      "flight_fraction": 0.20551378446115287
+    }
+  ]
+}

@@ -21,10 +21,21 @@ import torch
 
 from go2_supermimic.target import obstacles as ob
 
-# Scan grid in the robot yaw frame: 11 x 7 points, 12 cm apart, from behind
-# the hips to ahead of the head.
-SCAN_X = tuple(-0.42 + 0.12 * i for i in range(11))
-SCAN_Y = tuple(-0.36 + 0.12 * j for j in range(7))
+# Scan grid in the robot yaw frame, longitudinal x lateral.
+# Keep legacy checkpoints replayable while new runs use the expanded scan.
+import os
+SCAN_GRID = os.environ.get("GO2_SCAN_GRID", "17x11")
+if SCAN_GRID == "17x11":
+  SCAN_X = tuple(-0.6 + 0.1 * i for i in range(17))
+  SCAN_Y = tuple(-0.5 + 0.1 * j for j in range(11))
+elif SCAN_GRID == "11x17":
+  SCAN_X = tuple(-0.4 + 0.1 * i for i in range(11))
+  SCAN_Y = tuple(-0.8 + 0.1 * j for j in range(17))
+elif SCAN_GRID == "11x7":
+  SCAN_X = tuple(-0.42 + 0.12 * i for i in range(11))
+  SCAN_Y = tuple(-0.36 + 0.12 * j for j in range(7))
+else:
+  raise ValueError(f"Unsupported GO2_SCAN_GRID: {SCAN_GRID}")
 SCAN_POINTS = len(SCAN_X) * len(SCAN_Y)
 RELIEF_CLIP = (-1.2, 1.2)
 OBSTACLE_EDGE = 0.005  # softness of obstacle edges in the height map [m] (walls are 10 cm thick)

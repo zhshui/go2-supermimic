@@ -1,0 +1,102 @@
+{
+  "183500": {
+    "flat": {
+      "passes": 67,
+      "episodes": 96,
+      "long_flight_episodes": 3,
+      "alternating_episodes": 96,
+      "vertical_speed_rms": 0.0751563807328542,
+      "tilt_rate_rms": 0.422538161277771,
+      "max_airborne_s": 0.07999999821186066,
+      "falls": 0
+    },
+    "stairs": {
+      "5cm": {
+        "n": 48,
+        "mean_net_ground_rise_m": 0.524137440448006,
+        "edge_landings": 0,
+        "max_airborne_s": 0.059999991208314896,
+        "foot_riser_hit_count": 5,
+        "body_hit_count": 1,
+        "three_step_success_count": 48,
+        "fall_count": 0,
+        "clean_stepped_ascent_count": 43,
+        "clean_centered_ascent_count": 42
+      },
+      "10cm": {
+        "n": 48,
+        "mean_net_ground_rise_m": 1.064537063241005,
+        "edge_landings": 0,
+        "max_airborne_s": 0.059999991208314896,
+        "foot_riser_hit_count": 3,
+        "body_hit_count": 0,
+        "three_step_success_count": 48,
+        "fall_count": 0,
+        "clean_stepped_ascent_count": 45,
+        "clean_centered_ascent_count": 45
+      },
+      "15cm": {
+        "n": 48,
+        "mean_net_ground_rise_m": 1.5431594550609589,
+        "edge_landings": 6,
+        "max_airborne_s": 0.059999991208314896,
+        "foot_riser_hit_count": 10,
+        "body_hit_count": 0,
+        "three_step_success_count": 48,
+        "fall_count": 0,
+        "clean_stepped_ascent_count": 38,
+        "clean_centered_ascent_count": 38
+      }
+    }
+  },
+  "185500": {
+    "flat": {
+      "passes": 69,
+      "episodes": 96,
+      "long_flight_episodes": 3,
+      "alternating_episodes": 96,
+      "vertical_speed_rms": 0.0750030626853307,
+      "tilt_rate_rms": 0.41000481446584064,
+      "max_airborne_s": 0.07999999821186066,
+      "falls": 1
+    },
+    "stairs": {
+      "5cm": {
+        "n": 48,
+        "mean_net_ground_rise_m": 0.5232180977861086,
+        "edge_landings": 0,
+        "max_airborne_s": 0.059999991208314896,
+        "foot_riser_hit_count": 6,
+        "body_hit_count": 0,
+        "three_step_success_count": 48,
+        "fall_count": 0,
+        "clean_stepped_ascent_count": 42,
+        "clean_centered_ascent_count": 42
+      },
+      "10cm": {
+        "n": 48,
+        "mean_net_ground_rise_m": 1.0604166835546494,
+        "edge_landings": 0,
+        "max_airborne_s": 0.059999991208314896,
+        "foot_riser_hit_count": 2,
+        "body_hit_count": 0,
+        "three_step_success_count": 48,
+        "fall_count": 0,
+        "clean_stepped_ascent_count": 46,
+        "clean_centered_ascent_count": 45
+      },
+      "15cm": {
+        "n": 48,
+        "mean_net_ground_rise_m": 1.4523534402251244,
+        "edge_landings": 8,
+        "max_airborne_s": 0.07999999821186066,
+        "foot_riser_hit_count": 24,
+        "body_hit_count": 0,
+        "three_step_success_count": 48,
+        "fall_count": 0,
+        "clean_stepped_ascent_count": 23,
+        "clean_centered_ascent_count": 22
+      }
+    }
+  }
+}

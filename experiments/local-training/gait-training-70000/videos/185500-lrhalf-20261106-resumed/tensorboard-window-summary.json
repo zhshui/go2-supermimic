@@ -1,0 +1,410 @@
+{
+  "183500": {
+    "train/wm_loss": {
+      "windows": [
+        {
+          "lo_exclusive": 182500,
+          "hi_inclusive": 183000,
+          "n": 10,
+          "median": 0.3724132180213928
+        },
+        {
+          "lo_exclusive": 183000,
+          "hi_inclusive": 183500,
+          "n": 10,
+          "median": 0.405053973197937
+        }
+      ]
+    },
+    "train/imagined_return": {
+      "windows": [
+        {
+          "lo_exclusive": 182500,
+          "hi_inclusive": 183000,
+          "n": 10,
+          "median": 2.366329789161682
+        },
+        {
+          "lo_exclusive": 183000,
+          "hi_inclusive": 183500,
+          "n": 10,
+          "median": 2.3651938438415527
+        }
+      ]
+    },
+    "train/critic_loss": {
+      "windows": [
+        {
+          "lo_exclusive": 182500,
+          "hi_inclusive": 183000,
+          "n": 10,
+          "median": 0.004237524699419737
+        },
+        {
+          "lo_exclusive": 183000,
+          "hi_inclusive": 183500,
+          "n": 10,
+          "median": 0.00420338474214077
+        }
+      ],
+      "spikes": [
+        [
+          182450,
+          83.64839935302734
+        ],
+        [
+          182550,
+          284.91815185546875
+        ]
+      ]
+    },
+    "train/actor_grad_norm": {
+      "windows": [
+        {
+          "lo_exclusive": 182500,
+          "hi_inclusive": 183000,
+          "n": 10,
+          "median": 1.8182494640350342
+        },
+        {
+          "lo_exclusive": 183000,
+          "hi_inclusive": 183500,
+          "n": 10,
+          "median": 2.3063396215438843
+        }
+      ]
+    },
+    "Episode_Reward/tilt_rate_l2": {
+      "windows": [
+        {
+          "lo_exclusive": 182500,
+          "hi_inclusive": 183000,
+          "n": 10,
+          "median": -0.08420023694634438
+        },
+        {
+          "lo_exclusive": 183000,
+          "hi_inclusive": 183500,
+          "n": 10,
+          "median": -0.0791301429271698
+        }
+      ]
+    },
+    "Episode_Reward/cts_vertical_speed": {
+      "windows": [
+        {
+          "lo_exclusive": 182500,
+          "hi_inclusive": 183000,
+          "n": 10,
+          "median": -0.07555991038680077
+        },
+        {
+          "lo_exclusive": 183000,
+          "hi_inclusive": 183500,
+          "n": 10,
+          "median": -0.07204258069396019
+        }
+      ]
+    },
+    "Episode_Reward/cts_leg_collision": {
+      "windows": [
+        {
+          "lo_exclusive": 182500,
+          "hi_inclusive": 183000,
+          "n": 10,
+          "median": -1.9702730774879456
+        },
+        {
+          "lo_exclusive": 183000,
+          "hi_inclusive": 183500,
+          "n": 10,
+          "median": -2.22524356842041
+        }
+      ]
+    },
+    "Episode_Reward/riser_clearance": {
+      "windows": [
+        {
+          "lo_exclusive": 182500,
+          "hi_inclusive": 183000,
+          "n": 10,
+          "median": -0.020501457154750824
+        },
+        {
+          "lo_exclusive": 183000,
+          "hi_inclusive": 183500,
+          "n": 10,
+          "median": -0.020738188177347183
+        }
+      ]
+    },
+    "Episode_Reward/joint_acc_l2": {
+      "windows": [
+        {
+          "lo_exclusive": 182500,
+          "hi_inclusive": 183000,
+          "n": 10,
+          "median": -0.09743820130825043
+        },
+        {
+          "lo_exclusive": 183000,
+          "hi_inclusive": 183500,
+          "n": 10,
+          "median": -0.10169517993927002
+        }
+      ]
+    },
+    "Episode_Termination/fell_over": {
+      "windows": [
+        {
+          "lo_exclusive": 182500,
+          "hi_inclusive": 183000,
+          "n": 10,
+          "median": 0.40833333134651184
+        },
+        {
+          "lo_exclusive": 183000,
+          "hi_inclusive": 183500,
+          "n": 10,
+          "median": 0.2182539701461792
+        }
+      ]
+    },
+    "Episode_Reward/upright": {
+      "windows": [
+        {
+          "lo_exclusive": 182500,
+          "hi_inclusive": 183000,
+          "n": 10,
+          "median": 0.0
+        },
+        {
+          "lo_exclusive": 183000,
+          "hi_inclusive": 183500,
+          "n": 10,
+          "median": 0.0
+        }
+      ]
+    },
+    "Episode_Reward/base_vertical_speed_l2": {
+      "windows": [
+        {
+          "lo_exclusive": 182500,
+          "hi_inclusive": 183000,
+          "n": 10,
+          "median": 0.0
+        },
+        {
+          "lo_exclusive": 183000,
+          "hi_inclusive": 183500,
+          "n": 10,
+          "median": 0.0
+        }
+      ]
+    }
+  },
+  "185500": {
+    "train/wm_loss": {
+      "windows": [
+        {
+          "lo_exclusive": 184500,
+          "hi_inclusive": 185000,
+          "n": 10,
+          "median": 0.3893674165010452
+        },
+        {
+          "lo_exclusive": 185000,
+          "hi_inclusive": 185500,
+          "n": 10,
+          "median": 0.4097647964954376
+        }
+      ]
+    },
+    "train/imagined_return": {
+      "windows": [
+        {
+          "lo_exclusive": 184500,
+          "hi_inclusive": 185000,
+          "n": 10,
+          "median": 2.3484504222869873
+        },
+        {
+          "lo_exclusive": 185000,
+          "hi_inclusive": 185500,
+          "n": 10,
+          "median": 2.346721649169922
+        }
+      ]
+    },
+    "train/critic_loss": {
+      "windows": [
+        {
+          "lo_exclusive": 184500,
+          "hi_inclusive": 185000,
+          "n": 10,
+          "median": 0.004526314092800021
+        },
+        {
+          "lo_exclusive": 185000,
+          "hi_inclusive": 185500,
+          "n": 10,
+          "median": 0.0042075286619365215
+        }
+      ],
+      "spikes": [
+        [
+          184100,
+          184.06227111816406
+        ],
+        [
+          184200,
+          7564.37255859375
+        ]
+      ]
+    },
+    "train/actor_grad_norm": {
+      "windows": [
+        {
+          "lo_exclusive": 184500,
+          "hi_inclusive": 185000,
+          "n": 10,
+          "median": 1.594527244567871
+        },
+        {
+          "lo_exclusive": 185000,
+          "hi_inclusive": 185500,
+          "n": 10,
+          "median": 1.922331690788269
+        }
+      ]
+    },
+    "Episode_Reward/tilt_rate_l2": {
+      "windows": [
+        {
+          "lo_exclusive": 184500,
+          "hi_inclusive": 185000,
+          "n": 10,
+          "median": -0.08931944891810417
+        },
+        {
+          "lo_exclusive": 185000,
+          "hi_inclusive": 185500,
+          "n": 10,
+          "median": -0.08085832372307777
+        }
+      ]
+    },
+    "Episode_Reward/cts_vertical_speed": {
+      "windows": [
+        {
+          "lo_exclusive": 184500,
+          "hi_inclusive": 185000,
+          "n": 10,
+          "median": -0.07582875341176987
+        },
+        {
+          "lo_exclusive": 185000,
+          "hi_inclusive": 185500,
+          "n": 10,
+          "median": -0.07060882821679115
+        }
+      ]
+    },
+    "Episode_Reward/cts_leg_collision": {
+      "windows": [
+        {
+          "lo_exclusive": 184500,
+          "hi_inclusive": 185000,
+          "n": 10,
+          "median": -2.02257764339447
+        },
+        {
+          "lo_exclusive": 185000,
+          "hi_inclusive": 185500,
+          "n": 10,
+          "median": -2.1546603441238403
+        }
+      ]
+    },
+    "Episode_Reward/riser_clearance": {
+      "windows": [
+        {
+          "lo_exclusive": 184500,
+          "hi_inclusive": 185000,
+          "n": 10,
+          "median": -0.021670901216566563
+        },
+        {
+          "lo_exclusive": 185000,
+          "hi_inclusive": 185500,
+          "n": 10,
+          "median": -0.02050529606640339
+        }
+      ]
+    },
+    "Episode_Reward/joint_acc_l2": {
+      "windows": [
+        {
+          "lo_exclusive": 184500,
+          "hi_inclusive": 185000,
+          "n": 10,
+          "median": -0.1634773388504982
+        },
+        {
+          "lo_exclusive": 185000,
+          "hi_inclusive": 185500,
+          "n": 10,
+          "median": -0.16500379890203476
+        }
+      ]
+    },
+    "Episode_Termination/fell_over": {
+      "windows": [
+        {
+          "lo_exclusive": 184500,
+          "hi_inclusive": 185000,
+          "n": 10,
+          "median": 0.4097222238779068
+        },
+        {
+          "lo_exclusive": 185000,
+          "hi_inclusive": 185500,
+          "n": 10,
+          "median": 0.3084239065647125
+        }
+      ]
+    },
+    "Episode_Reward/upright": {
+      "windows": [
+        {
+          "lo_exclusive": 184500,
+          "hi_inclusive": 185000,
+          "n": 10,
+          "median": 0.0
+        },
+        {
+          "lo_exclusive": 185000,
+          "hi_inclusive": 185500,
+          "n": 10,
+          "median": 0.0
+        }
+      ]
+    },
+    "Episode_Reward/base_vertical_speed_l2": {
+      "windows": [
+        {
+          "lo_exclusive": 184500,
+          "hi_inclusive": 185000,
+          "n": 10,
+          "median": 0.0
+        },
+        {
+          "lo_exclusive": 185000,
+          "hi_inclusive": 185500,
+          "n": 10,
+          "median": 0.0
+        }
+      ]
+    }
+  }
+}

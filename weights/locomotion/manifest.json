@@ -1,0 +1,17 @@
+[
+  {
+    "path": "actor_188500.pt",
+    "bytes": 3316119,
+    "sha256": "e92627adcc0badf99fa90849fd675917afc48df445e9f1a13880a48ce55d5fdb"
+  },
+  {
+    "path": "config_188500.json",
+    "bytes": 4666,
+    "sha256": "da1133d71844769cf1ce6f7e0aa9e9e52286f2a6c890115dca9b5cc19e319df8"
+  },
+  {
+    "path": "model_188500.pt",
+    "bytes": 44088097,
+    "sha256": "f3715b301c979f488cdc6d0f713544c0c6d5287b80295f7524b8b3d2cae02541"
+  }
+]

@@ -184,6 +184,10 @@ class TargetCommand(CommandTerm):
 
   def _resample_command(self, env_ids: torch.Tensor) -> None:
     self.gen.resample(env_ids)
+    if self.cfg.velocity_commands:
+      self.gen.velocity_mode[env_ids] = 1.0
+      for j, limits in enumerate((self.cfg.velocity_x_range, self.cfg.velocity_y_range, self.cfg.yaw_rate_range)):
+        self.gen.velocity_command[env_ids, j] = torch.empty(len(env_ids),device=self.device).uniform_(*limits)
 
   def reset(self, env_ids: torch.Tensor | slice | None) -> dict[str, float]:
     assert isinstance(env_ids, torch.Tensor)
@@ -199,8 +203,13 @@ class TargetCommand(CommandTerm):
     mode = torch.multinomial(probs, len(env_ids), replacement=True)
     self.gen.set_progress(self._env.common_step_counter)
     self.gen.spawn(env_ids, robot_xy, robot_yaw, center, mode != 1, mode != 0)
+    if not self.cfg.targets_enabled:
+      self.gen.has_chase[env_ids] = False
+      self.gen.has_dodge[env_ids] = False
     if self._obstacles:
       self._place_obstacles(env_ids)
+    self.gen.action_queue[env_ids] = 0.0
+    self.gen.action_delay[env_ids] = torch.randint(self.cfg.action_delay_range[0], self.cfg.action_delay_range[1]+1, (len(env_ids),), device=self.device).float() if self.cfg.velocity_commands else 0.0
     self.hit[env_ids] = 0.0
     return super().reset(env_ids)
 
@@ -274,6 +283,16 @@ class TargetCommand(CommandTerm):
 
 @dataclass(kw_only=True)
 class TargetCommandCfg(CommandTermCfg):
+  pushes_enabled: bool = False
+  push_velocity_range: tuple[float,float] = (-0.4,0.4)
+  push_interval_range: tuple[float,float] = (3.0,6.0)
+  velocity_commands: bool = False
+  velocity_x_range: tuple[float, float] = (0.2, 0.8)
+  velocity_y_range: tuple[float, float] = (-0.15, 0.15)
+  yaw_rate_range: tuple[float, float] = (-0.6, 0.6)
+  action_delay_range: tuple[int, int] = (0, 2)
+  targets_enabled: bool = True
+  """False for locomotion: retain terrain/replay plumbing with inactive target slots."""
   entity_name: str = "robot"
   head_site: str = "head"
   mode_probs: tuple[float, float, float] = (0.3, 0.3, 0.4)
@@ -296,4 +315,8 @@ class TargetCommandCfg(CommandTermCfg):
   target: BallTargetCfg = field(default_factory=BallTargetCfg)
 
   def build(self, env: ManagerBasedRlEnv) -> TargetCommand:
+    if not 0 <= self.action_delay_range[0] <= self.action_delay_range[1] <= 2:
+      raise ValueError("control-delay queue supports 0..2 steps")
+    if not 0 < self.push_interval_range[0] <= self.push_interval_range[1]:
+      raise ValueError("push intervals must be positive")
     return TargetCommand(self, env)

@@ -1,0 +1,5 @@
+environment:
+  curriculum.terrain_levels.params.start_step: 29000
+  curriculum.terrain_levels.params.steps: 12000
+  commands.target.field_res: 0.04
+imagination: {}

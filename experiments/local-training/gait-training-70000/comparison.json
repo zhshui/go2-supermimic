@@ -1,0 +1,372 @@
+[
+  {
+    "checkpoint": "logs/supermimic/2026-11-02_22-23-46_mixed_commands_dr_60k/model_60000.pt",
+    "iteration": 60000,
+    "seed": 42,
+    "episode_seconds": 8,
+    "episodes": 40,
+    "difficulty": 1.0,
+    "fall_fraction": 0.0,
+    "mean_forward_progress_m": 1.233545184135437,
+    "mean_velocity_error_mps": 0.07754736393690109,
+    "mean_yaw_rate_error_rps": 0.11904535442590714,
+    "push_events": 47,
+    "by_terrain": [
+      {
+        "terrain": "stairs_up_30cm",
+        "episodes": 4,
+        "fall_fraction": 0.0,
+        "mean_forward_progress_m": 0.691059947013855,
+        "mean_velocity_error_mps": 0.09646633267402649,
+        "mean_yaw_rate_error_rps": 0.16865822672843933,
+        "airborne_fraction": 0.24185463786125183,
+        "long_flight_fraction": 0.07644110172986984,
+        "stance_slip_mps": 0.2520993947982788,
+        "sampled_levels": [
+          1,
+          1,
+          2,
+          4
+        ]
+      },
+      {
+        "terrain": "stairs_up_40cm",
+        "episodes": 4,
+        "fall_fraction": 0.0,
+        "mean_forward_progress_m": 0.2296849936246872,
+        "mean_velocity_error_mps": 0.07425530254840851,
+        "mean_yaw_rate_error_rps": 0.10126542299985886,
+        "airborne_fraction": 0.20739348232746124,
+        "long_flight_fraction": 0.030701754614710808,
+        "stance_slip_mps": 0.22555240988731384,
+        "sampled_levels": [
+          0,
+          2,
+          1,
+          0
+        ]
+      },
+      {
+        "terrain": "stairs_up_50cm",
+        "episodes": 4,
+        "fall_fraction": 0.0,
+        "mean_forward_progress_m": 0.4187256395816803,
+        "mean_velocity_error_mps": 0.06684643030166626,
+        "mean_yaw_rate_error_rps": 0.09413497149944305,
+        "airborne_fraction": 0.19674184918403625,
+        "long_flight_fraction": 0.030075188726186752,
+        "stance_slip_mps": 0.1983257234096527,
+        "sampled_levels": [
+          1,
+          3,
+          0,
+          0
+        ]
+      },
+      {
+        "terrain": "stairs_down_30cm",
+        "episodes": 4,
+        "fall_fraction": 0.0,
+        "mean_forward_progress_m": 1.94852614402771,
+        "mean_velocity_error_mps": 0.0789252445101738,
+        "mean_yaw_rate_error_rps": 0.12491260468959808,
+        "airborne_fraction": 0.20864661037921906,
+        "long_flight_fraction": 0.036340851336717606,
+        "stance_slip_mps": 0.19115862250328064,
+        "sampled_levels": [
+          3,
+          0,
+          1,
+          0
+        ]
+      },
+      {
+        "terrain": "stairs_down_40cm",
+        "episodes": 4,
+        "fall_fraction": 0.0,
+        "mean_forward_progress_m": 3.090545177459717,
+        "mean_velocity_error_mps": 0.10249720513820648,
+        "mean_yaw_rate_error_rps": 0.1426767259836197,
+        "airborne_fraction": 0.2124060094356537,
+        "long_flight_fraction": 0.046992480754852295,
+        "stance_slip_mps": 0.25370943546295166,
+        "sampled_levels": [
+          3,
+          3,
+          2,
+          3
+        ]
+      },
+      {
+        "terrain": "flat",
+        "episodes": 4,
+        "fall_fraction": 0.0,
+        "mean_forward_progress_m": 2.738598585128784,
+        "mean_velocity_error_mps": 0.050879694521427155,
+        "mean_yaw_rate_error_rps": 0.07468924671411514,
+        "airborne_fraction": 0.21240602433681488,
+        "long_flight_fraction": 0.03696741908788681,
+        "stance_slip_mps": 0.1940399706363678,
+        "sampled_levels": [
+          2,
+          3,
+          4,
+          3
+        ]
+      },
+      {
+        "terrain": "rough",
+        "episodes": 4,
+        "fall_fraction": 0.0,
+        "mean_forward_progress_m": -0.09400776028633118,
+        "mean_velocity_error_mps": 0.0654125064611435,
+        "mean_yaw_rate_error_rps": 0.116838738322258,
+        "airborne_fraction": 0.17230576276779175,
+        "long_flight_fraction": 0.014411027543246746,
+        "stance_slip_mps": 0.20204785466194153,
+        "sampled_levels": [
+          2,
+          1,
+          3,
+          4
+        ]
+      },
+      {
+        "terrain": "boxes",
+        "episodes": 4,
+        "fall_fraction": 0.0,
+        "mean_forward_progress_m": 0.8297475576400757,
+        "mean_velocity_error_mps": 0.10882411897182465,
+        "mean_yaw_rate_error_rps": 0.15346473455429077,
+        "airborne_fraction": 0.2149122804403305,
+        "long_flight_fraction": 0.04135338217020035,
+        "stance_slip_mps": 0.27549347281455994,
+        "sampled_levels": [
+          3,
+          1,
+          4,
+          4
+        ]
+      },
+      {
+        "terrain": "slope",
+        "episodes": 4,
+        "fall_fraction": 0.0,
+        "mean_forward_progress_m": 1.6910400390625,
+        "mean_velocity_error_mps": 0.06998638808727264,
+        "mean_yaw_rate_error_rps": 0.08866164088249207,
+        "airborne_fraction": 0.20488721132278442,
+        "long_flight_fraction": 0.030075188726186752,
+        "stance_slip_mps": 0.1647695153951645,
+        "sampled_levels": [
+          3,
+          1,
+          4,
+          3
+        ]
+      },
+      {
+        "terrain": "slope_inv",
+        "episodes": 4,
+        "fall_fraction": 0.0,
+        "mean_forward_progress_m": 0.7915308475494385,
+        "mean_velocity_error_mps": 0.06138042360544205,
+        "mean_yaw_rate_error_rps": 0.12515121698379517,
+        "airborne_fraction": 0.27819550037384033,
+        "long_flight_fraction": 0.10964912176132202,
+        "stance_slip_mps": 0.1692586988210678,
+        "sampled_levels": [
+          4,
+          0,
+          4,
+          2
+        ]
+      }
+    ]
+  },
+  {
+    "checkpoint": "logs/supermimic/2026-11-03_10-45-41_mixed_gait_70k/model_63500.pt",
+    "iteration": 63500,
+    "seed": 42,
+    "episode_seconds": 8,
+    "episodes": 40,
+    "difficulty": 1.0,
+    "fall_fraction": 0.0,
+    "mean_forward_progress_m": 1.281114101409912,
+    "mean_velocity_error_mps": 0.07511352002620697,
+    "mean_yaw_rate_error_rps": 0.11368460953235626,
+    "push_events": 47,
+    "by_terrain": [
+      {
+        "terrain": "stairs_up_30cm",
+        "episodes": 4,
+        "fall_fraction": 0.0,
+        "mean_forward_progress_m": 0.6734526753425598,
+        "mean_velocity_error_mps": 0.09272253513336182,
+        "mean_yaw_rate_error_rps": 0.15544623136520386,
+        "airborne_fraction": 0.20864661037921906,
+        "long_flight_fraction": 0.05325814709067345,
+        "stance_slip_mps": 0.24085459113121033,
+        "sampled_levels": [
+          1,
+          1,
+          2,
+          4
+        ]
+      },
+      {
+        "terrain": "stairs_up_40cm",
+        "episodes": 4,
+        "fall_fraction": 0.0,
+        "mean_forward_progress_m": 0.21437713503837585,
+        "mean_velocity_error_mps": 0.07082273066043854,
+        "mean_yaw_rate_error_rps": 0.09846174716949463,
+        "airborne_fraction": 0.20488721132278442,
+        "long_flight_fraction": 0.041353385895490646,
+        "stance_slip_mps": 0.20168441534042358,
+        "sampled_levels": [
+          0,
+          2,
+          1,
+          0
+        ]
+      },
+      {
+        "terrain": "stairs_up_50cm",
+        "episodes": 4,
+        "fall_fraction": 0.0,
+        "mean_forward_progress_m": 0.4408445656299591,
+        "mean_velocity_error_mps": 0.06935811042785645,
+        "mean_yaw_rate_error_rps": 0.09158915281295776,
+        "airborne_fraction": 0.1791979968547821,
+        "long_flight_fraction": 0.028195489197969437,
+        "stance_slip_mps": 0.2060544639825821,
+        "sampled_levels": [
+          1,
+          3,
+          0,
+          0
+        ]
+      },
+      {
+        "terrain": "stairs_down_30cm",
+        "episodes": 4,
+        "fall_fraction": 0.0,
+        "mean_forward_progress_m": 1.9089341163635254,
+        "mean_velocity_error_mps": 0.07993048429489136,
+        "mean_yaw_rate_error_rps": 0.1286141574382782,
+        "airborne_fraction": 0.19799499213695526,
+        "long_flight_fraction": 0.038847118616104126,
+        "stance_slip_mps": 0.19687607884407043,
+        "sampled_levels": [
+          3,
+          0,
+          1,
+          0
+        ]
+      },
+      {
+        "terrain": "stairs_down_40cm",
+        "episodes": 4,
+        "fall_fraction": 0.0,
+        "mean_forward_progress_m": 3.0587759017944336,
+        "mean_velocity_error_mps": 0.1064973771572113,
+        "mean_yaw_rate_error_rps": 0.140845388174057,
+        "airborne_fraction": 0.2005012482404709,
+        "long_flight_fraction": 0.04385964572429657,
+        "stance_slip_mps": 0.25251808762550354,
+        "sampled_levels": [
+          3,
+          3,
+          2,
+          3
+        ]
+      },
+      {
+        "terrain": "flat",
+        "episodes": 4,
+        "fall_fraction": 0.0,
+        "mean_forward_progress_m": 2.6584479808807373,
+        "mean_velocity_error_mps": 0.05188290774822235,
+        "mean_yaw_rate_error_rps": 0.07120092213153839,
+        "airborne_fraction": 0.20739348232746124,
+        "long_flight_fraction": 0.05388471111655235,
+        "stance_slip_mps": 0.1843888908624649,
+        "sampled_levels": [
+          2,
+          3,
+          4,
+          3
+        ]
+      },
+      {
+        "terrain": "rough",
+        "episodes": 4,
+        "fall_fraction": 0.0,
+        "mean_forward_progress_m": -0.09249845147132874,
+        "mean_velocity_error_mps": 0.06376635283231735,
+        "mean_yaw_rate_error_rps": 0.1098298579454422,
+        "airborne_fraction": 0.19298245012760162,
+        "long_flight_fraction": 0.04135338217020035,
+        "stance_slip_mps": 0.1696454882621765,
+        "sampled_levels": [
+          2,
+          1,
+          3,
+          4
+        ]
+      },
+      {
+        "terrain": "boxes",
+        "episodes": 4,
+        "fall_fraction": 0.0,
+        "mean_forward_progress_m": 1.3301756381988525,
+        "mean_velocity_error_mps": 0.08567565679550171,
+        "mean_yaw_rate_error_rps": 0.1307063102722168,
+        "airborne_fraction": 0.21992480754852295,
+        "long_flight_fraction": 0.048245616257190704,
+        "stance_slip_mps": 0.24332278966903687,
+        "sampled_levels": [
+          3,
+          1,
+          4,
+          4
+        ]
+      },
+      {
+        "terrain": "slope",
+        "episodes": 4,
+        "fall_fraction": 0.0,
+        "mean_forward_progress_m": 1.6899330615997314,
+        "mean_velocity_error_mps": 0.06419935822486877,
+        "mean_yaw_rate_error_rps": 0.0882720872759819,
+        "airborne_fraction": 0.19548872113227844,
+        "long_flight_fraction": 0.03258145600557327,
+        "stance_slip_mps": 0.16728660464286804,
+        "sampled_levels": [
+          3,
+          1,
+          4,
+          3
+        ]
+      },
+      {
+        "terrain": "slope_inv",
+        "episodes": 4,
+        "fall_fraction": 0.0,
+        "mean_forward_progress_m": 0.9286981821060181,
+        "mean_velocity_error_mps": 0.06627964973449707,
+        "mean_yaw_rate_error_rps": 0.12188022583723068,
+        "airborne_fraction": 0.24310776591300964,
+        "long_flight_fraction": 0.08646616339683533,
+        "stance_slip_mps": 0.17865236103534698,
+        "sampled_levels": [
+          4,
+          0,
+          4,
+          2
+        ]
+      }
+    ]
+  }
+]
