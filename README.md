@@ -254,3 +254,7 @@ MuJoCo Menagerie and keep their own license
 ## Fork: stairs and mixed-terrain locomotion experiments
 
 This fork includes task configurations, training and evaluation changes for Go2 stairs and mixed-terrain command following. [Experiment archive](experiments/local-training/README.md) contains policies, 210 videos, metrics, checksums, validation results and known limitations. The latest checkpoint is experimental; see the rejected-trial status before interpreting results.
+
+## Complete policy archive
+
+[All 170 original policy and checkpoint files](weights/complete/README.md) are archived with their original paths and SHA-256 checksums, including 167 training checkpoints/backups and 3 upstream actor policies. [The 210 local evaluation videos](experiments/local-training/VIDEO-INDEX.md) are also preserved and checked against their local originals. Full policy files are ordinary Git blobs; see the archive instructions for downloading selected checkpoints or using a smaller partial clone.

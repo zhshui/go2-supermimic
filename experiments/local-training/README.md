@@ -2,6 +2,7 @@
 
 Snapshot collected on 2026-11-06 (Asia/Shanghai). The repository source was copied from the training machine working tree based on upstream commit `d9eee9b3f248e5300e636c433255db2c1c3e086a`.
 
+- [All 170 original policy/checkpoint files](../../weights/complete/README.md), including historical checkpoints and backups.
 - [Latest full checkpoint](../../weights/locomotion/model_188500.pt): iteration 188500, actor, critic, world model, optimizer state and training configuration.
 - [Actor policy](../../weights/locomotion/actor_188500.pt): actor plus configuration, scan grid and velocity-command metadata; suitable for evaluation, not training resumption.
 - [Checkpoint configuration](../../weights/locomotion/config_188500.json).

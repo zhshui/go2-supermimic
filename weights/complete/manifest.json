@@ -1,0 +1,1022 @@
+[
+  {
+    "path": "logs/supermimic/2026-11-02_19-27-50_stairs_llm/model_14000.pt",
+    "bytes": 37817007,
+    "mtime_ns": 1793621782764854450,
+    "sha256": "f6c4ba5191f97239ef282ff4a58a577fd990e8562d40e73d46e0cb7be7ad8895"
+  },
+  {
+    "path": "logs/supermimic/2026-11-02_19-27-50_stairs_llm/model_29000.pt",
+    "bytes": 37817007,
+    "mtime_ns": 1793626423735751217,
+    "sha256": "1a172c6d9b039d97e4a627215dff7f599d76d00783c14a303c60678c5024b4c0"
+  },
+  {
+    "path": "logs/supermimic/2026-11-02_19-27-50_stairs_llm/online-control/backups/before_12500_actor_lr_scale.pt",
+    "bytes": 37817007,
+    "mtime_ns": 1793621330806435266,
+    "sha256": "56c336e0349dba8fb339a888f8fd7213c3d62f718f318ea36168bd3f77992744"
+  },
+  {
+    "path": "logs/supermimic/2026-11-02_19-27-50_stairs_llm/online-control/backups/before_4450_actor_lr_scale.pt",
+    "bytes": 37816765,
+    "mtime_ns": 1793619028246726525,
+    "sha256": "5e4e5b8d9f2d11fddf393d7d0a68e12dd46e90c5234a55db0f0262064478a562"
+  },
+  {
+    "path": "logs/supermimic/2026-11-02_19-27-50_stairs_llm/online-control/backups/before_8550_actor_lr_scale.pt",
+    "bytes": 37816765,
+    "mtime_ns": 1793620198368411384,
+    "sha256": "ca5cb0ae6e506958faf675b343345c4731ee3ebbfae2dc91b596790ddb57d4db"
+  },
+  {
+    "path": "logs/supermimic/2026-11-02_21-39-26_mixed_commands_dr/model_29000.pt",
+    "bytes": 17248183,
+    "mtime_ns": 1793626766617913883,
+    "sha256": "f613f3677590bb47676cf7f678b367403ffca2f3a3493d970aed47d5b62458af"
+  },
+  {
+    "path": "logs/supermimic/2026-11-02_22-23-46_mixed_commands_dr_60k/model_60000.pt",
+    "bytes": 38672303,
+    "mtime_ns": 1793637928019692936,
+    "sha256": "fdd6fcd1bdb3607cd39fade320058d932ddf7c4d155ff5615facc31f7d06f130"
+  },
+  {
+    "path": "logs/supermimic/2026-11-03_10-45-41_mixed_gait_70k/model_60000.pt",
+    "bytes": 38672303,
+    "mtime_ns": 1793673942079005906,
+    "sha256": "56cd58786c993647ab0c041a0d040c314fb4976f92ef712981b5c8762a4d9d4f"
+  },
+  {
+    "path": "logs/supermimic/2026-11-03_10-45-41_mixed_gait_70k/model_70000.pt",
+    "bytes": 38672303,
+    "mtime_ns": 1793677743334113324,
+    "sha256": "ede607055ed1f3b77e706d47441cdc32249f7fd76f0611a4ee3b8db73de472ec"
+  },
+  {
+    "path": "logs/supermimic/2026-11-03_11-50-59_gait_review_72000/model_70000.pt",
+    "bytes": 38673519,
+    "mtime_ns": 1793677859987588540,
+    "sha256": "5d5f14b082a98cb2148f03207b62bf184fab780b3bb20c09b56b735f3aeb009e"
+  },
+  {
+    "path": "logs/supermimic/2026-11-03_11-56-19_gait_review_72000/model_70000.pt",
+    "bytes": 38673583,
+    "mtime_ns": 1793678179540364143,
+    "sha256": "78ac78000f9c650b032b2e34826c8a5d7ecd3fa977098a38870b0d1fc065626f"
+  },
+  {
+    "path": "logs/supermimic/2026-11-03_12-23-24_gait_review_76000/model_76000.pt",
+    "bytes": 38673647,
+    "mtime_ns": 1793680579813776936,
+    "sha256": "b531aa56f45aee6feb58d9f16d775bd54653d29c86df5b743a35eea62eac8e29"
+  },
+  {
+    "path": "logs/supermimic/2026-11-03_12-47-16_gait_review_78000/model_76000.pt",
+    "bytes": 38673711,
+    "mtime_ns": 1793681236529461979,
+    "sha256": "2e3a4ca27ee394ef8a89275489767f462c12fcb6727cd060dd7f4667f21d264f"
+  },
+  {
+    "path": "logs/supermimic/2026-11-03_13-07-13_gait_review_80000/model_80000.pt",
+    "bytes": 38673711,
+    "mtime_ns": 1793683255933981560,
+    "sha256": "517cec6fe2a97d05b9d1a0e1ea467ed670db2c9b3eae1b3d73fa29c1c9d6444a"
+  },
+  {
+    "path": "logs/supermimic/2026-11-03_13-22-37_gait_review_82000/model_80000.pt",
+    "bytes": 38673711,
+    "mtime_ns": 1793683357779891873,
+    "sha256": "03d5037e2fcf09fcdb946cbd0986175814f00641f204bf91527eada4cf190b05"
+  },
+  {
+    "path": "logs/supermimic/2026-11-03_13-48-00_gait_review_82000/model_80000.pt",
+    "bytes": 38673711,
+    "mtime_ns": 1793684880176275603,
+    "sha256": "03d5037e2fcf09fcdb946cbd0986175814f00641f204bf91527eada4cf190b05"
+  },
+  {
+    "path": "logs/supermimic/2026-11-03_17-14-56_gait_review_116000/model_116000.pt",
+    "bytes": 38674209,
+    "mtime_ns": 1793697915317322385,
+    "sha256": "638511e25f73662fb94c8b39606c2b032a3afb9274bacabf7e98986431f1981f"
+  },
+  {
+    "path": "logs/supermimic/2026-11-03_17-25-56_gait_review_118000/model_116000.pt",
+    "bytes": 38674209,
+    "mtime_ns": 1793697957068419847,
+    "sha256": "fa4034fb87957cfaf0aba24b04151636b39c93a21c18e71caa94098274176f83"
+  },
+  {
+    "path": "logs/supermimic/2026-11-03_17-36-56_gait_review_120000/model_120000.pt",
+    "bytes": 38674209,
+    "mtime_ns": 1793699242407896278,
+    "sha256": "72982b1ddda2f7cd2d2f154774c23ff5622ed280d7c4225d3a89c211f491b2fb"
+  },
+  {
+    "path": "logs/supermimic/2026-11-03_17-48-04_gait_review_122000/model_120000.pt",
+    "bytes": 38674209,
+    "mtime_ns": 1793699284202648465,
+    "sha256": "42f13a05edc7836c7834cad121af5305590b55cd6b579c095d1a16b6b9261e67"
+  },
+  {
+    "path": "logs/supermimic/2026-11-03_17-49-08_gait_review_122000/model_120000.pt",
+    "bytes": 38674209,
+    "mtime_ns": 1793699348888746910,
+    "sha256": "48d2c2bf1bf8abc30ba53669664718c16b7b409fa5f5967721bec88b69146571"
+  },
+  {
+    "path": "logs/supermimic/2026-11-03_20-53-37_gait_review_124000/model_124000.pt",
+    "bytes": 38674209,
+    "mtime_ns": 1793711262879924269,
+    "sha256": "3b1b7356b3d8b96ae8938f08f5ec933c1fe97a8ed36a5711c585ae53b0879916"
+  },
+  {
+    "path": "logs/supermimic/2026-11-03_21-10-23_gait_review_126000/model_124000.pt",
+    "bytes": 38674209,
+    "mtime_ns": 1793711423271610087,
+    "sha256": "94207215c7848175576c8d36a635a04e3bb39b09a35ddc5f705fbfcc56abdd50"
+  },
+  {
+    "path": "logs/supermimic/2026-11-03_22-37-02_gait_review_134000/model_134000.pt",
+    "bytes": 38674209,
+    "mtime_ns": 1793717439757094326,
+    "sha256": "39ad87e699c68730d641995eedb1d4911497e641674ee7db2ee818e83ed7f6c3"
+  },
+  {
+    "path": "logs/supermimic/2026-11-03_23-08-07_gait_review_136000/model_134000.pt",
+    "bytes": 38674209,
+    "mtime_ns": 1793718487319179911,
+    "sha256": "33f33a689ac55ce61c8de71743a086d334af0ecd09b67761c72d9fae9868f69e"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_00-39-21_gait_review_138000/model_138000.pt",
+    "bytes": 38674209,
+    "mtime_ns": 1793724837643114857,
+    "sha256": "a7f934412b7d5052f90cc8e103436ac347fa72a47d8b7d5167b9f24c69376a04"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_00-59-42_gait_review_140000/model_138000.pt",
+    "bytes": 38674209,
+    "mtime_ns": 1793725182469006182,
+    "sha256": "6adf042a5660e36813ed51d7ce3e39478bc0bc34f83210647b550a34cf2a5290"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_00-59-42_gait_review_140000/model_139500.pt",
+    "bytes": 38674209,
+    "mtime_ns": 1793725803261754662,
+    "sha256": "a9adedc2409a29b71e2e6bfba35a8509a4b4bff8f60e774dc34f434e81790b2c"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_11-37-01_gait_review_141500/model_139500.pt",
+    "bytes": 38674209,
+    "mtime_ns": 1793763421289109085,
+    "sha256": "0542c9cbefe9589fc4769264efc669ab711d9d1a0084e8ee9c88e0eb640b1559"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_11-37-01_gait_review_141500/model_141500.pt",
+    "bytes": 38674209,
+    "mtime_ns": 1793764241008012166,
+    "sha256": "4619cb4188bb81f905e393534a5a435717f36f0644fca9288c3281509314dbdc"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_11-58-47_gait_review_143500/model_141500.pt",
+    "bytes": 38674209,
+    "mtime_ns": 1793764727788004540,
+    "sha256": "63090669612c23fa4be444beaa1800824c1a19fa0d55d0a529a8e50d31d241c7"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_11-58-47_gait_review_143500/model_143500.pt",
+    "bytes": 38674209,
+    "mtime_ns": 1793765431284627516,
+    "sha256": "637d7b91736e1f23c74810413a927400573fffee27c9a910110244943341f0ec"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_12-18-58_gait_review_145500/model_143500.pt",
+    "bytes": 38674209,
+    "mtime_ns": 1793765939087562095,
+    "sha256": "5c50bf5150de12fc935e612a52c1aa6fed852c5988b02fc1d8fddcbf7a76960a"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_12-18-58_gait_review_145500/model_145500.pt",
+    "bytes": 38674209,
+    "mtime_ns": 1793766653296594855,
+    "sha256": "b9a0afd3c9c93293e46248e43f34f9de1aa224b9b1a8a84bfe0e1cb99149c950"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_14-16-49_gait_review_147500/model_145500.pt",
+    "bytes": 38674209,
+    "mtime_ns": 1793773009682115054,
+    "sha256": "46bc88302945923e7539153480dc900b5035141bf9514d3fd80e831680cf0e3c"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_14-16-49_gait_review_147500/model_147500.pt",
+    "bytes": 38674209,
+    "mtime_ns": 1793773850021009024,
+    "sha256": "4c452a591007ec7b65d2cc853772bf788af2a89a347e9dd5101fa972ba5573ca"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_14-34-41_gait_review_149500/model_147500.pt",
+    "bytes": 38675169,
+    "mtime_ns": 1793774081283324692,
+    "sha256": "445c93ba6a1de5e79604e09f0c0d36cb3c475cf72922d96b123f214cf8524d76"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_14-34-41_gait_review_149500/model_149500.pt",
+    "bytes": 38675169,
+    "mtime_ns": 1793774984307483898,
+    "sha256": "2f0cf27167418cab436ee6eacc813f2e2717e757299c0f1feb6d54def22ef288"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_14-57-14_gait_review_151500/model_149500.pt",
+    "bytes": 38675169,
+    "mtime_ns": 1793775434631651797,
+    "sha256": "16a6426128d0945dc687797e1fdbbb439f5c657c5eed7a464656444da057d463"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_14-57-14_gait_review_151500/model_151500.pt",
+    "bytes": 38675169,
+    "mtime_ns": 1793776333210871310,
+    "sha256": "7254a398edcf6bc913be8aa674cf8ab30db89c677612f506172e7eea3aaffd6d"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_15-31-42_gait_review_153500/model_151500.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793777502604074261,
+    "sha256": "0b15e8e121bdb4e075394133320db0609bb11610e28e74d900202a9b027c81ac"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_15-31-42_gait_review_153500/model_152000.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793777804954311266,
+    "sha256": "d8804e641dcd5ef662e514de0613eee0015a0394efe55a8ee17bb6df74561c03"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_15-31-42_gait_review_153500/model_152500.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793777995008373601,
+    "sha256": "70baed3e1440975242d3f88de3a4d30f44efe52b719af7301530204e9a502e2d"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_15-31-42_gait_review_153500/model_153000.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793778182714605382,
+    "sha256": "b3ff42ee32708d14d5bc6082687721449b4d893dca7e1bb2c145a2a8c3bdc0e0"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_15-31-42_gait_review_153500/model_153500.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793778371603267304,
+    "sha256": "62e7592792b3705275f627d2f3f77801b28fd9fe76cc0aa6d5fd26c770c06872"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_15-57-59_gait_review_155500/model_153500.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793779079740926903,
+    "sha256": "7265e6cc66f49acc81429e105d263806e2d462a510018a6c41633d1e9d7aceb2"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_15-57-59_gait_review_155500/model_154000.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793779283113707403,
+    "sha256": "3b38b54af693367bd764ca548d37629c44b7e05c0a2f074d5c414fac71840698"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_15-57-59_gait_review_155500/model_154500.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793779461846445727,
+    "sha256": "ff6e962ccf2e9c45930ea21bc684fa9e975702403468b7e022caf66f7f5c0074"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_15-57-59_gait_review_155500/model_155000.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793779641654881912,
+    "sha256": "dbde6815344d1a7fcb4cb4610b49bc1718b87d8255380095324d41d830d08cc9"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_15-57-59_gait_review_155500/model_155500.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793779821219123791,
+    "sha256": "375c1027090fbb5822ce681ea5190a7df2c7d84ed4c119e5aea593097af9e018"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_19-34-43_gait_review_157500/model_155500.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793792084045728366,
+    "sha256": "368cb6a81abc1844c1cba10a67c7791249f0fa956044af6921244fb2e0d4b0b4"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_19-34-43_gait_review_157500/model_156000.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793792418082344505,
+    "sha256": "1482d3901197fa27819cca55fae8baf0b359aeb1c46b9b99667f2602d1f17d4e"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_19-34-43_gait_review_157500/model_156500.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793792601210987166,
+    "sha256": "1906c2ad8124e9adac90d5537f36eb14456f5829bbdf6c9c2dcc7866c188209f"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_19-34-43_gait_review_157500/model_157000.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793792785784134379,
+    "sha256": "f3c0fbd9f26f1771e5deeae0b09b8069ae39a3c00461747b4263d97105b22ce5"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_19-34-43_gait_review_157500/model_157500.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793792971045652190,
+    "sha256": "de85682bf487ffdc6c15864271506e213dec205a593d482013796a8ab7e846e0"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_19-57-34_gait_review_159500/model_157500.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793793454717829286,
+    "sha256": "659b6ae1488822b0eae7d788f5330ac89c05a55c23c1f55025d00262883ac906"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_19-57-34_gait_review_159500/model_158000.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793793659607399239,
+    "sha256": "4ca19d29a7c9ca1e7aa81719b9e88f38f04c3ad931ef6080c660b662b468979a"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_19-57-34_gait_review_159500/model_158500.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793793839133838760,
+    "sha256": "e8b9adfd55b9756e89eaf9bcb93d2bbb1afdd6f84ed178e2032e59d28af4babb"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_19-57-34_gait_review_159500/model_159000.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793794021500238895,
+    "sha256": "585aec1f9fcb226937e5b58efda7be2fb552f22e591632e8b3340f71c9154e01"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_19-57-34_gait_review_159500/model_159500.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793794201219067877,
+    "sha256": "942d39e107dd3c89df9dbfdff27263bd6c1a3c702ff3270d9e304c4b789644b5"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_20-17-44_gait_review_161500/model_159500.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793794664798801651,
+    "sha256": "e99c5d4daf83f74ad24f40f6a3ea6a631b3f4d49474797c40ddc36e900552fa7"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_20-17-44_gait_review_161500/model_160000.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793795029184598904,
+    "sha256": "4b9969e7cc91d936dc4e4715618aeca864db75bfaac0029ea5125f044d34b881"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_20-17-44_gait_review_161500/model_160500.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793795219371175599,
+    "sha256": "7c4fbc9717ede43a1e826d662be3ae57f71608350ea2d3b4e1e775f869be162b"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_20-17-44_gait_review_161500/model_161000.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793795404961843881,
+    "sha256": "9c238a00c8ee481689132a634e322db87840c277a2e68a2a61e03a2169962b0e"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_20-17-44_gait_review_161500/model_161500.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793795591988443586,
+    "sha256": "f13b91b73b87f8d63e6318bb18e13f5ebb3adfd214e484927708d8acc36655f7"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_20-37-37_gait_review_163500/model_161500.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793795858016730824,
+    "sha256": "56bf4415f15f09b76e4091529018a01a1cfe47457e7db5700ab6b3acb3eba68b"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_20-37-37_gait_review_163500/model_162000.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793796068710605354,
+    "sha256": "3a45adbc534e8b06122be6b14496610d9c0100c7928207371071e9a3ec0c4538"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_20-37-37_gait_review_163500/model_162500.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793796255573891001,
+    "sha256": "ae8532b5a32ef48f63637ea4754b2d07e97fda1094ffeedf659cb54220bc0719"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_20-37-37_gait_review_163500/model_163000.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793796446096134472,
+    "sha256": "1dbd64e07566d809e679107aa259a53e208a8459e2cd5430a45446c19fb53104"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_20-37-37_gait_review_163500/model_163500.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793796632168808829,
+    "sha256": "53aa43f9bd740f99bbfc0e24cd32c3b77e433ff8cdfc96b115c70fb1605bf890"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_20-57-27_gait_review_165500/model_163500.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793797048032074673,
+    "sha256": "8e985c2d3bb41499f2734b064d7e432e060e103f3d27b3b347762d19b09edb0e"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_20-57-27_gait_review_165500/model_164000.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793797258962987047,
+    "sha256": "1abef764fd6d6c915994468bd72882c9d9c5e48a89735c898648642b1bd53563"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_20-57-27_gait_review_165500/model_164500.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793797443227502775,
+    "sha256": "4cf10acee8d20d585df1a556cf83d875ac24db19cadd01f6c75814118e4868c3"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_20-57-27_gait_review_165500/model_165000.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793797630140206783,
+    "sha256": "f91f483b629b79040a5096147ca45f5776d327a4af2cb0e5a108acde6f57641b"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_20-57-27_gait_review_165500/model_165500.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793797817433103681,
+    "sha256": "97dd55585331cc6586064c5c44db0e23ef272a4c372a4600fc0ec8f9c50bc24a"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_21-17-22_gait_review_167500/model_165500.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793798242625477846,
+    "sha256": "9da6efc7f66bdc1722ffd10a45dddffb4675856ac6dd1959561da64e0e5af38a"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_21-17-22_gait_review_167500/model_166000.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793798454270555838,
+    "sha256": "ab3249c5446e131fca70d005bae8c13f189ed6fd93749fa6975e095c9a10b5f4"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_21-17-22_gait_review_167500/model_166500.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793798639881394970,
+    "sha256": "9e5ca42006f1c45f7cf181782331cce59254dc78332ff11925c8ed3e47bc347d"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_21-17-22_gait_review_167500/model_167000.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793798828310843980,
+    "sha256": "ad59d8c47ec5a770161ffae667fd1013c6df326a5faf7e79f45e403765264d49"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_21-17-22_gait_review_167500/model_167500.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793799011091450432,
+    "sha256": "5865db409e79ba452ab03a3a6a05d17826ec9994b672a5db56a2d34e602cbb48"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_21-39-28_gait_review_169500/model_167500.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793799569049929431,
+    "sha256": "b2c2df965eeb6842d495e6047f28bde353a550f2ce331c67bdb39a455eb1f980"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_21-39-28_gait_review_169500/model_168000.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793799923860089154,
+    "sha256": "592225ab2cb90344da1d3ab03be244fcdbd0474b4f957a98b24d40e99b82b277"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_21-39-28_gait_review_169500/model_168500.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793800119034484718,
+    "sha256": "ca3cddcf9739ada03bec95f6e8bcef91387fb8af10674e62d477c177a4887996"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_21-39-28_gait_review_169500/model_169000.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793800311289279461,
+    "sha256": "ba52cf134474a8b547dc0a4ce40e37acf5797580356220db9a4dbc3948057f0b"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_21-39-28_gait_review_169500/model_169500.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793800504858598641,
+    "sha256": "a114d6274ec5ce3e14b6e5e865fd1a1423295ae70475eee1819e689f63b05a4d"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_22-07-16_gait_review_171500/model_169500.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793801236486701775,
+    "sha256": "0504240683a467f218681690d5f205ca4d5c5508af885dd1ae469ed10217c945"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_22-07-16_gait_review_171500/model_170000.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793801460060972834,
+    "sha256": "3831e8a108d1dfe5487b3701660e31cc8014c4dcc82f1a4e3eb573bc6ee93291"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_22-07-16_gait_review_171500/model_170500.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793801657647760373,
+    "sha256": "87016664e6ba4ad2f6989300cc3a6c01fba0816dfa024b7bffc66b43932e2a7e"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_22-07-16_gait_review_171500/model_171000.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793801857918381829,
+    "sha256": "63ea181e51385b651745e6dee24b033969edebbf7cdc31196e4366b130887eb9"
+  },
+  {
+    "path": "logs/supermimic/2026-11-04_22-07-16_gait_review_171500/model_171500.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793802056112994995,
+    "sha256": "8773de3ecdffbef85856499f255686a6c0047b4048a21bb38d268091fc97e36d"
+  },
+  {
+    "path": "logs/supermimic/2026-11-05_18-21-23_gait_review_173500/model_171500.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793874083258572260,
+    "sha256": "82b7bad72f1a3c4a8d14bdc7e27b817cb2d9d62c69b36d06f4283b88c1a45d53"
+  },
+  {
+    "path": "logs/supermimic/2026-11-05_18-21-23_gait_review_173500/model_172000.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793874442364828725,
+    "sha256": "ff2b7f9b8e4948add8e94e3b3694d6b2f81fa13195bc53e824fea400ce58eb1f"
+  },
+  {
+    "path": "logs/supermimic/2026-11-05_18-21-23_gait_review_173500/model_172500.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793874637091162765,
+    "sha256": "e1b54d223199898a49bff5c575821932e5e2217d89a2a0254e645146ae0cfce9"
+  },
+  {
+    "path": "logs/supermimic/2026-11-05_18-21-23_gait_review_173500/model_173000.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793874833287441967,
+    "sha256": "5ac61f433528a23ed5f8128fbfe0c2a1777d2f3582a495230739e2bcf5f9c806"
+  },
+  {
+    "path": "logs/supermimic/2026-11-05_18-21-23_gait_review_173500/model_173500.pt",
+    "bytes": 38675233,
+    "mtime_ns": 1793875029238212289,
+    "sha256": "be07f97ccb2fdffa9b6396336f9a0894d729f355e262d0f9ce45892c6ceb8da4"
+  },
+  {
+    "path": "logs/supermimic/2026-11-05_18-43-10_gait_review_175500/model_173500.pt",
+    "bytes": 14711753,
+    "mtime_ns": 1793875390085502428,
+    "sha256": "bb41c50f15c2c425f0943f63f5276171128973ab44bd15ade3ea9351e0de5da4"
+  },
+  {
+    "path": "logs/supermimic/2026-11-05_18-47-18_gait_review_175500/model_173500.pt",
+    "bytes": 14711753,
+    "mtime_ns": 1793875638661161180,
+    "sha256": "d4950abd0d0850d4bc132917d8601480bcbb3503b4545fd0f2f89037ad33044a"
+  },
+  {
+    "path": "logs/supermimic/2026-11-05_18-47-18_gait_review_175500/model_174000.pt",
+    "bytes": 44087649,
+    "mtime_ns": 1793875979286432153,
+    "sha256": "dd42b6a963a281fcb7cfcd9e8147db2ad3de0dd82745fc2a0b54bbaa4e67a9e6"
+  },
+  {
+    "path": "logs/supermimic/2026-11-05_18-47-18_gait_review_175500/model_174500.pt",
+    "bytes": 44087649,
+    "mtime_ns": 1793876182142169764,
+    "sha256": "b643b3fd525d66333856d33ad33d6a70cac0ff7cd0b8af57ac89f776cdebd8ce"
+  },
+  {
+    "path": "logs/supermimic/2026-11-05_18-47-18_gait_review_175500/model_175000.pt",
+    "bytes": 44087649,
+    "mtime_ns": 1793876376237982541,
+    "sha256": "ccea79725bbfad40aa7c59015bc1c4fb97cbcc1a394926103e7251b90fced636"
+  },
+  {
+    "path": "logs/supermimic/2026-11-05_18-47-18_gait_review_175500/model_175500.pt",
+    "bytes": 44087649,
+    "mtime_ns": 1793876572197681732,
+    "sha256": "e2a965ad1caa163af7ca9bd9cb898e9a41c235a00bef77411d510f9689b69004"
+  },
+  {
+    "path": "logs/supermimic/2026-11-05_19-15-45_gait_review_177500/model_175500.pt",
+    "bytes": 44087969,
+    "mtime_ns": 1793877346004830192,
+    "sha256": "cb7e409bbe38de6a18b7188c833b76bf9090b3fd50ced8495abfd5d3e46e7822"
+  },
+  {
+    "path": "logs/supermimic/2026-11-05_19-15-45_gait_review_177500/model_176000.pt",
+    "bytes": 44087969,
+    "mtime_ns": 1793877574722586738,
+    "sha256": "a67b8ac28ffe434896a9ee121598afcd06df1b57709e81365b856b470c1024e6"
+  },
+  {
+    "path": "logs/supermimic/2026-11-05_19-15-45_gait_review_177500/model_176500.pt",
+    "bytes": 44087969,
+    "mtime_ns": 1793877771497396612,
+    "sha256": "0e8b0cc11107caba5b40eddce2a458477e1b471f3853eb81e5bc498941e5366f"
+  },
+  {
+    "path": "logs/supermimic/2026-11-05_19-15-45_gait_review_177500/model_177000.pt",
+    "bytes": 44087969,
+    "mtime_ns": 1793877969992274055,
+    "sha256": "d5e741952b39213865d7826af560b08f655b700c8f0e0c7a53a6b0aca187229c"
+  },
+  {
+    "path": "logs/supermimic/2026-11-05_19-15-45_gait_review_177500/model_177500.pt",
+    "bytes": 44087969,
+    "mtime_ns": 1793878165539303037,
+    "sha256": "2a7eb67c919117e3d7e0b59c9956eefe9959009d125c726550400ceeada80b43"
+  },
+  {
+    "path": "logs/supermimic/2026-11-05_19-36-38_gait_review_179500/model_177500.pt",
+    "bytes": 44087969,
+    "mtime_ns": 1793878598424457125,
+    "sha256": "7e45cf65847518c8241b6cdb08f629cd7f4377ad45060ac53cb891d7b95e82f1"
+  },
+  {
+    "path": "logs/supermimic/2026-11-05_19-36-38_gait_review_179500/model_178000.pt",
+    "bytes": 44087969,
+    "mtime_ns": 1793878821625547633,
+    "sha256": "3c3bbe4e33086eb42c13971f8f061d5ae953e6400aef76e8b618a80e4a4088c9"
+  },
+  {
+    "path": "logs/supermimic/2026-11-05_19-36-38_gait_review_179500/model_178500.pt",
+    "bytes": 44087969,
+    "mtime_ns": 1793879016519686711,
+    "sha256": "69ec6917914e778d41969f3d20b178a4809ba999d7cff101a459e51fb7dab73a"
+  },
+  {
+    "path": "logs/supermimic/2026-11-05_19-36-38_gait_review_179500/model_179000.pt",
+    "bytes": 44087969,
+    "mtime_ns": 1793879215685983503,
+    "sha256": "d7a819d2ddbc0e0566253b847c0fc9c1c91d171e5cfedae1cd0726483d8bbdb1"
+  },
+  {
+    "path": "logs/supermimic/2026-11-05_19-36-38_gait_review_179500/model_179500.pt",
+    "bytes": 44087969,
+    "mtime_ns": 1793879412816532409,
+    "sha256": "6e6af1f023342736cbed1ff5c29cf3e820ad58be5df08e09d92727755a591070"
+  },
+  {
+    "path": "logs/supermimic/2026-11-05_20-43-53_gait_review_181500/model_179500.pt",
+    "bytes": 44087969,
+    "mtime_ns": 1793882633339316488,
+    "sha256": "129c42f2e3a00e534a53325288705eafe794e003a9f35e92a9d4a723178910c6"
+  },
+  {
+    "path": "logs/supermimic/2026-11-05_20-43-53_gait_review_181500/model_180000.pt",
+    "bytes": 44087969,
+    "mtime_ns": 1793882850646953386,
+    "sha256": "1f883a710e497dc28961014a05817335d6e5f18c33a1276fef7ec9c4781e7098"
+  },
+  {
+    "path": "logs/supermimic/2026-11-05_20-43-53_gait_review_181500/model_180500.pt",
+    "bytes": 44087969,
+    "mtime_ns": 1793883040282164233,
+    "sha256": "111b3762a5c748e46537ac6c78b24994c4afc51bbe8dd512d7fdeb3f2a9aba8d"
+  },
+  {
+    "path": "logs/supermimic/2026-11-05_20-43-53_gait_review_181500/model_181000.pt",
+    "bytes": 44087969,
+    "mtime_ns": 1793883230518656850,
+    "sha256": "266e67655369dbd319e7ed9e15e836d77505e31dfacc56ebd7899bd9505c3a55"
+  },
+  {
+    "path": "logs/supermimic/2026-11-05_20-43-53_gait_review_181500/model_181500.pt",
+    "bytes": 44087969,
+    "mtime_ns": 1793883417204170962,
+    "sha256": "3944e295906ba3f9110ae4cffe706719310a072fe2d122c7c35bcab675d16cf5"
+  },
+  {
+    "path": "logs/supermimic/2026-11-05_21-19-21_gait_review_183500/model_181500.pt",
+    "bytes": 44087969,
+    "mtime_ns": 1793884761671534813,
+    "sha256": "65320d12674311b61539d698dc95ec67b993a4bb0bf7ad9aa3e40a8652e6889e"
+  },
+  {
+    "path": "logs/supermimic/2026-11-05_21-19-21_gait_review_183500/model_182000.pt",
+    "bytes": 44087969,
+    "mtime_ns": 1793884975327318592,
+    "sha256": "125e07afdbe984b90ce562fef9b0a6300c81bc2aa9e28732aef8975ece76cbee"
+  },
+  {
+    "path": "logs/supermimic/2026-11-05_21-19-21_gait_review_183500/model_182500.pt",
+    "bytes": 44087969,
+    "mtime_ns": 1793885162748430357,
+    "sha256": "711fe6cca846734fe2eb1505dd9aed3723dd924c308e0e9c6271dc854c5cf88d"
+  },
+  {
+    "path": "logs/supermimic/2026-11-05_21-19-21_gait_review_183500/model_183000.pt",
+    "bytes": 44087969,
+    "mtime_ns": 1793885352198025498,
+    "sha256": "cfc7c4f3ce78b778c3aaad6b71229c69d540431f034913955adca248a8c2310d"
+  },
+  {
+    "path": "logs/supermimic/2026-11-05_21-19-21_gait_review_183500/model_183500.pt",
+    "bytes": 44087969,
+    "mtime_ns": 1793885542459983357,
+    "sha256": "da34f2833e6e1088236fd5086a0608a11ef9417bec3caf4bbc1d996fbb4c0615"
+  },
+  {
+    "path": "logs/supermimic/2026-11-05_21-48-25_gait_review_183500/model_181500.pt",
+    "bytes": 44087969,
+    "mtime_ns": 1793886505688156068,
+    "sha256": "c8d57818833c95f04a87a700aef1863e03a9950e56f75bf4bc3a3876d2ec59ae"
+  },
+  {
+    "path": "logs/supermimic/2026-11-05_21-48-25_gait_review_183500/model_182000.pt",
+    "bytes": 44087969,
+    "mtime_ns": 1793886723542130225,
+    "sha256": "a4f42960d83410fc760570ed942a2723a895fdde14a80471fbed5886d8a03435"
+  },
+  {
+    "path": "logs/supermimic/2026-11-05_21-48-25_gait_review_183500/model_182500.pt",
+    "bytes": 44087969,
+    "mtime_ns": 1793886913265194030,
+    "sha256": "01f45dbd69d35cb4704ef1efa8100ae2138626a525feaec8b19402703eee4bea"
+  },
+  {
+    "path": "logs/supermimic/2026-11-05_21-48-25_gait_review_183500/model_183000.pt",
+    "bytes": 44087969,
+    "mtime_ns": 1793887104088586230,
+    "sha256": "06ffd3a9cbe67455190c374e007c5569ed5e9ea012898140cbd0e29ac2a61d6f"
+  },
+  {
+    "path": "logs/supermimic/2026-11-05_21-48-25_gait_review_183500/model_183500.pt",
+    "bytes": 44087969,
+    "mtime_ns": 1793887294387847678,
+    "sha256": "5073da17e1210c098d7c7fd0babd0fa970a9239d198a983f3e75306135ec7a5f"
+  },
+  {
+    "path": "logs/supermimic/2026-11-05_22-13-32_gait_review_183500/model_181500.pt",
+    "bytes": 44087969,
+    "mtime_ns": 1793888012705293946,
+    "sha256": "d0e936853bd8e5b5efbd73d12954404af5de37c14439bd5bce84195b5bdc264a"
+  },
+  {
+    "path": "logs/supermimic/2026-11-05_22-13-32_gait_review_183500/model_182000.pt",
+    "bytes": 44087969,
+    "mtime_ns": 1793888381959571954,
+    "sha256": "0f1c55771a5192d1cee3903a5cbbb208808eb30b6cd87fcbb8631500752f5e37"
+  },
+  {
+    "path": "logs/supermimic/2026-11-05_22-13-32_gait_review_183500/model_182500.pt",
+    "bytes": 44087969,
+    "mtime_ns": 1793888580870314046,
+    "sha256": "952d5799b57ff067a82ae05cc103fb3ca9a96598abe137edca8fe70d1b4ef101"
+  },
+  {
+    "path": "logs/supermimic/2026-11-05_22-13-32_gait_review_183500/model_183000.pt",
+    "bytes": 44087969,
+    "mtime_ns": 1793888778137090965,
+    "sha256": "35c7cd5fa6791d548c7a647b62364e266b35e2d587b482e155971f9156c0d5a5"
+  },
+  {
+    "path": "logs/supermimic/2026-11-05_22-13-32_gait_review_183500/model_183500.pt",
+    "bytes": 44087969,
+    "mtime_ns": 1793888977229076102,
+    "sha256": "af63785101990c86df9b01a38914d000a06a0adff2fed9a34cddf9a6ba08f232"
+  },
+  {
+    "path": "logs/supermimic/2026-11-06_14-16-38_gait_review_swing_183500/model_181500.pt",
+    "bytes": 44088033,
+    "mtime_ns": 1793945798959933609,
+    "sha256": "a924e664a2d0eb855cf7dc07d8c8736f619b388a814d97cd07b805ed483fe1a5"
+  },
+  {
+    "path": "logs/supermimic/2026-11-06_14-30-20_gait_review_swing_183500/model_181500.pt",
+    "bytes": 44088033,
+    "mtime_ns": 1793946621006833292,
+    "sha256": "a924e664a2d0eb855cf7dc07d8c8736f619b388a814d97cd07b805ed483fe1a5"
+  },
+  {
+    "path": "logs/supermimic/2026-11-06_14-30-20_gait_review_swing_183500/model_182000.pt",
+    "bytes": 44088033,
+    "mtime_ns": 1793946961728809083,
+    "sha256": "3610beddbcb8aab1ee4079879b3a68face934cb547a9ceb98897ecc4ba897abb"
+  },
+  {
+    "path": "logs/supermimic/2026-11-06_14-30-20_gait_review_swing_183500/model_182500.pt",
+    "bytes": 44088033,
+    "mtime_ns": 1793947143435849718,
+    "sha256": "42e5a367a904196115722a4797d6f3abd081c7008477e99188317dadee061b12"
+  },
+  {
+    "path": "logs/supermimic/2026-11-06_14-30-20_gait_review_swing_183500/model_183000.pt",
+    "bytes": 44088033,
+    "mtime_ns": 1793947325671044481,
+    "sha256": "4639f6f4dc22cf8ae35d413ce7f9bb55263f63c94769451b008b0c6818892c39"
+  },
+  {
+    "path": "logs/supermimic/2026-11-06_14-30-20_gait_review_swing_183500/model_183500.pt",
+    "bytes": 44088033,
+    "mtime_ns": 1793947513266221027,
+    "sha256": "5dd7948629e5f27c06694a97eaa4fdbf25767e7da8d44a2630238ca7ed619d71"
+  },
+  {
+    "path": "logs/supermimic/2026-11-06_15-19-27_gait_review_swing_calf_183500/model_181500.pt",
+    "bytes": 44088097,
+    "mtime_ns": 1793949567747811362,
+    "sha256": "ee0b1a2bc359abd41e58c8425a5fdcce518cfe6e5a9ffb40bd44939b67566de5"
+  },
+  {
+    "path": "logs/supermimic/2026-11-06_15-19-27_gait_review_swing_calf_183500/model_182000.pt",
+    "bytes": 44088097,
+    "mtime_ns": 1793949923326517758,
+    "sha256": "02a1ac43d17dfa820dd65344e8d878233ed81049036c36cc65fbc792e1797b98"
+  },
+  {
+    "path": "logs/supermimic/2026-11-06_15-19-27_gait_review_swing_calf_183500/model_182500.pt",
+    "bytes": 44088097,
+    "mtime_ns": 1793950113795353779,
+    "sha256": "f602934a5d88fd631cc69b39d9d345a3b9bd4848e9312c641b44723930b427a2"
+  },
+  {
+    "path": "logs/supermimic/2026-11-06_15-19-27_gait_review_swing_calf_183500/model_183000.pt",
+    "bytes": 44088097,
+    "mtime_ns": 1793950302360083474,
+    "sha256": "69c09b51aba0460e3d90c56b01990c4b617e9ff8292ed527a14eab61eda399a9"
+  },
+  {
+    "path": "logs/supermimic/2026-11-06_15-19-27_gait_review_swing_calf_183500/model_183500.pt",
+    "bytes": 44088097,
+    "mtime_ns": 1793950493656669062,
+    "sha256": "620758cb4256cc5c13a14d7e74a6133e54e1876863bf843a74e79c8757d99cdd"
+  },
+  {
+    "path": "logs/supermimic/2026-11-06_16-08-39_gait_review_calf_only_183500/model_181500.pt",
+    "bytes": 44088097,
+    "mtime_ns": 1793952519881724888,
+    "sha256": "de368ab89493fca2f1800ac10b0a5b20894d74021c2556079fdf7a95a6ed9736"
+  },
+  {
+    "path": "logs/supermimic/2026-11-06_16-08-39_gait_review_calf_only_183500/model_182000.pt",
+    "bytes": 44088097,
+    "mtime_ns": 1793952867798336414,
+    "sha256": "4c3eadf9ca0daee33467f3494a12bd6c0f4c6f9b2ee81bb37fedaf2e9bb2de71"
+  },
+  {
+    "path": "logs/supermimic/2026-11-06_16-08-39_gait_review_calf_only_183500/model_182500.pt",
+    "bytes": 44088097,
+    "mtime_ns": 1793953051742317965,
+    "sha256": "82d07ac751ea5db4dd408dd7cf2f31ac97a43514e5dced3e80e167e64c9d98b0"
+  },
+  {
+    "path": "logs/supermimic/2026-11-06_16-08-39_gait_review_calf_only_183500/model_183000.pt",
+    "bytes": 44088097,
+    "mtime_ns": 1793953237466426870,
+    "sha256": "9c174a9957e6731a4d594a861c3b3e836914c674cec2ffbd9db5fe4e873f4a5c"
+  },
+  {
+    "path": "logs/supermimic/2026-11-06_16-08-39_gait_review_calf_only_183500/model_183500.pt",
+    "bytes": 44088097,
+    "mtime_ns": 1793953422990656118,
+    "sha256": "f1c8321bd69f4948aece5706442d112946a925efb719d0e0e99fe4e79e0b759f"
+  },
+  {
+    "path": "logs/supermimic/2026-11-06_17-41-10_gait_review_calf_acc1p5_185500/model_183500.pt",
+    "bytes": 44088097,
+    "mtime_ns": 1793958070836449644,
+    "sha256": "678c58fc087565a3face561c4c6a8da6bf6e5455a024cf2ca413980f9e39fa72"
+  },
+  {
+    "path": "logs/supermimic/2026-11-06_17-41-10_gait_review_calf_acc1p5_185500/model_184000.pt",
+    "bytes": 44088097,
+    "mtime_ns": 1793958415493200056,
+    "sha256": "df6c65a74b53f18e9a92447cdad972eea59991e3a4d97ca14136ee5105606dd2"
+  },
+  {
+    "path": "logs/supermimic/2026-11-06_17-41-10_gait_review_calf_acc1p5_185500/model_184500.pt",
+    "bytes": 44088097,
+    "mtime_ns": 1793958597577358016,
+    "sha256": "05d4bf2b0236240fb2b023399f97d4cd37c06230c6c820e673ad4db3b7ac841b"
+  },
+  {
+    "path": "logs/supermimic/2026-11-06_17-41-10_gait_review_calf_acc1p5_185500/model_185000.pt",
+    "bytes": 44088097,
+    "mtime_ns": 1793958778769529653,
+    "sha256": "6f70bd2dae019fece3e2bdd876d6e535aa79670c6f1b2bd62341f6b5ae215eae"
+  },
+  {
+    "path": "logs/supermimic/2026-11-06_17-41-10_gait_review_calf_acc1p5_185500/model_185500.pt",
+    "bytes": 44088097,
+    "mtime_ns": 1793958960888380341,
+    "sha256": "97ad2d4eaf5f0722a79e1ad969556587fb8e8932315c0dadda9e89a02d1815b0"
+  },
+  {
+    "path": "logs/supermimic/2026-11-06_19-11-46_gait_review_calf_acc1p5_lrhalf_185500/model_183500.pt",
+    "bytes": 44088097,
+    "mtime_ns": 1793963506948834807,
+    "sha256": "54c202e889bfaec8bae914b6239b936a6b9425dc086a216773c8febb05914321"
+  },
+  {
+    "path": "logs/supermimic/2026-11-06_19-11-46_gait_review_calf_acc1p5_lrhalf_185500/model_184000.pt",
+    "bytes": 44088097,
+    "mtime_ns": 1793963709800428069,
+    "sha256": "659f2fe1da2e549c1861116671442f5b3275cefabcb75161cc7241221efafdc5"
+  },
+  {
+    "path": "logs/supermimic/2026-11-06_19-11-46_gait_review_calf_acc1p5_lrhalf_185500/model_184500.pt",
+    "bytes": 44088097,
+    "mtime_ns": 1793963887356758461,
+    "sha256": "f1bc433afd69014236424d8c0d2590a9a691be9e9ea942a42a39c749c0bbd3a7"
+  },
+  {
+    "path": "logs/supermimic/2026-11-06_19-11-46_gait_review_calf_acc1p5_lrhalf_185500/model_185000.pt",
+    "bytes": 44088097,
+    "mtime_ns": 1793964065409200637,
+    "sha256": "7e838b16acb68a44184ce9772f019f94852e10a7231166f4eea648b4185ec5c5"
+  },
+  {
+    "path": "logs/supermimic/2026-11-06_19-11-46_gait_review_calf_acc1p5_lrhalf_185500/model_185500.pt",
+    "bytes": 44088097,
+    "mtime_ns": 1793964242529747117,
+    "sha256": "7f096fc81b1224cf696b3c793ff7a2a5c669304e4ac652a3868589f8a36bde5b"
+  },
+  {
+    "path": "logs/supermimic/2026-11-06_20-18-29_gait_review_calf_acc1p5_lrhalf_187500/model_185500.pt",
+    "bytes": 44088097,
+    "mtime_ns": 1793967509199772613,
+    "sha256": "b5359c2721ef9e36592d0390913e4bd73937d4561edef0395151adc83c00fc7f"
+  },
+  {
+    "path": "logs/supermimic/2026-11-06_20-18-29_gait_review_calf_acc1p5_lrhalf_187500/model_186000.pt",
+    "bytes": 44088097,
+    "mtime_ns": 1793967712521790591,
+    "sha256": "25163fa4346adbc2a9a6ad1529f5da34695d43c9bd58f64813031e3bb78a90db"
+  },
+  {
+    "path": "logs/supermimic/2026-11-06_20-18-29_gait_review_calf_acc1p5_lrhalf_187500/model_186500.pt",
+    "bytes": 44088097,
+    "mtime_ns": 1793967893339524529,
+    "sha256": "062ed95659b26d0aafaa6dcddc2c4813015eded0eb93a30795e901f9b189104c"
+  },
+  {
+    "path": "logs/supermimic/2026-11-06_20-18-29_gait_review_calf_acc1p5_lrhalf_187500/model_187000.pt",
+    "bytes": 44088097,
+    "mtime_ns": 1793968072560954982,
+    "sha256": "ce51fb0d93fbbae571038b200482f9711318ce9d6880de6b9c06a11785d3411c"
+  },
+  {
+    "path": "logs/supermimic/2026-11-06_20-18-29_gait_review_calf_acc1p5_lrhalf_187500/model_187500.pt",
+    "bytes": 44088097,
+    "mtime_ns": 1793968251030170938,
+    "sha256": "acd9b3b164da6ad276b8477c99511edb975d1dcc93c7ceaa2f678dc090050528"
+  },
+  {
+    "path": "logs/supermimic/2026-11-06_21-23-55_gait_review_calf_acc1p5_lrhalf_188500/model_186500.pt",
+    "bytes": 44088097,
+    "mtime_ns": 1793971435947375877,
+    "sha256": "35d515373828736d234a528c7b9dbacd3d445fd9d5993f8391f354fda56dcc40"
+  },
+  {
+    "path": "logs/supermimic/2026-11-06_21-23-55_gait_review_calf_acc1p5_lrhalf_188500/model_187000.pt",
+    "bytes": 44088097,
+    "mtime_ns": 1793971642211069531,
+    "sha256": "db77b4cc43bc371c328a3287aa5f3993f46940c226037279478fd69432fc9e80"
+  },
+  {
+    "path": "logs/supermimic/2026-11-06_21-23-55_gait_review_calf_acc1p5_lrhalf_188500/model_187500.pt",
+    "bytes": 44088097,
+    "mtime_ns": 1793971821935332092,
+    "sha256": "1ca0fe18618cee9e1371126691736873467f18b0f90981d1278d7ac8e5f32996"
+  },
+  {
+    "path": "logs/supermimic/2026-11-06_21-23-55_gait_review_calf_acc1p5_lrhalf_188500/model_188000.pt",
+    "bytes": 44088097,
+    "mtime_ns": 1793972002259591756,
+    "sha256": "35e960409a2e46498c3b456c0f647196a159e0951f65bcd722224a5782461c3b"
+  },
+  {
+    "path": "logs/supermimic/2026-11-06_21-23-55_gait_review_calf_acc1p5_lrhalf_188500/model_188500.pt",
+    "bytes": 44088097,
+    "mtime_ns": 1793972180267906083,
+    "sha256": "f3715b301c979f488cdc6d0f713544c0c6d5287b80295f7524b8b3d2cae02541"
+  },
+  {
+    "path": "weights/flat.pt",
+    "bytes": 1388559,
+    "mtime_ns": 1793611913417736616,
+    "sha256": "574e53a90d8dcb29a398c9b940ca0f2fe9ee5ac90fa6a3b6721ffcc794085220"
+  },
+  {
+    "path": "weights/obstacles.pt",
+    "bytes": 1553572,
+    "mtime_ns": 1793611913693728817,
+    "sha256": "ec4a57a995807512374eacf53cb6b1267cdb0a22750a16a6bd4f4cce9f8ecb91"
+  },
+  {
+    "path": "weights/terrain.pt",
+    "bytes": 2180887,
+    "mtime_ns": 1793611914101717286,
+    "sha256": "fd55d8172b23ff1c9219746a93b0cf4d1ba1ac4f85973219f83b548765c0c995"
+  }
+]
