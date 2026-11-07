@@ -18,3 +18,10 @@ checkpoints/
 !experiments/local-training/**/videos/
 !experiments/local-training/**/*.mp4
 !weights/locomotion/*.pt
+
+# Complete training checkpoint archive
+!weights/complete/**/logs/
+!weights/complete/**/*.pt
+!weights/complete/**/*.pth
+!weights/complete/**/*.onnx
+!weights/complete/**/*.ckpt
